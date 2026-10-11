@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 5 of 6. Whether the share in a plan is believable: the adoption S-curve as a realism check on a straight-line ramp, base rates and distribution ceilings, and the collision test that adds every entrant's plan against one market, read alongside Damodaran's big market delusion.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Share realism and the collision test - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 5 of 6. Adoption shape, distribution ceilings, and five plans that add up to 120 percent of one market.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a5-share-realism.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Share realism and the collision test - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 5 of 6. Every plan is reasonable alone; added up, they claim 120 percent of the market.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 5 · Share realism and the collision test - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 5 of 6</div>
+    <h1>Share realism and <span class="accent">the collision test</span></h1>
+    <p class="sub">A market can be exactly the size you think and the plan can still be impossible. The size says how much is being bought; the share says how much of it you will be paid for, and that second number is where most plans quietly stop being evidence. Tonight the year-5 share meets three checks: the shape adoption usually takes, the ceiling set by where you are actually sold, and the collision test, where every entrant's plan is added up against the one market they all share.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Analyst</span>
+      <span class="chip audience">Data analysts and data scientists who build the size</span>
+      <span class="chip audience">Hands-on in the browser</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Curves, ceilings, the delusion</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the collision test</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">Analyst session 4 turned Kettle &amp; Co's market into a range: premium loose-leaf tea bought online in Japan, 19.63 billion yen a year at the top-down middle. Its year-5 plan says Kettle &amp; Co will hold 10 percent of that. Three rivals have plans too: Entrant B 18 percent, Entrant C 22 percent, Entrant D 15 percent, while the incumbents hold 55 percent. Every share, every rival and every plan is constructed for teaching; the households and tea spend under the 19.63 are real rows from the Statistics Bureau of Japan. Tonight the question is not how big, but how much of it, and whether anyone has checked the plans against each other.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A collision line for Kettle &amp; Co's sizing brief: what the five plans claim when added up, how much of that has no customer, and a rewritten Kettle &amp; Co plan that says which rivals would have to lose share for it to hold. Plus two quick realism checks you can run on any share in any deck: the curve and the ceiling.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers adoption curves as a shape</span>
+      <h2>Adoption rarely arrives in a straight line</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Most plan ramps are drawn with a ruler: zero today, the year-5 share at year 5, and an even climb between. Adoption of a new product rarely behaves like that. It tends to start slow, accelerate once early buyers bring others with them, then flatten as the market fills. Held against that shape, a straight ramp books share in the early years before the customers have arrived.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 356" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chart from year 0 to year 5 with share of the market rising to Kettle and Co's constructed year-5 plan of 10 percent. A dashed straight line climbs evenly from zero to the plan. A dashed S-shaped curve, constructed, starts flat, accelerates after year 2 and reaches the same year-5 point. The area between them in years 0 to 4, where the straight line sits above the curve, is filled amber and labelled the early-year gap. Notes on the right name the three phases: slow start, acceleration, saturation.">
+        <defs>
+          <filter id="a5aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="71" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a5aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a5aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a5aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a5aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a5aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a5aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a5aA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a5aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a5aH" x="30" y="28">A RULER RAMP AGAINST AN ADOPTION SHAPE</text>
+        <text class="a5aS" x="30" y="46">share of the market by year · both lines constructed for Kettle &amp; Co · the curve is a shape, not a forecast</text>
+
+        <g filter="url(#a5aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M110 300 L475 165 L461 175.5 L434 197.3 L407 219 L380 239 L353 255.8 L326 269.1 L299 279.1 L272 286.2 L245 291.2 L218 294.5 L191 296.8 L164 298.3 L137 299.3 Z" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M110 300 L650 100" stroke-dasharray="6 5"/>
+          <path d="M110 300 L137 299.3 L164 298.3 L191 296.8 L218 294.5 L245 291.2 L272 286.2 L299 279.1 L326 269.1 L353 255.8 L380 239 L407 219 L434 197.3 L461 175.5 L488 155.6 L515 138.7 L542 125.4 L569 115.5 L596 108.3 L623 103.4 L650 100" stroke="#005F6B" stroke-width="3" stroke-dasharray="6 5"/>
+          <path d="M650 100 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0" fill="#003D45" stroke="#003D45"/>
+          <path d="M110 300 L660 300 M110 300 L110 84"/>
+          <path d="M218 296 L218 304 M326 296 L326 304 M434 296 L434 304 M542 296 L542 304 M650 296 L650 304"/>
+          <!-- doodle: a sprout, adoption starting small -->
+          <path d="M800 314 L800 290 M800 300 C790 294 786 288 788 284 C796 286 800 292 800 300 M800 294 C810 288 814 282 812 278 C804 280 800 286 800 294" stroke="#005F6B"/>
+        </g>
+
+        <text class="a5aB" x="650" y="86" text-anchor="end">year-5 plan, 10% (constructed)</text>
+        <text class="a5aL" x="200" y="130">straight-line plan ramp (constructed)</text>
+        <text class="a5aA" x="490" y="222">S-curve (constructed shape)</text>
+
+        <text class="a5aB" x="122" y="172">THE EARLY-YEAR GAP</text>
+        <text class="a5aS" x="122" y="188">share the plan books</text>
+        <text class="a5aS" x="122" y="204">before buyers arrive</text>
+
+        <text class="a5aA" x="110" y="318" text-anchor="middle">year 0</text>
+        <text class="a5aA" x="218" y="318" text-anchor="middle">1</text>
+        <text class="a5aA" x="326" y="318" text-anchor="middle">2</text>
+        <text class="a5aA" x="434" y="318" text-anchor="middle">3</text>
+        <text class="a5aA" x="542" y="318" text-anchor="middle">4</text>
+        <text class="a5aA" x="650" y="318" text-anchor="middle">5</text>
+
+        <text class="a5aH" x="680" y="130">THE SHAPE, REPORTED</text>
+        <text class="a5aS" x="680" y="150">slow start: innovators</text>
+        <text class="a5aS" x="680" y="168">acceleration: imitators</text>
+        <text class="a5aS" x="680" y="186">saturation: market fills</text>
+        <text class="a5aS" x="680" y="214">no parameters from the paper:</text>
+        <text class="a5aS" x="680" y="230">this curve is drawn by hand</text>
+
+        <text class="a5aN" x="30" y="344">Same year-5 end point, different path. The amber area is share a ruler ramp counts before adoption.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the realism check is the early years: a straight ramp assumes buyers who, on the usual adoption shape, have not shown up yet</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The S-curve as a shape, and only as a shape<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Where the shape comes from.</strong> Frank Bass's diffusion model (Management Science, 1969, reported) describes adoption as two forces: a few innovators who buy on their own, and imitators who buy because others already have. Early on there are few adopters to imitate, so growth is slow; once enough people own the product, imitation drives acceleration; as the pool of possible buyers empties, growth flattens.</p>
+        <p><strong>What is used here.</strong> Only the shape: slow, fast, flat. No parameters are attributed to the paper, and the curve in the figure is drawn by hand for Kettle &amp; Co. If you ever see an S-curve on a plan slide with precise coefficients, ask where they were estimated, on whose data, and for which product.</p>
+        <p><strong>The check.</strong> Lay the plan ramp over the shape. If the plan reaches a large share of its year-5 number in year 1 or 2, it is assuming the acceleration phase has already started. Ask what evidence says so.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>A realism check, not a forecast<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Forecasting how adoption will actually unfold, fitting a curve to early sales and projecting it, is a different job with its own methods and failure modes. It is owned by <a href="https://phoebefu6.github.io/learn-timeseries-forecasting-with-phoebe/">Learn Timeseries Forecasting with Phoebe</a>, and nothing here re-teaches it.</p>
+        <p>In a sizing brief, the curve does one thing: it asks whether the year-5 share and the ramp to it are believable given the shape adoption usually takes. Its output is a question for the plan's owner ("why is year 2 already so close to the year-5 number?"), never a number of its own.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When the shape does not fit<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Not everything follows an S. A product that enters an established category, where buyers already exist and only the brand is new, may skip most of the slow start: the question there is switching, not adoption. A product sold through a partner with an existing customer base can step up on the day the partner switches it on.</p>
+        <p>So the S-curve is a prompt, not a rule. If the plan's owner can name the mechanism that skips the slow start (a distribution deal, an existing customer list, a category that buyers already know), the straight ramp may be fair. If they cannot, the early-year gap is a risk that belongs in the brief.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The ramp drawn with a ruler.</strong> Kettle &amp; Co's marketing lead presents a plan that climbs evenly to 10 percent of the online premium market by year 5, so year 1 already books a fifth of the year-5 share. The head of data overlays a hand-drawn S and asks what will make Japanese buyers adopt in year 1 at the rate the ramp needs. Nobody can name it. The revised plan keeps the year-5 target and moves the hiring plan back a year. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers base rates and distribution ceilings</span>
+      <h2>Check a share against who got there before, and where you are sold</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Two more checks, both cheap. First, the base rate: in a crowded category most entrants end small, so a plan should be compared with the shares that comparable entrants actually reached, not with the share the team would like. Second, the ceiling: a brand cannot win purchases made where it is not sold. For a direct-to-consumer brand, that ceiling was already in the chain from Analyst session 1.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chart. On the left, a tall hachured column for all premium loose-leaf purchases in every channel; its lower slice, the share bought online, is the 19.63 billion yen market. A dashed horizontal ceiling line runs from the top of that slice across the figure, labelled only where we are sold. In the middle, an amber plan bar counts every shelf and pushes through the ceiling; the part above is labelled no route to these purchases. On the right, a dashed white plan bar rewritten to sit under the ceiling. Plans and the online share are constructed.">
+        <defs>
+          <filter id="a5bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="73" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a5bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a5bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a5bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a5bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a5bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a5bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a5bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a5bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a5bH" x="30" y="28">A PLAN BAR AGAINST THE DISTRIBUTION CEILING</text>
+        <text class="a5bS" x="30" y="46">not to scale · column split at the constructed middle online share, 0.30 · dashed = constructed</text>
+        <text class="a5bH" x="60" y="72">ALL CHANNELS</text>
+
+        <g filter="url(#a5bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="60" y="80" width="200" height="230" rx="4" transform="rotate(-0.4 160 195)" fill="url(#a5bHc)"/>
+          <rect x="60" y="241" width="200" height="69" rx="4" transform="rotate(0.3 160 275)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="320" y="150" width="170" height="160" rx="5" transform="rotate(-0.6 405 230)" fill="#8A5300" stroke="#8A5300" stroke-dasharray="6 5"/>
+          <rect x="540" y="262" width="170" height="48" rx="5" transform="rotate(0.6 625 286)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M60 241 L860 241" stroke="#5A3600" stroke-dasharray="6 5"/>
+          <path d="M40 310 L860 310"/>
+          <!-- doodle: a shop front with a shut door, shelves we are not on -->
+          <path d="M770 140 L830 140 L830 100 L770 100 Z M770 100 L780 86 L820 86 L830 100 M792 140 L792 118 L808 118 L808 140" stroke="#005F6B"/>
+        </g>
+
+        <text class="a5bL" x="72" y="280">the 19.63 market</text>
+        <text class="a5bS" x="72" y="298">bought online</text>
+        <text class="a5bW" x="405" y="290" text-anchor="middle">plan</text>
+        <text class="a5bB" x="500" y="190">no route to these purchases</text>
+        <text class="a5bB" x="735" y="233">only where we are sold</text>
+        <text class="a5bS" x="735" y="258">(a DTC brand)</text>
+
+        <text class="a5bS" x="60" y="330">all purchases, every channel</text>
+        <text class="a5bS" x="60" y="346">lower slice: bought online</text>
+        <text class="a5bS" x="320" y="330">plan: share of every shelf</text>
+        <text class="a5bS" x="320" y="346">(constructed)</text>
+        <text class="a5bS" x="540" y="330">plan rewritten under it</text>
+        <text class="a5bS" x="540" y="346">(constructed)</text>
+
+        <text class="a5bN" x="30" y="370">A share of purchases you cannot reach is not a share. The ceiling sits where your channels stop.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - for a direct-to-consumer brand the online share link in the top-down chain is itself the ceiling; a plan above it counts shelves the brand is not on</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Base rates: who got there before<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>The principle.</strong> In a crowded category, most entrants end small. A few win big, and those are the ones everyone remembers and puts on the slide. The honest comparison for a new plan is the shares that comparable entrants actually reached at the same age, including the ones that stalled.</p>
+        <p><strong>What is not on this page.</strong> No base-rate study was read at source for this session, so no percentage for "how many entrants reach how much share" is quoted. Numbers like that circulate widely; treat any you meet as a claim to trace before it goes into a brief.</p>
+        <p><strong>A constructed worked example.</strong> Kettle &amp; Co's analyst lists five tea brands that entered Japanese e-commerce in the past decade, comparable in price tier and channel, and notes the share each reached by year 5 from public filings and panel data. The list, the brands and their shares are constructed for teaching. Four of the five sit well below Kettle &amp; Co's 10 percent plan; one sits above it. The brief does not say the plan is wrong. It says the plan needs Kettle &amp; Co to be the one in five, and asks what makes it so.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Distribution ceilings: only where you are sold<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Analyst session 1 built the top-down chain with an online share link: of all premium loose-leaf spend, the part bought online, constructed at 0.30 in the middle. For a brand that sells only through its own site and online marketplaces, that link is not just a filter. It is the ceiling. Purchases made in supermarkets, department-store gift counters and specialist tea shops are real spend, but a direct-to-consumer brand has no route to them.</p>
+        <p>Watch for plans that quietly swap denominators: a share quoted "of the Japanese premium tea market" when the brand is sold only online. The share might be correct for the online slice and impossible for the whole. Ask, for every share on a slide: share of what, sold where?</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Ceilings move, and that is a plan of its own<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A ceiling is not permanent. A retail partnership, a marketplace listing in a new channel, a corporate gifting arrangement: each raises it. But raising a ceiling is a separate decision with its own cost and timing, and it belongs in the plan as a named step with a date, not as an unstated assumption inside the share.</p>
+        <p>The test: if the share in the plan only fits under a higher ceiling, the plan must say which channel raises it, when, and who owns that deal. If it cannot, rewrite the share under today's ceiling.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The gift counter nobody had signed.</strong> Kettle &amp; Co's BD lead quotes a year-5 target as a share of all premium leaf tea in Japan, including the department-store gift season. The head of data points out that Kettle &amp; Co sells online only and has no department-store agreement. The target is rewritten as a share of the online slice, and the gift counters become a separate line in the plan, owned by BD, with "no agreement yet" written beside it. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the big market delusion</span>
+      <h2>Every plan is reasonable; the sum is not</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The checks so far look at one plan at a time. The most revealing check looks at all of them at once. When a market is big and exciting, every entrant writes a plan for a slice of it, and each slice looks modest on its own slide. Add the slices up and they can claim more than the market holds. Aswath Damodaran ran exactly this addition on real company valuations.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 434" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn box for Damodaran's optimistic 2025 online advertising market estimate, about 466 billion US dollars. Inside it, a stack of blocks, one per listed online advertising company, each the 2025 revenue its market value implied. The stack totals about 523 billion dollars and overflows the top of the box; the overflowing part is amber. Block sizes are drawn for illustration. Notes give the base of his estimate: about 545 billion dollars of global advertising in 2014, 138 billion of it digital.">
+        <defs>
+          <filter id="a5cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="79" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a5cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a5cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a5cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a5cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a5cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a5cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a5cV { font: 800 18px Inter, sans-serif; fill: #003D45; }
+          .a5cW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a5cA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a5cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a5cH" x="30" y="24">IMPUTED REVENUES AGAINST THE MARKET THEY SHARE</text>
+        <text class="a5cS" x="30" y="42">Damodaran, Musings on Markets, 2015 post · online advertising, 2025 · billions of US dollars</text>
+
+        <g filter="url(#a5cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="120" y="100" width="180" height="280" rx="4" transform="rotate(-0.4 210 240)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="140" y="296" width="140" height="84" rx="3" transform="rotate(0.6 210 338)" fill="url(#a5cHc)"/>
+          <rect x="140" y="230" width="140" height="66" rx="3" transform="rotate(-0.8 210 263)" fill="#FFFFFF"/>
+          <rect x="140" y="182" width="140" height="48" rx="3" transform="rotate(0.7 210 206)" fill="url(#a5cHc)"/>
+          <rect x="140" y="146" width="140" height="36" rx="3" transform="rotate(-0.6 210 164)" fill="#FFFFFF"/>
+          <rect x="140" y="120" width="140" height="26" rx="3" transform="rotate(0.8 210 133)" fill="url(#a5cHc)"/>
+          <rect x="140" y="100" width="140" height="20" rx="3" transform="rotate(-0.5 210 110)" fill="#FFFFFF"/>
+          <rect x="140" y="66" width="140" height="34" rx="3" transform="rotate(0.9 210 83)" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M286 66 L312 66 M306 100 L312 100"/>
+          <path d="M80 380 L340 380"/>
+          <!-- doodle: a price tag, priced rather than valued -->
+          <path d="M780 330 L820 330 L834 344 L820 358 L780 358 Z M792 344 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0" stroke="#005F6B"/>
+        </g>
+
+        <text class="a5cW" x="210" y="88" text-anchor="middle">the overflow</text>
+
+        <text class="a5cV" x="320" y="72">about $523 billion</text>
+        <text class="a5cB" x="525" y="71">imputed 2025 revenue, all companies added</text>
+        <text class="a5cV" x="320" y="114">about $466 billion</text>
+        <text class="a5cL" x="525" y="113">his optimistic 2025 market estimate</text>
+
+        <text class="a5cH" x="320" y="160">HOW THE ADDITION WORKS</text>
+        <text class="a5cS" x="320" y="180">each block: one listed company, the 2025 revenue its market value implied</text>
+        <text class="a5cS" x="320" y="196">block sizes drawn for illustration; only the two totals come from the post</text>
+        <text class="a5cS" x="320" y="224">market estimate built from about $545 billion of global advertising in 2014,</text>
+        <text class="a5cS" x="320" y="240">about $138 billion of it digital</text>
+        <text class="a5cB" x="320" y="276">individual rationality, collective irrationality</text>
+        <text class="a5cS" x="320" y="294">each valuation can be defended alone; the group is priced for more than exists</text>
+
+        <text class="a5cA" x="210" y="400" text-anchor="middle">billions of US dollars</text>
+        <text class="a5cN" x="30" y="424">Solid strokes: both totals read at source. The stack cannot all be right, though any one company might be.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the overflow is not one company's mistake; it only appears when every implied revenue is added against the one market they all need</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The 2015 addition<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>The method.</strong> In a 2015 post, Damodaran took each listed online advertising company, started from its market value, and solved for the revenue in 2025 that value implied: how big would this company have to be for today's price to make sense? Then he added those implied revenues up across the group.</p>
+        <p><strong>The result.</strong> The imputed 2025 online ad revenues came to about $523 billion. His own estimate of the 2025 online advertising market, which he described as optimistic, was about $466 billion, built up from about $545 billion of global advertising in 2014, of which about $138 billion was digital. The companies, taken together, were priced for more revenue than his generous market could supply, so the group was collectively overpriced.</p>
+        <p><strong>The lens.</strong> He framed it as individual rationality, collective irrationality: every investor's case for one company can be sensible, and the sum of the cases still impossible. That is the collision test, run on money rather than on plan slides.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why big markets invite it: the 2019 revisit<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In a 2019 post, Damodaran came back to the idea and named three ingredients: a big market story, overconfidence among the companies and investors chasing it, and companies that are priced on the story rather than valued on their cash flows. In his words, "young companies tend to be priced, not valued".</p>
+        <p>He does not say every company in such a market fails. Some will succeed, and some will be worth more than their price. The point is about the group: added up, it is overpriced, and the correction tends to come for the whole group at once.</p>
+        <p>Read the same three ingredients into a planning room. A big market slide, a team confident in its share, and a plan built to match the story rather than tested against the market: that is how five rival plans come to claim more than the market holds.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The paper behind the posts<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Brad Cornell and Aswath Damodaran also wrote the idea up as a paper, "The Big Market Delusion: Valuation and Investment Implications" (reported: the paper was not read at source for this session, so nothing here is quoted from it). The two blog posts, read at source, carry everything taught above. Cite them as: Damodaran, Musings on Markets, 2015 and 2019 posts.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Online advertising, 2015.</strong> Each listed online advertising company had a story that justified its price on its own terms. Damodaran's addition put those stories side by side: about $523 billion of implied 2025 revenue against about $466 billion of market, even on his optimistic estimate. No single valuation looked absurd; the sum did. Source: Damodaran, Musings on Markets, 2015 and 2019 posts.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Run the collision test on five plans</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">The widget below runs Damodaran's addition on Kettle &amp; Co's market. It takes the premium loose-leaf online market at its top-down middle, computed in your browser from the real Census households and survey tea spend with the constructed shares, then applies five constructed year-5 plans to it and adds them up. Work the five steps and write down what it prints.</p>
+
+    <div class="msz-widget" data-mode="collision"></div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 292" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chart in billions of yen a year. Top row: one hachured bar for the market, 19.63. Second row: five dashed plan blocks stacked end to end: incumbents 10.79, Kettle and Co 1.96, Entrant B 3.53, Entrant C 4.32, Entrant D 2.94, totalling 23.55, 120 percent of the market. A dashed vertical line marks the market's edge. Third row: an amber block for the 3.93 of planned revenue past the edge, labelled planned, no customer. All plans constructed.">
+        <defs>
+          <filter id="a5dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="83" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a5dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a5dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a5dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a5dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a5dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a5dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a5dV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a5dW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a5dA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a5dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a5dH" x="30" y="28">FIVE PLANS, ONE MARKET</text>
+        <text class="a5dS" x="30" y="46">billion yen a year, year 5 · market = top-down middle · every plan constructed</text>
+
+        <g filter="url(#a5dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="100" y="84" width="589" height="34" rx="5" transform="rotate(-0.2 394 101)" fill="url(#a5dHc)" stroke="#005F6B" stroke-dasharray="6 5"/>
+          <rect x="100" y="160" width="324" height="36" rx="4" transform="rotate(0.3 262 178)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="424" y="160" width="59" height="36" rx="4" transform="rotate(-0.6 453 178)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="483" y="160" width="106" height="36" rx="4" transform="rotate(0.5 536 178)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="589" y="160" width="129" height="36" rx="4" transform="rotate(-0.4 653 178)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="718" y="160" width="88" height="36" rx="4" transform="rotate(0.6 762 178)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M689 72 L689 122 M689 156 L689 260" stroke="#5A3600" stroke-dasharray="6 5"/>
+          <rect x="689" y="226" width="118" height="28" rx="4" transform="rotate(-0.5 748 240)" fill="#8A5300" stroke="#8A5300"/>
+          <!-- doodle: a plus sign on a scrap of paper, the addition -->
+          <path d="M826 224 L858 224 L858 256 L826 256 Z M842 232 L842 248 M834 240 L850 240" stroke="#005F6B"/>
+        </g>
+
+        <text class="a5dH" x="30" y="106">MARKET</text>
+        <text class="a5dV" x="700" y="108">19.63</text>
+        <text class="a5dH" x="30" y="183">PLANS</text>
+        <text class="a5dB" x="806" y="150" text-anchor="end">all plans: 23.55, 120% of the market</text>
+
+        <text class="a5dL" x="262" y="183" text-anchor="middle">incumbents 10.79</text>
+        <text class="a5dL" x="453" y="183" text-anchor="middle">Kettle</text>
+        <text class="a5dS" x="453" y="214" text-anchor="middle">1.96</text>
+        <text class="a5dL" x="536" y="183" text-anchor="middle">B 3.53</text>
+        <text class="a5dL" x="653" y="183" text-anchor="middle">C 4.32</text>
+        <text class="a5dL" x="762" y="183" text-anchor="middle">D 2.94</text>
+
+        <text class="a5dB" x="676" y="244" text-anchor="end">planned revenue with no customer</text>
+        <text class="a5dW" x="748" y="245" text-anchor="middle">3.93</text>
+
+        <text class="a5dN" x="30" y="280">Order of the stack is arbitrary: the overflow belongs to the sum, not to whichever plan happens to sit last.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - each block is a reasonable deck on its own; only stacked against one market bar does the 3.93 with no customer appear</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Read each constructed plan.</strong> The table lists five players and the year-5 share each plan claims of the same market. Read them one at a time, the way each board would see its own plan, and note that none of them looks outrageous alone.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the five plans (constructed)</span>Kettle &amp; Co                         10%
+Entrant B                            18%
+Entrant C                            22%
+Entrant D                            15%
+Incumbents, holding today's share    55%
+alone, each looks: ______________________</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Read the total.</strong> The verdict line adds the shares and the revenues. Copy it exactly; it is the one sentence no single plan could have produced.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · what the widget prints</span>The plans add up to 120% of a 19.63 billion yen market:
+3.93 billion yen of planned revenue has no customer.
+all plans added up   120%   23.55 bn yen a year</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Read the revenue per player.</strong> Each share times the 19.63 market gives the revenue the plan is counting on. Write them down; Kettle &amp; Co's line is the smallest, and it is still part of the overflow.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · planned revenue, billion yen a year</span>Kettle &amp; Co    1.96
+Entrant B       3.53
+Entrant C       4.32
+Entrant D       2.94
+Incumbents     10.79
+sum            23.55   against a market of 19.63</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Rewrite Kettle &amp; Co's plan so it survives the collision.</strong> The market will not grow to fit the plans, so for Kettle &amp; Co to keep its share, someone else must hold less. Decide who, and say why that player would lose share: a weaker channel, a narrower range, an incumbent losing online buyers. Every number you write here is constructed, and your numbers will differ from your neighbour's.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the plan that survives (constructed)</span>Kettle &amp; Co year-5 share, rewritten:   ____%
+for this to hold, these players hold less than they plan:
+  ____________  from ____% to ____%   because ______________
+  ____________  from ____% to ____%   because ______________
+check: all five shares now add to 100% or less?   yes / no</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Write the collision line for the brief.</strong> One sentence that a leader can read without the table: what the plans add up to, how much has no customer, and what Kettle &amp; Co's plan now assumes about its rivals.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the collision line</span>"Added up, the five year-5 plans we know of (all constructed
+ for this exercise) claim 120% of a 19.63 bn yen market:
+ 23.55 planned, 3.93 with no customer.
+ Our plan of ____% holds only if ____________ loses share
+ to us; the evidence for that is ____________."</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Rivals' plans are rarely published.</strong> In real work you will not have Entrant C's board deck. Use what you can see: funding announcements, hiring, stated targets in interviews, and the market values investors have assigned, as Damodaran did. A collision test on estimated rival plans, labelled as estimates, still catches a total over 100 percent. Keep the line; Analyst session 6 puts it beside the triangulated range on the bench.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before Analyst session 6</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Overlay an S on one plan ramp you own or have seen.</strong> Sketch it by hand, same year-5 end point, and mark the early-year gap. Write one line on what would let the plan skip the slow start, or admit that nothing does.</li>
+      <li><strong>Write the share-of-what line for every share in that plan</strong>: share of which market, sold through which channels. Circle any share whose denominator includes purchases made where the product is not sold.</li>
+      <li><strong>List three to five comparable entrants</strong> and, where you can find it from public sources, the share each reached. Note where each number came from. If you find a published base rate, write down its source and method before you trust it.</li>
+      <li><strong>Run a collision test on your own market.</strong> List every competitor you can name with an estimated target share, label each estimate, add them up, and write the collision line in the step 5 format.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 5 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Each of the five constructed plans looks reasonable on its own. What does the collision test add that no single plan shows?</p>
+      <button class="qopt" type="button">A · A more precise estimate of the market size</button>
+      <button class="qopt" type="button">B · Proof that Kettle &amp; Co's plan is the one that will fail</button>
+      <button class="qopt" type="button">C · Whether the plans can all be true at once: added up they claim 120% of a 19.63 market, so 3.93 of planned revenue has no customer</button>
+      <button class="qopt" type="button">D · A forecast of how each player's share will change year by year</button>
+      <p class="qwhy">The overflow belongs to the sum, not to one plan. The test says the plans cannot all hold; deciding whose share gives way is the analyst's next question.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · What did Damodaran's 2015 addition of online advertising companies show?</p>
+      <button class="qopt" type="button">A · The revenues their market values implied for 2025, about $523 billion added up, exceeded even his optimistic market estimate of about $466 billion, so the group was collectively overpriced</button>
+      <button class="qopt" type="button">B · That every online advertising company was overvalued</button>
+      <button class="qopt" type="button">C · That the online advertising market would shrink by 2025</button>
+      <button class="qopt" type="button">D · That one company was priced for the whole market</button>
+      <p class="qwhy">Individual rationality, collective irrationality: any one company may deserve its price; the group, added up, is priced for more than the market can supply.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Why is the S-curve used here as a realism check rather than a forecast?</p>
+      <button class="qopt" type="button">A · Because the Bass model has been disproved</button>
+      <button class="qopt" type="button">B · Because S-curves only apply to consumer durables</button>
+      <button class="qopt" type="button">C · Because the curve's parameters come from the 1969 paper and cannot be changed</button>
+      <button class="qopt" type="button">D · Because it is drawn only as a shape, with no parameters fitted to data, so it can question a straight-line ramp but cannot produce a number of its own</button>
+      <p class="qwhy">The shape asks why the plan books share before adoption usually arrives. Fitting and projecting a curve is forecasting, which has its own methods and its own home.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The big market delusion: about $523 billion of imputed 2025 online ad revenue against an optimistic market of about $466 billion (from about $545 billion global advertising in 2014, $138 billion digital); the 2019 three ingredients</span><span class="note">Damodaran, Musings on Markets, 2015 and 2019 posts; read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Collision test: plans add up to 120% of a 19.63 market, 23.55 planned, 3.93 with no customer; Kettle 1.96, B 3.53, C 4.32, D 2.94, incumbents 10.79</span><span class="note">Computed by the widget engine at the default settings on the real household and survey rows; the market's shares and all five plans are constructed</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Cornell and Damodaran, "The Big Market Delusion: Valuation and Investment Implications"</span><span class="note">Reported; the paper was not read at source, so nothing is quoted from it</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Bass diffusion: slow start, acceleration, saturation</span><span class="note">Frank Bass, Management Science, 1969; reported; used as a shape only, no parameters attributed, the curve drawn is constructed</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Base rates for new entrants in a crowded category</span><span class="note">Principle only; no base-rate study read at source, no percentage quoted; the worked example is constructed</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Size is not share</b><span>The market can be right and the plan impossible. Check the share separately.</span></div>
+      <div class="cheat-item"><b>Overlay the S</b><span>Slow, fast, flat. A ruler ramp books early share; ask what skips the slow start.</span></div>
+      <div class="cheat-item"><b>Share of what, sold where?</b><span>A DTC brand's ceiling is the online slice. Shelves you are not on are not share.</span></div>
+      <div class="cheat-item"><b>Base rates as a principle</b><span>Most entrants in a crowded category end small. Compare with who got there, not who you hope to be.</span></div>
+      <div class="cheat-item"><b>Add up every plan</b><span>Five constructed plans: 120% of 19.63, 23.55 planned, 3.93 with no customer.</span></div>
+      <div class="cheat-item"><b>Priced, not valued</b><span>Damodaran's 2015 sum: about $523 billion imputed against about $466 billion of market.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You can test a share against the adoption shape, the distribution ceiling and every rival's plan at once. Analyst session 6 is the triangulation bench: the full ladder from one method to two, the category and population toggles, the hero assumption, and the analyst-report number that leaves nothing to explain.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 5 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a4-ranges-not-points.html">← Prev: Ranges, not points</a> &nbsp;·&nbsp; <a href="a6-the-triangulation-bench.html">Next: The triangulation bench →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/msz-sample.js?v=1"></script>
+<script src="../assets/msz-live.js?v=1"></script>
+<script src="../assets/msz-bench.js?v=2"></script>
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>

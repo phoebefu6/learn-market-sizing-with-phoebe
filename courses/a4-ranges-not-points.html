@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 4 of 6. Why a single market size hides the assumptions it rests on, how to carry low, middle and high inputs together as corners, and how a tornado chart shows which assumption moves the gap between top-down and bottom-up the most, so you know what to measure next.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Ranges, not points - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 4 of 6. Ranges against a decision threshold, corners and their limits, and the tornado that tells you which input to measure first.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a4-ranges-not-points.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ranges, not points - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 4 of 6. A range against a threshold, and the tornado that names the next thing to measure.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 4 · Ranges, not points - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 4 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 4 of 6</div>
+    <h1>Ranges, <span class="accent">not points</span></h1>
+    <p class="sub">A market size is evidence for a decision, and a single number is the weakest form that evidence can take: it hides which assumptions it rests on and how far each could be wrong. Tonight the size becomes a range, the range is held up against the line where the decision flips, and a tornado chart shows which one assumption moves the answer most. That bar is the next thing to measure, and saying so is the most useful sentence an analyst can put in a sizing brief.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst</span>
+      <span class="chip audience">Data analysts and data scientists who build the size</span>
+      <span class="chip audience">Hands-on in the browser</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Points, corners, the tornado</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: read the tornado</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">You now have two sizes for the same market. Analyst session 1 built Kettle &amp; Co's premium loose-leaf market from the top down: 19.63 billion yen a year at the middle of every assumption. Analyst session 2 built it from the bottom up: 13.06. Analyst session 3 covered the markets no table measures. Tonight neither number is allowed to travel alone. Each becomes a range, the range meets the decision threshold, and the gap between the two methods is taken apart one assumption at a time. Kettle &amp; Co, its shares, pilot inputs and threshold are constructed; the households and the tea spend underneath the top-down are real rows from the Statistics Bureau of Japan.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A range sentence for Kettle &amp; Co's sizing brief, both methods with their ranges and the threshold beside them, plus a ranked list of the five assumptions by how much each moves the gap, with one line on how you would narrow each. The top line of that list is your measurement plan for next week.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers why a point is the wrong answer</span>
+      <h2>A point looks safe because it hides its own doubt</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Business session 1 asked the owner for a threshold before anyone sized anything: for Kettle &amp; Co, entering Japan online is worth it at about 10 billion yen a year of SAM. That threshold is constructed for teaching. Against it, the point 19.63 looks like a comfortable yes. The ranges tell a different story.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn number line from 0 to 35 billion yen a year with a dashed vertical threshold at about 10, constructed. Row one: the top-down point 19.63, far to the right of the line. Row two: the top-down range 10.90 to 31.72, which clears the threshold by under one billion yen. Row three, amber: the bottom-up range 7.11 to 21.55, middle 13.06, which crosses the threshold. A note says the point says yes, the ranges say measure more.">
+        <defs>
+          <filter id="a4aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a4aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a4aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a4aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a4aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a4aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a4aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a4aV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a4aA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a4aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a4aH" x="30" y="28">ONE POINT, TWO RANGES, ONE LINE</text>
+        <text class="a4aS" x="30" y="46">billion yen a year · dashed = built on constructed inputs</text>
+        <text class="a4aB" x="280" y="74" text-anchor="middle">threshold, about 10 (constructed)</text>
+
+        <g filter="url(#a4aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M280 82 L280 262" stroke="#5A3600" stroke-dasharray="6 5"/>
+          <path d="M492 112 m-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0" fill="#003D45" stroke="#003D45"/>
+          <rect x="300" y="156" width="458" height="20" rx="5" transform="rotate(-0.3 529 166)" fill="#EAF4F5" stroke="#005F6B" stroke-dasharray="6 5"/>
+          <path d="M492 152 L492 180" stroke="#003D45"/>
+          <rect x="216" y="216" width="318" height="20" rx="5" transform="rotate(0.3 375 226)" fill="#8A5300" stroke="#8A5300" stroke-dasharray="6 5"/>
+          <path d="M347 212 L347 240" stroke="#FFFFFF"/>
+          <path d="M60 278 L830 278"/>
+          <path d="M60 272 L60 284 M280 272 L280 284 M500 272 L500 284 M720 272 L720 284"/>
+          <!-- doodle: a magnifier, the next measurement -->
+          <path d="M806 222 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M815 231 L826 242" stroke="#005F6B"/>
+        </g>
+
+        <text class="a4aH" x="30" y="96">ONE POINT</text>
+        <text class="a4aV" x="506" y="118">19.63</text>
+        <text class="a4aS" x="560" y="117">top-down middle: looks like a clear yes</text>
+
+        <text class="a4aH" x="30" y="150">TOP-DOWN RANGE</text>
+        <text class="a4aS" x="304" y="194">10.90</text>
+        <text class="a4aB" x="360" y="194">clears the line by under 1 bn</text>
+        <text class="a4aS" x="758" y="194" text-anchor="end">31.72</text>
+
+        <text class="a4aH" x="30" y="210">BOTTOM-UP RANGE</text>
+        <text class="a4aS" x="216" y="254">7.11</text>
+        <text class="a4aS" x="310" y="254">middle 13.06</text>
+        <text class="a4aS" x="534" y="254" text-anchor="end">21.55</text>
+        <text class="a4aB" x="556" y="231">crosses the line: measure more</text>
+
+        <text class="a4aA" x="60" y="296" text-anchor="middle">0</text>
+        <text class="a4aA" x="280" y="296" text-anchor="middle">10</text>
+        <text class="a4aA" x="500" y="296" text-anchor="middle">20</text>
+        <text class="a4aA" x="720" y="296" text-anchor="middle">30</text>
+
+        <text class="a4aN" x="30" y="324">The point says yes. The ranges say: the bottom-up crosses the line and the top-down barely clears it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the threshold turns a range into a decision; a range across it is an instruction to measure, not a failure</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>What the point hides, and what the line reveals<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>The point.</strong> 19.63 billion yen a year is the top-down chain with every constructed share at its middle. It reads as twice the threshold. Nothing on the slide says that two of its four links are assumptions, or how far they could move.</p>
+        <p><strong>The top-down range.</strong> Carry both shares to their lows together and to their highs together and the same chain prints 10.90 to 31.72. The whole range sits above a line at about 10, but the low end clears it by less than one billion yen, and "about 10" was never precise to the billion.</p>
+        <p><strong>The bottom-up range.</strong> Built from Kettle &amp; Co's own pilot inputs, the bottom-up prints 13.06 at the middle and 7.11 to 21.55 as a range. That range crosses the threshold. If the true value sits in its lower part, the decision is no.</p>
+        <p>So the honest answer to "go or no-go?" is neither. It is "measure more, and here is the one input to measure first". A range wholly above or below the threshold decides; a range across it tells you where to spend the next week.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why "measure more" is a real answer, not a dodge<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Leaders sometimes hear a range as an analyst refusing to commit. Turn it around: a point that sits on the wrong side of the truth commits the business to a decision the evidence never supported. "Measure more" is only a dodge when it comes without a target. Paired with the tornado in Part 3, it becomes specific: which input, how wide it is today, and what a cheaper or better source would be.</p>
+        <p>It also tells you when to stop. Once a range sits wholly on one side of the threshold, further precision changes nothing about the decision, and the analyst can say so.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The slide that said "19.6".</strong> Kettle &amp; Co's head of data presents 19.6 billion yen against a 10 billion line, and the room relaxes. The marketing lead asks what the low end is. Nobody knows. The rewritten slide shows both ranges and the line, and the meeting ends with a measurement plan instead of a launch date. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers ranges as corners, and their limits</span>
+      <h2>Lows together, highs together, and what that does not tell you</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The simplest honest range gives every assumption a low, a middle and a high, then carries them together: all lows for the bottom of the range, all middles for the point, all highs for the top. Those are the corners of the space of possible answers. They are easy to explain and deliberately wide.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn box. Horizontal axis: premium share of leaf spend, 0.25 low, 0.33 middle, 0.40 high, constructed. Vertical axis: share bought online, 0.22 low, 0.30 middle, 0.40 high, constructed. The bottom-left corner, all low, prints 10.90 billion yen. The top-right corner, all high, prints 31.72. The middle dot prints 19.63. The other two corners are labelled mixed. A side note says corners need every input wrong the same way at once.">
+        <defs>
+          <filter id="a4bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a4bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a4bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a4bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a4bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a4bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a4bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a4bA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a4bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a4bH" x="30" y="28">THE TOP-DOWN RANGE AS A BOX OF TWO ASSUMPTIONS</text>
+        <text class="a4bA" x="30" y="56">share bought online (constructed)</text>
+
+        <g filter="url(#a4bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="200" y="70" width="360" height="180" rx="4" transform="rotate(-0.4 380 160)" fill="#EAF4F5" stroke="#005F6B" stroke-dasharray="6 5"/>
+          <path d="M200 250 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M560 70 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M380 160 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0" fill="#003D45" stroke="#003D45"/>
+          <path d="M200 70 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 M560 250 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="#FFFFFF"/>
+          <!-- doodle: a cube, the bottom-up box has three inputs -->
+          <path d="M770 236 L800 236 L800 266 L770 266 Z M770 236 L782 224 L812 224 L800 236 M812 224 L812 254 L800 266" stroke="#005F6B"/>
+        </g>
+
+        <text class="a4bS" x="186" y="80" text-anchor="end">0.40 high</text>
+        <text class="a4bS" x="186" y="164" text-anchor="end">0.30 mid</text>
+        <text class="a4bS" x="186" y="252" text-anchor="end">0.22 low</text>
+        <text class="a4bS" x="200" y="274" text-anchor="middle">0.25 low</text>
+        <text class="a4bS" x="380" y="274" text-anchor="middle">0.33 mid</text>
+        <text class="a4bS" x="560" y="274" text-anchor="middle">0.40 high</text>
+        <text class="a4bA" x="200" y="294">premium share of leaf spend (constructed)</text>
+
+        <text class="a4bB" x="220" y="236">all low: 10.90</text>
+        <text class="a4bB" x="540" y="96" text-anchor="end">all high: 31.72</text>
+        <text class="a4bL" x="394" y="165">all middle: 19.63</text>
+        <text class="a4bS" x="220" y="96">mixed corner</text>
+        <text class="a4bS" x="540" y="236" text-anchor="end">mixed corner</text>
+
+        <text class="a4bH" x="600" y="96">CORNERS ARE DELIBERATELY WIDE</text>
+        <text class="a4bS" x="600" y="116">a corner needs every input wrong</text>
+        <text class="a4bS" x="600" y="132">in the same direction at once</text>
+        <text class="a4bS" x="600" y="160">real misses are usually mixed, so</text>
+        <text class="a4bS" x="600" y="176">the truth rarely sits in a corner</text>
+        <text class="a4bS" x="600" y="204">the bottom-up has three inputs:</text>
+        <text class="a4bS" x="600" y="220">a cube, same idea</text>
+
+        <text class="a4bN" x="30" y="312">Corners say how far the answer could go. They say nothing about how likely each part of the box is.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the range is the distance between two corners; the interior holds every mixed case, and nothing here says which is likely</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Low, middle, high, carried together<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every constructed input gets three values, and each value gets a reason. For Kettle &amp; Co's top-down: premium share of leaf spend 0.25 / 0.33 / 0.40, share bought online 0.22 / 0.30 / 0.40. For the bottom-up: households that buy the category online 3.5% / 4.5% / 5.5%, spend per order 2,100 / 2,400 / 2,700 yen, orders per buyer a year 2.8 / 3.5 / 4.2. All constructed.</p>
+        <p>The two real links, 34,553,907 households and 5,737 yen of leaf spend per household, keep their single value: they are measured, and the sampling error of the survey table is not published in the table used, so it is not quantified here. Carry the constructed lows together and the top-down prints 10.90; the highs together print 31.72; the middles print 19.63.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The limits of corners<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Wide on purpose.</strong> A corner is the case where every assumption missed the same way. That can happen, especially when one cause moves several inputs (a weak economy lowers premium share and orders together), but it is the edge of the possible, not the middle of the likely.</p>
+        <p><strong>Silent on likelihood.</strong> A corner range says nothing about whether 12 is more plausible than 28. Do not draw a bell curve on top of it, and do not write "90 percent confident" next to it. Nobody measured a probability, so none goes on the page.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Alternatives some teams prefer: scenarios and sampling<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Scenarios.</strong> Instead of mechanical corners, write two or three named stories, a cautious one and a bold one, each with inputs that belong together. A scenario keeps inputs coherent (a world where few households buy online is probably also one where online orders are less frequent), and leaders find stories easier to argue with than corners. The cost: the stories are chosen, so a team can choose comfortable ones.</p>
+        <p><strong>Sampling, often called Monte Carlo.</strong> Give each input a distribution, draw thousands of combinations, and read off the spread of results. It shows which part of the box is crowded, which corners cannot. The cost is that it needs a distribution for every input and a view on how inputs move together, and the output is only as real as those choices. A percentile computed from invented distributions is still invented.</p>
+        <p>Neither is wrong. Some teams start with corners because they are transparent, then move to sampling once they have real data behind the input distributions. Others refuse sampling until then. Pick the method your evidence can support, and say which you picked.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The confidence interval nobody measured.</strong> An analyst at Kettle &amp; Co runs a quick simulation with a normal distribution around every middle and reports a precise-looking probability that the market clears 10 billion. The BD lead quotes it to the board. Asked where the distributions came from, the analyst says they were defaults. The next version shows corners and the tornado, and says plainly that no probability has been measured yet. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers sensitivity and the tornado</span>
+      <h2>Which one assumption moves the gap most?</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Corners say how wide the answer is. Sensitivity says why. Move one input from its low to its high while every other input sits at its middle, record what happens, and repeat for each input. Here the thing measured is not either size but the gap between them: top-down divided by bottom-up, 1.50x at the middle. Sort the results widest first and you have a tornado.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn tornado chart on a log scale around a centre line at a gap of 1.50x. Five horizontal bars, widest first. Share bought online, top-down, amber: gap 1.10 at its low, 2.00 at its high. Premium share, top-down: 1.14 at low, 1.82 at high. Households that buy online, bottom-up: 1.93 at low, 1.23 at high. Orders per buyer a year, bottom-up: 1.88 at low, 1.25 at high. Spend per order, bottom-up: 1.72 at low, 1.34 at high.">
+        <defs>
+          <filter id="a4cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a4cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a4cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a4cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a4cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a4cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a4cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a4cA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a4cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a4cH" x="30" y="24">THE TORNADO: THE GAP, ONE INPUT AT A TIME</text>
+        <text class="a4cS" x="30" y="42">gap = top-down / bottom-up · each bar runs from the input's low to its high, others at middle</text>
+        <text class="a4cA" x="440" y="62" text-anchor="middle">gap at the middle: 1.50x</text>
+
+        <g filter="url(#a4cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M440 70 L440 290" stroke="#005F6B"/>
+          <rect x="242" y="71" width="382" height="26" rx="5" transform="rotate(-0.3 433 84)" fill="#8A5300" stroke="#8A5300" stroke-dasharray="6 5"/>
+          <rect x="264" y="115" width="300" height="26" rx="5" transform="rotate(0.3 414 128)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="313" y="159" width="288" height="26" rx="5" transform="rotate(-0.3 457 172)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="323" y="203" width="262" height="26" rx="5" transform="rotate(0.3 454 216)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="368" y="247" width="160" height="26" rx="5" transform="rotate(-0.3 448 260)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <path d="M200 302 L680 302"/>
+          <path d="M242 296 L242 308 M440 296 L440 308 M624 296 L624 308"/>
+          <!-- doodle: a magnifier, the next thing to measure -->
+          <path d="M812 208 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M821 217 L832 228" stroke="#005F6B"/>
+        </g>
+
+        <text class="a4cL" x="225" y="88" text-anchor="end">online share (top-down)</text>
+        <text class="a4cL" x="225" y="132" text-anchor="end">premium share (top-down)</text>
+        <text class="a4cL" x="225" y="176" text-anchor="end">buyers (bottom-up)</text>
+        <text class="a4cL" x="225" y="220" text-anchor="end">orders a year (bottom-up)</text>
+        <text class="a4cL" x="225" y="264" text-anchor="end">spend per order (bottom-up)</text>
+
+        <text class="a4cB" x="636" y="88">low 1.10 · high 2.00</text>
+        <text class="a4cS" x="576" y="132">low 1.14 · high 1.82</text>
+        <text class="a4cS" x="613" y="176">low 1.93 · high 1.23</text>
+        <text class="a4cS" x="597" y="220">low 1.88 · high 1.25</text>
+        <text class="a4cS" x="540" y="264">low 1.72 · high 1.34</text>
+
+        <text class="a4cA" x="242" y="322" text-anchor="middle">1.10</text>
+        <text class="a4cA" x="440" y="322" text-anchor="middle">1.50</text>
+        <text class="a4cA" x="624" y="322" text-anchor="middle">2.00</text>
+        <text class="a4cS" x="440" y="340" text-anchor="middle">gap, log scale · 1.00 would mean the two methods agree</text>
+
+        <text class="a4cN" x="30" y="368">Widest bar first: the share bought online alone moves the gap from 1.10 to 2.00. Measure it before anything else.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - bottom-up bars point the other way: raising a bottom-up input shrinks the gap, raising a top-down input widens it</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Reading the five bars<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Why the gap, not the size.</strong> Each size on its own moves with every input. The gap between them is what tells you the two methods disagree, and an input that closes the gap is a candidate explanation for the disagreement. At the middle of every input the top-down is 1.50 times the bottom-up.</p>
+        <p><strong>The order.</strong> Share bought online is widest: at its low the gap falls to 1.10, at its high it climbs to 2.00. Then premium share (1.14 to 1.82), households that buy online (1.93 at its low, 1.23 at its high), orders per buyer a year (1.88 to 1.25), and spend per order (1.72 to 1.34), the narrowest.</p>
+        <p><strong>The direction.</strong> The two top-down inputs widen the gap as they rise, because they inflate the top-down. The three bottom-up inputs narrow it as they rise, because they inflate the bottom-up. Read the ends, not just the widths: a bar tells you which way the input would have to move to bring the methods together.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why the widest bar is the next thing to measure<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Measurement costs time and money. The widest bar is where a better number buys the most: narrow the online share and the gap's possible spread shrinks more than for any other input. Narrowing spend per order, the narrowest bar, would barely move the conversation even if it were cheap.</p>
+        <p>Width is not the only test. Ask also how cheaply the input can be narrowed. If two bars are close in width and one can be checked from Kettle &amp; Co's own orders table in an afternoon, do that one first. The tornado ranks impact; you add cost.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The caution: inputs that move together<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A tornado holds every other input at its middle. Real inputs do not always sit still while one moves. If the households that buy online are fewer than assumed, the ones who do buy may also buy more often, so two bottom-up bars could partly cancel. Or one cause could push several inputs the same way and the joint effect would be larger than any single bar.</p>
+        <p>One-at-a-time sensitivity cannot see either case. Use it to rank where to look, not to state the combined uncertainty; the corners in Part 2 and, if your evidence supports it, scenarios or sampling cover the joint movement.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Three weeks on the wrong input.</strong> Kettle &amp; Co's analysts spend three weeks refining spend per order from pilot baskets, because the data was already in the warehouse. The tornado, drawn afterwards, shows it was the narrowest bar. A one-week retailer panel query on the online share would have moved the gap more. They now draw the tornado before choosing what to refine. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Read the tornado and write the range sentence</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">The widget below computes the tornado in your browser from the same engine as the bench: the real survey rows and Census households under the top-down, Kettle &amp; Co's constructed inputs on both sides. It runs at the default settings, premium loose-leaf and two-or-more-person households. Work the five steps and write down what it prints.</p>
+
+    <div class="msz-widget" data-mode="tornado"></div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn worksheet with five rows ranked by tornado width. Columns: input, low, middle, high, and how we would narrow it. Row 1, marked first in amber: share bought online, 0.22, 0.30, 0.40, retailer panel split by sales channel. Row 2: premium share of leaf spend, 0.25, 0.33, 0.40, price-tier count of leaf listings. Row 3: households that buy online, 3.5 percent, 4.5, 5.5, pilot reach against an online panel. Row 4: orders per buyer a year, 2.8, 3.5, 4.2, repeat orders in the pilot orders table. Row 5: spend per order, 2,100, 2,400, 2,700 yen, pilot basket sizes. All constructed.">
+        <defs>
+          <filter id="a4dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="67" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a4dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a4dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a4dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a4dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a4dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a4dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a4dW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a4dA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a4dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a4dH" x="30" y="28">THE MEASUREMENT WORKSHEET, RANKED BY BAR WIDTH</text>
+        <text class="a4dS" x="30" y="46">every value constructed for Kettle &amp; Co · the last column is your plan</text>
+
+        <g filter="url(#a4dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="20" y="58" width="840" height="230" rx="10" transform="rotate(-0.3 440 173)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M30 84 L850 84" stroke="#005F6B"/>
+          <path d="M30 126 L850 126 M30 166 L850 166 M30 206 L850 206 M30 246 L850 246" stroke="#C5D3D5"/>
+          <rect x="30" y="94" width="32" height="22" rx="5" transform="rotate(-2 46 105)" fill="#8A5300" stroke="#8A5300"/>
+          <!-- doodle: a pencil -->
+          <path d="M772 304 L836 296 L842 302 L778 310 Z M772 304 L764 309 L778 310" stroke="#005F6B"/>
+        </g>
+
+        <text class="a4dA" x="70" y="76">input</text>
+        <text class="a4dA" x="290" y="76">low</text>
+        <text class="a4dA" x="360" y="76">mid</text>
+        <text class="a4dA" x="430" y="76">high</text>
+        <text class="a4dA" x="520" y="76">how we would narrow it</text>
+
+        <text class="a4dW" x="36" y="110">1st</text>
+        <text class="a4dL" x="70" y="110">share bought online</text>
+        <text class="a4dS" x="290" y="110">0.22</text>
+        <text class="a4dS" x="360" y="110">0.30</text>
+        <text class="a4dS" x="430" y="110">0.40</text>
+        <text class="a4dB" x="520" y="110">retailer panel split by sales channel</text>
+
+        <text class="a4dL" x="70" y="150">premium share of leaf spend</text>
+        <text class="a4dS" x="290" y="150">0.25</text>
+        <text class="a4dS" x="360" y="150">0.33</text>
+        <text class="a4dS" x="430" y="150">0.40</text>
+        <text class="a4dS" x="520" y="150">price-tier count of leaf listings</text>
+
+        <text class="a4dL" x="70" y="190">households that buy online</text>
+        <text class="a4dS" x="290" y="190">3.5%</text>
+        <text class="a4dS" x="360" y="190">4.5%</text>
+        <text class="a4dS" x="430" y="190">5.5%</text>
+        <text class="a4dS" x="520" y="190">pilot reach against an online panel</text>
+
+        <text class="a4dL" x="70" y="230">orders per buyer a year</text>
+        <text class="a4dS" x="290" y="230">2.8</text>
+        <text class="a4dS" x="360" y="230">3.5</text>
+        <text class="a4dS" x="430" y="230">4.2</text>
+        <text class="a4dS" x="520" y="230">repeat orders in the pilot orders table</text>
+
+        <text class="a4dL" x="70" y="270">spend per order</text>
+        <text class="a4dS" x="290" y="270">2,100</text>
+        <text class="a4dS" x="360" y="270">2,400</text>
+        <text class="a4dS" x="430" y="270">2,700 yen</text>
+        <text class="a4dS" x="520" y="270">pilot basket sizes</text>
+
+        <text class="a4dN" x="30" y="316">Constructed inputs and constructed narrowing ideas. The row order comes from the tornado.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - a tornado is only finished when every bar has a plan beside it, and the top plan has a date</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Read the gap at the middle.</strong> The verdict line above the bars says how many times larger the top-down is than the bottom-up when every input sits at its middle. Write it down; it is the centre line of every bar.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · what the widget prints</span>Gap at the middle of every input: top-down is 1.50 times bottom-up.
+top-down middle    19.63 bn yen a year
+bottom-up middle   13.06 bn yen a year</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Read the widest bar and its two ends.</strong> The bars are sorted widest first. Copy the top bar's label and both ends, then say in your own words which direction the input has to move to bring the two methods closer.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the widest bar</span>Share bought online (top-down)   gap 1.10 at low, 2.00 at high
+read: if the true online share is near its low, the two methods
+nearly agree; near its high, the top-down is twice the bottom-up</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Say which input to measure first, and why.</strong> Use the width ranking, then check cost. Copy the remaining four bars in order into the worksheet above and fill the last column with the cheapest honest way to narrow each.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · the measurement order</span>1 share bought online     1.10 / 2.00   measure first: widest bar
+2 premium share           1.14 / 1.82
+3 buyers                  1.93 / 1.23
+4 orders a year           1.88 / 1.25
+5 spend per order         1.72 / 1.34   narrowest: refine last
+why first: ____________________________________________</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Write the range sentence for the brief.</strong> Both methods, both ranges, the threshold, and the one input that would change the call. This sentence replaces the single number on the slide.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the range sentence</span>"Premium loose-leaf tea bought online in Japan:
+ top-down 19.63 bn yen a year (10.90 to 31.72),
+ bottom-up 13.06 (7.11 to 21.55).
+ Against a threshold of about 10 bn, the bottom-up range crosses
+ the line, so the answer is: measure more.
+ The input that moves the gap most is the share bought online
+ (gap 1.10 to 2.00); we will narrow it by ________ by ________."</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Note what changes on the bench.</strong> This tornado is drawn at the default settings. On the bench in Analyst session 6 the tornado is redrawn whenever you change the category, the population or an input, and the order of the bars can change with it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · a note for Analyst session 6</span>tornado at the defaults: online share widest, spend per order narrowest
+on the bench, after changing settings: your numbers will differ
+check: does the widest bar stay the same? ________</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the sentence and the worksheet.</strong> The sentence goes into the sizing brief that Business session 3 hands to the owner; the worksheet becomes your measurement plan. Analyst session 5 asks the next question: even if the market is the size you think, how much of it can Kettle &amp; Co realistically win?</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before Analyst session 5</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Give every assumed link in your own sizing a low, a middle and a high</strong>, each with one line of reason. If you cannot write a reason for a low or a high, the range is a guess about a guess; say so.</li>
+      <li><strong>Ask the decision owner for the threshold</strong> in their own language, then place your range against it: wholly above, wholly below, or across.</li>
+      <li><strong>Draw a tornado by hand</strong> for your two or three widest assumptions: move each from low to high with the others at middle and record the result. Rank them.</li>
+      <li><strong>Write your range sentence</strong> in the step 4 format, ending with the one input you will measure next, how, and by when.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 4 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · The bottom-up range is 7.11 to 21.55 and the decision threshold is about 10 billion yen. Why is the honest answer "measure more"?</p>
+      <button class="qopt" type="button">A · Because ranges are always less reliable than points</button>
+      <button class="qopt" type="button">B · Because the range crosses the threshold: plausible values sit on both sides of the line, so the evidence cannot yet decide go or no-go</button>
+      <button class="qopt" type="button">C · Because the middle, 13.06, is above the threshold, so the answer is yes once someone checks it</button>
+      <button class="qopt" type="button">D · Because the threshold is constructed and should be ignored</button>
+      <p class="qwhy">A range wholly above or below the line decides; a range across it tells you to narrow the input that moves it most before anyone commits.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">2 · In the tornado, share bought online is the widest bar, gap 1.10 at its low and 2.00 at its high. What does that tell you?</p>
+      <button class="qopt" type="button">A · The online share is the most accurate input</button>
+      <button class="qopt" type="button">B · The online share should be set to its low so the methods agree</button>
+      <button class="qopt" type="button">C · The bottom-up method is wrong</button>
+      <button class="qopt" type="button">D · Of the five inputs, its uncertainty moves the gap most, so narrowing it is likely the most valuable next measurement</button>
+      <p class="qwhy">Width ranks impact on the gap. Picking the value that makes the methods agree would be choosing the answer first; measuring it is the job.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What is a limit of one-at-a-time sensitivity?</p>
+      <button class="qopt" type="button">A · It holds the other inputs at their middles, so it cannot show inputs that move together and partly cancel or compound</button>
+      <button class="qopt" type="button">B · It only works on top-down inputs</button>
+      <button class="qopt" type="button">C · It needs a probability distribution for every input</button>
+      <button class="qopt" type="button">D · It always overstates the widest bar</button>
+      <p class="qwhy">A tornado ranks where to look. Joint movement belongs to corners, scenarios or, with real distributions behind it, sampling.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">34,553,907 two-or-more-person households; 5,737 yen of leaf tea per household a year</span><span class="note">Statistics Bureau of Japan, 2020 Population Census, Table I-4-2 (by subtraction), and Family Income and Expenditure Survey, two-or-more-person households, 2023-2025 average (drinks); read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Ranges and tornado: top-down 19.63 (10.90 to 31.72); bottom-up 13.06 (7.11 to 21.55); gap 1.50x; bars 1.10 / 2.00, 1.14 / 1.82, 1.93 / 1.23, 1.88 / 1.25, 1.72 / 1.34</span><span class="note">Computed by the widget engine at the default settings; the premium, online, buyer, order and spend inputs are constructed</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Decision threshold, about 10 billion yen a year of SAM</span><span class="note">Constructed for Kettle &amp; Co in Business session 1</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Scenarios and sampling (Monte Carlo) as alternatives to corners</span><span class="note">Principle only; no probabilities or percentiles are computed or quoted</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Write the threshold first</b><span>A range above or below it decides. Across it: measure more.</span></div>
+      <div class="cheat-item"><b>A point hides its doubt</b><span>19.63 looks safe; 7.11 to 21.55 crosses a line at about 10.</span></div>
+      <div class="cheat-item"><b>Corners: lows and highs together</b><span>Deliberately wide, silent on likelihood. Never add an unmeasured probability.</span></div>
+      <div class="cheat-item"><b>Tornado on the gap</b><span>One input low to high, others at middle. Gap 1.50x at the centre.</span></div>
+      <div class="cheat-item"><b>Widest bar first</b><span>Share bought online, 1.10 to 2.00. Then weigh the cost to narrow it.</span></div>
+      <div class="cheat-item"><b>One at a time is a ranking</b><span>It cannot see inputs moving together. Use corners or scenarios for that.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You can turn a size into a range, hold it against the threshold and name the input to measure first. Analyst session 5 asks whether the share in the plan is believable: adoption shape, distribution ceilings, and the collision test when every entrant's plan is added up against one market.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 4 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a3-analogy-and-proxy.html">← Prev: Analogy and proxy</a> &nbsp;·&nbsp; <a href="a5-share-realism.html">Next: Share realism →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/msz-sample.js?v=1"></script>
+<script src="../assets/msz-live.js?v=1"></script>
+<script src="../assets/msz-bench.js?v=2"></script>
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>

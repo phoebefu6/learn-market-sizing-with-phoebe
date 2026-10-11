@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 1 of 6. Top-down market sizing from public statistics: Japan's 2020 Census households times the Family Income and Expenditure Survey's tea spend per household, then the shares that narrow it to your segment. Who the survey asked, what its tea items mean, and what happens when one city's rate is applied to a country.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Top-down: from public statistics to your segment - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 1 of 6. Households times spend per household times your shares, computed in the browser on Japan's own survey rows.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a1-top-down.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Top-down: from public statistics to your segment - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 1 of 6. A top-down chain on real survey rows, link by link.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 1 · Top-down: from public statistics to your segment - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 1 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 1 of 6</div>
+    <h1>Top-down: from public statistics <span class="accent">to your segment</span></h1>
+    <p class="sub">A top-down size starts from a number somebody else measured, usually a government, and narrows it link by link until it describes the customers you could actually serve. Every link is either a real statistic or an assumption, and the craft is knowing which is which. Tonight the chain runs on Japan's own rows: 34,553,907 two-or-more-person households from the 2020 Census, and what those households spend on tea in the Family Income and Expenditure Survey. Then the three ways a real table quietly changes your answer: who the survey asked, what its item names mean, and whose spending you assume everyone shares.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Analyst</span>
+      <span class="chip audience">Data analysts and data scientists who build the size</span>
+      <span class="chip audience">Hands-on in the browser</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The chain, the population, the items</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the chain on real rows</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">The Analyst track builds the evidence half of a market size: defensible numbers, stated as ranges, with the method on the page. Six sessions: tonight top-down from public statistics; then bottom-up from your own data; then analogy and proxy when no table measures your market; then ranges and the tornado; then share realism; then the triangulation bench, where the two methods meet. Every widget computes in your browser. Kettle &amp; Co, a direct-to-consumer tea brand, is constructed, and so are its shares and pilot numbers; the households and the tea spend are real rows from the Statistics Bureau of Japan.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A top-down chain for Kettle &amp; Co's premium loose-leaf tea bought online in Japan, written link by link with each link marked real or constructed and its source named, plus three notes on the table itself: the population it covers, the items you chose, and the place whose rate you used. The chain feeds the bench in Analyst session 6.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the top-down chain</span>
+      <h2>A chain of links, each one real or assumed</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Top-down sizing multiplies a population by a rate and then by shares. Population times rate is usually measured by somebody else; the shares are usually yours. Writing the chain as separate links, each with its source, is what lets a reviewer argue with one link instead of rejecting the whole number.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chain of five boxes joined by arrows. Box 1, real: 34,553,907 two-or-more-person households, 2020 Census. Box 2, real: 5,737 yen a year of leaf tea per household, Family Income and Expenditure Survey. Box 3, constructed, dashed: times a premium share of 33 percent. Box 4, constructed, dashed: times 30 percent bought online. Box 5, amber: top-down 19.63 billion yen a year. A bracket under the first two boxes says households times spend alone is 198.24 billion yen, the number you get if every leaf-tea household is your customer.">
+        <defs>
+          <filter id="a1aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="31" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a1aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a1aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a1aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a1aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a1aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a1aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a1aV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a1aW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a1aX { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .a1aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a1aH" x="30" y="28">THE TOP-DOWN CHAIN FOR KETTLE &amp; CO, LINK BY LINK</text>
+        <text class="a1aS" x="30" y="46">solid box = a real statistic · dashed box = a constructed assumption</text>
+
+        <g filter="url(#a1aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="72" width="140" height="104" rx="10" transform="rotate(-0.8 100 124)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M176 124 L204 124" marker-end="url(#a1aAr)"/>
+          <rect x="212" y="72" width="140" height="104" rx="10" transform="rotate(0.6 282 124)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M358 124 L386 124" marker-end="url(#a1aAr)"/>
+          <rect x="394" y="72" width="140" height="104" rx="10" transform="rotate(-0.6 464 124)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M540 124 L568 124" marker-end="url(#a1aAr)"/>
+          <rect x="576" y="72" width="140" height="104" rx="10" transform="rotate(0.8 646 124)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M722 124 L746 124" marker-end="url(#a1aAr)"/>
+          <rect x="752" y="72" width="110" height="104" rx="10" transform="rotate(-1 807 124)" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M40 196 Q40 206 50 206 L332 206 Q342 206 342 196" stroke="#005F6B"/>
+          <!-- doodle: a magnifier over the first link -->
+          <path d="M520 236 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M529 245 L540 256" stroke="#005F6B"/>
+        </g>
+
+        <text class="a1aH" x="44" y="98">HOUSEHOLDS</text>
+        <text class="a1aV" x="44" y="126">34,553,907</text>
+        <text class="a1aS" x="44" y="148">2020 Census, two-or-</text>
+        <text class="a1aS" x="44" y="164">more-person · real</text>
+
+        <text class="a1aH" x="226" y="98">x LEAF SPEND</text>
+        <text class="a1aV" x="226" y="126">5,737 yen</text>
+        <text class="a1aS" x="226" y="148">per household a year</text>
+        <text class="a1aS" x="226" y="164">FIES 2023-2025 · real</text>
+
+        <text class="a1aH" x="408" y="98">x PREMIUM</text>
+        <text class="a1aV" x="408" y="126">33%</text>
+        <text class="a1aS" x="408" y="148">of leaf spend</text>
+        <text class="a1aB" x="408" y="164">constructed</text>
+
+        <text class="a1aH" x="590" y="98">x ONLINE</text>
+        <text class="a1aV" x="590" y="126">30%</text>
+        <text class="a1aS" x="590" y="148">bought online</text>
+        <text class="a1aB" x="590" y="164">constructed</text>
+
+        <text class="a1aW" x="764" y="98">TOP-DOWN</text>
+        <text class="a1aX" x="764" y="126">19.63</text>
+        <text class="a1aW" x="764" y="148">bn yen</text>
+        <text class="a1aW" x="764" y="164">a year</text>
+
+        <text class="a1aL" x="60" y="228">households x spend alone: 198.24 bn yen a year</text>
+        <text class="a1aS" x="60" y="246">every leaf-tea household counted as a customer</text>
+
+        <text class="a1aN" x="30" y="290">Two real links, two assumed ones. The assumed links shrink the real product tenfold, so they carry the argument.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the dashed links are where a reviewer should push, because nobody measured them</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The four links, and where each comes from<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Population: 34,553,907 households.</strong> The 2020 Population Census counts 55,704,949 general households in Japan, of which 21,151,042 are one-person households (38.0 percent). The rest, 34,553,907, are two-or-more-person households. That subtraction is ours; both inputs are read from Table I-4-2 of the Census results outline.</p>
+        <p><strong>Rate: 5,737 yen a year of leaf tea.</strong> The Family Income and Expenditure Survey publishes what an average two-or-more-person household spends on each item, averaged over 2023 to 2025. Green tea leaf 3,187 yen, black tea leaf 878, other tea leaf 1,672: together 5,737 yen.</p>
+        <p><strong>Shares: premium 33 percent, online 30 percent.</strong> Neither is in any table. They are Kettle &amp; Co planning assumptions, constructed for teaching, each with a low and a high: premium 25 to 40 percent, online 22 to 40 percent. A real team would source them from retailer panels, its own pilot or interviews, and would say which.</p>
+        <p>Multiplied through, the middle is 19.63 billion yen a year. Carry every assumption to its low together and to its high together and the range is 10.90 to 31.72. The widget below prints both, and so does the bench in Analyst session 6.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why a chain beats a single "market is X" line<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A single figure can only be accepted or rejected. A chain can be repaired. When the head of BD says "30 percent online feels high", the analyst changes one link and reprints the size in a minute, and the conversation moves to the evidence for that one share. Writing the chain also exposes double counting: if the premium share was estimated from online orders, multiplying by an online share again counts the same filter twice.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Two real numbers, two guesses, one confident slide.</strong> Kettle &amp; Co's first Japan slide said "19.6 billion yen, source: Statistics Bureau of Japan". The household count and the spend are from the Bureau; the two shares that cut the product by a factor of ten are not. The rewritten slide shows the chain with the shares marked as assumptions, and the BD lead now knows which two numbers to go and test. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the survey population and its items</span>
+      <h2>Who the table asked, and what its words mean</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A government table answers the question its designers asked, which is rarely yours. Two checks come before any multiplication: whose behaviour the table measured, and what each item name actually includes. Both change the answer more than most assumptions do.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two hand-drawn stacked bars. Left, Japan's 55,704,949 general households in 2020: 34,553,907 two-or-more-person households, the survey's population, filled teal; 21,151,042 one-person households, 38.0 percent, hatched and labelled not in this table. Right, the survey's tea total of 14,370 yen per household a year: leaf tea 5,737 yen, filled amber, and bottled and canned tea drinks 8,633 yen, 60 percent, white.">
+        <defs>
+          <filter id="a1bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="37" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a1bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a1bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a1bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a1bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a1bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a1bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a1bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a1bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a1bH" x="30" y="28">WHO THE SURVEY ASKED</text>
+        <text class="a1bS" x="30" y="46">Japan's general households, 2020 Census</text>
+        <text class="a1bH" x="470" y="28">WHAT "TEA" MEANS IN THE TABLE</text>
+        <text class="a1bS" x="470" y="46">yen per household a year, FIES 2023-2025</text>
+
+        <g filter="url(#a1bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="76" width="236" height="44" rx="6" transform="rotate(-0.4 148 98)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="266" y="76" width="144" height="44" rx="6" transform="rotate(0.4 338 98)" fill="url(#a1bHc)"/>
+          <rect x="470" y="76" width="152" height="44" rx="6" transform="rotate(0.4 546 98)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="622" y="76" width="228" height="44" rx="6" transform="rotate(-0.4 736 98)" fill="#FFFFFF"/>
+          <path d="M338 160 L338 128" marker-end="url(#a1bAr)"/>
+          <path d="M736 160 L736 128" marker-end="url(#a1bAr)"/>
+          <!-- doodle: a clipboard for the survey -->
+          <path d="M424 200 L452 200 L452 238 L424 238 Z M432 196 L444 196 L444 204 L432 204 Z M430 214 L446 214 M430 224 L446 224" stroke="#005F6B"/>
+        </g>
+
+        <text class="a1bL" x="42" y="104">two-or-more-person</text>
+        <text class="a1bW" x="482" y="104">leaf 5,737</text>
+        <text class="a1bL" x="634" y="104">bottled tea drinks 8,633</text>
+
+        <text class="a1bL" x="30" y="146">34,553,907 households</text>
+        <text class="a1bS" x="30" y="164">the survey's population</text>
+        <text class="a1bB" x="256" y="178">21,151,042 one-person</text>
+        <text class="a1bS" x="256" y="196">38.0%, not in this table</text>
+
+        <text class="a1bL" x="470" y="146">tea total 14,370</text>
+        <text class="a1bS" x="470" y="164">the four items add up exactly</text>
+        <text class="a1bB" x="650" y="178">60% of the tea total</text>
+        <text class="a1bS" x="650" y="196">is drinks in a bottle or can</text>
+
+        <text class="a1bN" x="30" y="262">Sizing "tea" from the total would count convenience-store bottles Kettle never sells.</text>
+        <text class="a1bN" x="30" y="282">Sizing every household at the same rate assumes 21 million people living alone buy like families.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - both bars are real, and both hide a choice the table made for you before you opened it</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The population: two-or-more-person households only<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The survey table used here covers two-or-more-person households. One-person households are measured as a separate survey population and are not in the rows. So the honest chain multiplies the survey rate by the 34,553,907 households the rate describes, not by all 55,704,949.</p>
+        <p>The widget lets you include one-person households "at the same spend". Do it and the top-down moves from 19.63 to 31.64 billion yen a year. That option is an assumption, and it is labelled as one: there is no row here that says how much a person living alone spends on leaf tea. If your segment is young professionals living alone, this is the link to go and source properly, not to default.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The items: read the names, then the totals<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The survey's tea group has four items: green tea leaf, black tea leaf, other tea leaf, and bottled and canned tea drinks. Bottled drinks are 8,633 of the 14,370 yen, 60 percent of the group. A loose-leaf brand that sizes "tea" from the group total starts two and a half times too high before any share is applied.</p>
+        <p>"Other tea leaf" is the survey's catch-all leaf item. It is tempting to guess what is in it; do not put the guess in the chain. Name the item as the table names it and say whether you included it.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Published tables do not always add up<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In the national row the four tea items add to the tea total exactly. In 15 of the 52 city rows they differ from the published total by 1 or 2 yen, because each figure is a rounded average published on its own. A validation check that demands exact equality fails on real data and teaches the team to switch checks off. Write the tolerance into the check instead: the engine behind these widgets accepts up to 2 yen and fails beyond it.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers extrapolating one place's rate</span>
+      <h2>Whose spending did you assume everyone shares?</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The table also publishes a rate for each of 52 prefectural capitals and designated cities. That is useful for choosing where to launch, and dangerous when one city's rate is multiplied by the whole country. A launch team based in the most tea-loving city in Japan will size Japan from its own street.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three hand-drawn bars of leaf tea spend per household a year, to scale. Naha 3,279 yen, giving a top-down of 11.22 billion yen. The national average 5,737 yen, giving 19.63 billion yen, filled amber. Shizuoka 9,694 yen, giving 33.16 billion yen. A note says the same chain, the same households and the same shares, with only the place whose rate is used changed, spans a factor of three.">
+        <defs>
+          <filter id="a1cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="41" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a1cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a1cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a1cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a1cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a1cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a1cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a1cV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a1cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a1cH" x="30" y="28">ONE CHAIN, THREE PLACES' RATES</text>
+        <text class="a1cS" x="290" y="28">leaf tea yen per household a year, bar length to scale · top-down in bn yen a year</text>
+
+        <g filter="url(#a1cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="200" y="64" width="163" height="36" rx="6" transform="rotate(-0.4 281 82)" fill="#FFFFFF"/>
+          <rect x="200" y="124" width="286" height="36" rx="6" transform="rotate(0.4 343 142)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="200" y="184" width="484" height="36" rx="6" transform="rotate(-0.3 442 202)" fill="url(#a1cHc)"/>
+          <!-- doodle: a teapot beside the tallest bar -->
+          <path d="M770 196 Q770 172 794 172 Q818 172 818 196 Z M818 184 L834 176 M770 184 Q756 186 762 196" stroke="#005F6B"/>
+        </g>
+
+        <text class="a1cL" x="186" y="87" text-anchor="end">Naha</text>
+        <text class="a1cL" x="186" y="147" text-anchor="end">National average</text>
+        <text class="a1cL" x="186" y="207" text-anchor="end">Shizuoka</text>
+
+        <text class="a1cS" x="376" y="80">3,279 yen</text>
+        <text class="a1cV" x="376" y="98">11.22</text>
+        <text class="a1cS" x="500" y="140">5,737 yen</text>
+        <text class="a1cV" x="500" y="158">19.63</text>
+        <text class="a1cS" x="600" y="244">9,694 yen</text>
+        <text class="a1cV" x="680" y="244">33.16</text>
+
+        <text class="a1cB" x="200" y="262">Same households, same shares. Only the place whose rate is used changed.</text>
+        <text class="a1cN" x="30" y="282">Shizuoka's leaf spend is 1.69 times the national average. Its rate describes Shizuoka, not Japan.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the national row is the only one whose rate describes the households you multiplied it by</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Shizuoka, Naha, and the national row<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Green tea leaf spend runs from 7,697 yen a year per household in Shizuoka, the highest city, to 1,246 yen in Naha, the lowest, against 3,187 nationally. Across all leaf items Shizuoka households spend 9,694 yen, 1.69 times the national 5,737.</p>
+        <p>Apply Shizuoka's leaf rate to every two-or-more-person household in Japan and the top-down prints 33.16 billion yen a year instead of 19.63. Apply Naha's and it prints 11.22. Nothing else in the chain moved. City rows are the right tool for "where should Kettle launch first?"; the national row is the right tool for "how big is Japan?".</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When a regional rate is the right one<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>If the decision is a regional launch, size the region with its own rate and its own household count, and say so in the chain. The mistake is only the mix: a local rate multiplied by a national population. The same mix happens in other forms, such as sizing a country from the spend of the customers who found you first, who are rarely average.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The launch team's home town.</strong> Kettle &amp; Co's first Japan hire lives in Shizuoka and builds the sizing from "what households around here spend". The number comes out 1.69 times too high for Japan, and nobody notices because the source line still says "official survey". The fix is one dropdown: the national row. Constructed Kettle &amp; Co example; the survey figures are real.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Run the chain on the real rows</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">The widget below holds the national row and all 52 city rows of the survey's drinks table, plus the Census household counts. It recomputes the chain the moment you change a control. Work the five steps in order and write down what the widget prints at each one; the shares are constructed, so once you move a slider your numbers will differ from the ones quoted here.</p>
+
+    <div class="msz-widget" data-mode="topdown"></div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chain of four links, households, spend per household, premium share and online share, with four controls drawn below it, each with an arrow to the one link it changes. Category changes the spend link and decides whether the premium link applies. Population changes the households link. Place changes the spend link. The two sliders change the two share links.">
+        <defs>
+          <filter id="a1dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="43" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a1dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a1dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a1dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a1dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a1dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a1dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a1dW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a1dA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a1dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a1dH" x="30" y="28">WHICH CONTROL MOVES WHICH LINK</text>
+        <text class="a1dS" x="300" y="28">every control in the widget changes exactly one link, except category</text>
+
+        <g filter="url(#a1dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="56" width="170" height="50" rx="8" transform="rotate(-0.6 125 81)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="250" y="56" width="170" height="50" rx="8" transform="rotate(0.5 335 81)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="460" y="56" width="170" height="50" rx="8" transform="rotate(-0.5 545 81)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="670" y="56" width="170" height="50" rx="8" transform="rotate(0.6 755 81)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M125 186 L125 114" marker-end="url(#a1dAr)"/>
+          <path d="M300 186 L320 114" marker-end="url(#a1dAr)"/>
+          <path d="M340 186 L520 114" marker-end="url(#a1dAr)" stroke-dasharray="5 4"/>
+          <path d="M440 186 L350 114" marker-end="url(#a1dAr)"/>
+          <path d="M650 186 L560 114" marker-end="url(#a1dAr)"/>
+          <path d="M690 186 L750 114" marker-end="url(#a1dAr)"/>
+          <!-- doodle: a dial -->
+          <path d="M820 220 m-14 0 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M820 220 L828 210" stroke="#005F6B"/>
+        </g>
+
+        <text class="a1dL" x="56" y="86">households</text>
+        <text class="a1dW" x="266" y="86">spend per household</text>
+        <text class="a1dL" x="476" y="86">x premium share</text>
+        <text class="a1dL" x="686" y="86">x online share</text>
+
+        <text class="a1dA" x="70" y="206">Population</text>
+        <text class="a1dA" x="268" y="206">Category</text>
+        <text class="a1dA" x="420" y="206">Place</text>
+        <text class="a1dA" x="630" y="206">the two sliders</text>
+        <text class="a1dS" x="268" y="222">also switches the</text>
+        <text class="a1dS" x="268" y="236">premium link on or off</text>
+
+        <text class="a1dN" x="30" y="268">Change one control at a time. Two at once and you cannot say which link moved the size.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber link is the one three of the four controls reach; it is where a top-down chain is most often wrong</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Read the default chain.</strong> Category premium loose-leaf, population two-or-more-person households, place the national row, both sliders at their middles. Copy each link and its tag, real or constructed, into your notes.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · what the widget prints</span>Top-down: 19.63 billion yen a year (range 10.90 to 31.72)
+households                    34,553,907        real
+spend per household (leaf)    5,737 yen a year  real
+x premium share               33%               constructed
+x share bought online         30%               constructed</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Change the category to "Tea, all of it".</strong> The spend link jumps to the survey's whole tea group, bottled drinks included, and the premium link disappears because the frame is no longer premium. Write down the new size, then put the category back.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the category moves the rate</span>Top-down: 148.96 billion yen a year (range 109.24 to 198.62)
+spend per household (tea, all of it)   14,370 yen a year   real
+question to write next to it: does Kettle sell what this link counts?</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Change the population to "All households, one-person included".</strong> The households link becomes 55,704,949, and the widget says out loud that this assumes one-person households spend the same. Note the size, and note that the assumption is now in your chain.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · the population moves the base</span>Top-down: 31.64 billion yen a year (range 17.58 to 51.13)
+households   55,704,949   (one-person included: assumes the same spend)
+the survey rate describes 34,553,907 of them</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Set the population back, then change the place to Shizuoka, then Naha.</strong> Read the hint line under the chain: it tells you the rate now describes one city. Then set the place back to the national row.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · one city's rate, a whole country</span>Shizuoka   spend 9,694 yen   Top-down 33.16 (range 18.42 to 53.59)
+Naha       spend 3,279 yen   Top-down 11.22 (range 6.23 to 18.13)
+national   spend 5,737 yen   Top-down 19.63 (range 10.90 to 31.72)</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Move each slider once, then write the chain as a sentence.</strong> Drag the premium share to where you believe it sits and read the new size; do the same for the online share. Then write the chain the way it will go in the sizing brief, one clause per link, each with its source or the word "assumed".</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the chain in one sentence</span>"34,553,907 two-or-more-person households (2020 Census)
+ x 5,737 yen a year of leaf tea each (FIES, 2023-2025 average, national row)
+ x ____ premium share (assumed, source to find: __________)
+ x ____ bought online (assumed, source to find: __________)
+ = ____ billion yen a year, range ____ to ____."
+Your numbers will differ from 19.63 as soon as you move a slider.</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the sentence.</strong> It is the top-down half of the triangulation bench in Analyst session 6. Analyst session 2 builds the other half from Kettle &amp; Co's own pilot, from the bottom up, and the gap between the two is where the learning is.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before Analyst session 2</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Find the official table for your own market</strong>: a household expenditure survey, a business census, an import statistic. Write its exact name, table id, year and the population it covers.</li>
+      <li><strong>List its items</strong> that sit near your product, and mark which ones your product actually competes in. Check whether the items add up to the published total, and by how much they miss.</li>
+      <li><strong>Write your chain</strong> in the step 5 format, with every link tagged real or assumed. Count the assumed links.</li>
+      <li><strong>For the assumed link that shrinks the size most</strong>, write the cheapest way you could source it in a week: a retailer panel, a pilot, ten interviews.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 1 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · The survey's tea spend describes two-or-more-person households. Which household count belongs in the chain?</p>
+      <button class="qopt" type="button">A · All 55,704,949 general households, because more households means a safer, larger market</button>
+      <button class="qopt" type="button">B · The 21,151,042 one-person households, because they are the target customer</button>
+      <button class="qopt" type="button">C · The 34,553,907 two-or-more-person households the rate was measured on; including others is a separate, labelled assumption</button>
+      <button class="qopt" type="button">D · Whichever count makes the size closest to the analyst report</button>
+      <p class="qwhy">A rate describes the population it was measured on. Including one-person households at the same spend moves the top-down from 19.63 to 31.64, and that move is an assumption, not a statistic.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · A loose-leaf brand sizes "tea" from the survey's tea total of 14,370 yen. What went wrong?</p>
+      <button class="qopt" type="button">A · Nothing; the total is the official figure</button>
+      <button class="qopt" type="button">B · 60 percent of that total is bottled and canned tea drinks the brand does not sell; the leaf items add to 5,737 yen</button>
+      <button class="qopt" type="button">C · The total should have been multiplied by twelve for monthly spend</button>
+      <button class="qopt" type="button">D · The total excludes green tea</button>
+      <p class="qwhy">Read the item names before the totals. The tea group includes bottled drinks, 8,633 of the 14,370 yen.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · The chain uses Shizuoka's leaf spend for every household in Japan and prints 33.16 instead of 19.63. What is the error?</p>
+      <button class="qopt" type="button">A · Shizuoka's figure is out of date</button>
+      <button class="qopt" type="button">B · The premium share should be lowered to compensate</button>
+      <button class="qopt" type="button">C · City rows should never be used for anything</button>
+      <button class="qopt" type="button">D · A local rate was multiplied by a national population; the national row is the rate that describes those households</button>
+      <p class="qwhy">City rows answer "where first?". The national row answers "how big is Japan?". Mixing them inflated the size 1.69-fold without changing any assumption.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">55,704,949 general households; 21,151,042 one-person (38.0%); 34,553,907 two-or-more-person</span><span class="note">Statistics Bureau of Japan, 2020 Population Census, Basic Complete Tabulation on Population and Households, Table I-4-2; read at source; the last figure by subtraction</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Tea total 14,370 yen; green 3,187, black 878, other leaf 1,672, bottled 8,633; Shizuoka 9,694 and 7,697, Naha 1,246</span><span class="note">Statistics Bureau of Japan, Family Income and Expenditure Survey, two-or-more-person households, item ranking by prefectural capital and designated city, 2023-2025 average (drinks); read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Top-down 19.63 (10.90 to 31.72); 148.96 for all tea; 31.64 with one-person households; 33.16 Shizuoka, 11.22 Naha</span><span class="note">Computed by the widget engine on the real rows; the premium and online shares are constructed</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Spend of one-person households</span><span class="note">A separate survey population, not read; the "all households" option is labelled as an assumption</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Population x rate x shares</b><span>Write each link separately, tagged real or assumed, with its source.</span></div>
+      <div class="cheat-item"><b>Match the population</b><span>Multiply a rate by the households it was measured on: 34,553,907, not 55,704,949.</span></div>
+      <div class="cheat-item"><b>Read item names</b><span>60% of the tea group is bottled drinks. Leaf is 5,737 of 14,370 yen.</span></div>
+      <div class="cheat-item"><b>National row for a country</b><span>Shizuoka's rate prints 33.16, Naha's 11.22, Japan's 19.63.</span></div>
+      <div class="cheat-item"><b>Tolerate rounding</b><span>15 city rows miss their total by 1 or 2 yen. Check with a tolerance.</span></div>
+      <div class="cheat-item"><b>Assumed links carry it</b><span>Two shares cut 198.24 to 19.63. Source those first.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You can build a top-down chain on real rows and say which links are real. Analyst session 2 builds the same market from the other end: buyers times spend per order times orders a year, from Kettle &amp; Co's own pilot data.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 1 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← Course home</a> &nbsp;·&nbsp; <a href="a2-bottom-up.html">Next: Bottom-up →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/msz-sample.js?v=1"></script>
+<script src="../assets/msz-live.js?v=1"></script>
+<script src="../assets/msz-bench.js?v=2"></script>
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>

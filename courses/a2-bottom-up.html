@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 2 of 6. Bottom-up market sizing from your own data: households times the share that buys the category online times spend per order times orders per buyer a year. Where each input comes from, the trap hiding in each source, and why every input gets a range.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Bottom-up: customers, price and frequency - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 2 of 6. Buyers times spend per order times orders a year, computed in the browser, with a range on every input.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a2-bottom-up.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bottom-up: customers, price and frequency - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 2 of 6. A bottom-up chain from your own orders table, link by link.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 2 · Bottom-up: customers, price and frequency - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 2 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 2 of 6</div>
+    <h1>Bottom-up: customers, <span class="accent">price and frequency</span></h1>
+    <p class="sub">A bottom-up size starts from the customers you can actually see: how many households buy, what they spend each time, and how often they come back. Every one of those inputs lives somewhere in your own data, usually in one orders table, and every one of them has a way of flattering you. Tonight the chain runs on the same 34,553,907 Census households as the top-down, with Kettle &amp; Co's constructed pilot numbers on top, and every input carries a low, a middle and a high.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Analyst</span>
+      <span class="chip audience">Data analysts and data scientists who build the size</span>
+      <span class="chip audience">Hands-on in the browser</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The chain, the sources, the ranges</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the chain from your own data</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">Analyst session 1 sized Kettle &amp; Co's Japan market from the top: a government count, a government rate, two shares. Tonight we size the same market from the other end, the way a sales or growth team would: count the buyers, price the basket, count the baskets. The household count is real, read from the 2020 Census. The three behaviour inputs are constructed Kettle &amp; Co pilot numbers, labelled as such on the page and in the widget. The two halves meet on the bench in Analyst session 6.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A bottom-up chain for Kettle &amp; Co written as one sentence, each input with a low, a middle and a high, and a note for each input saying which table, column, filter and period it would come from in your own data, plus the one trap that source is known for. That chain is the second half of the triangulation bench.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the bottom-up chain</span>
+      <h2>Four links: households, buyers, basket, baskets a year</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Bottom-up sizing multiplies a population by the share of it that buys, by what a buyer spends per order, by how many orders a buyer places in a year. The first link is the same Census count the top-down uses. The other three describe behaviour, and behaviour is what your own data measures best.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn chain of five boxes joined by arrows. Box 1, real, solid: 34,553,907 two-or-more-person households, 2020 Census, bracketed underneath as shared with the top-down. Box 2, constructed, dashed: times 4.5 percent of households that buy the category online. Box 3, constructed, dashed: times 2,400 yen spend per order. Box 4, constructed, dashed: times 3.5 orders per buyer a year. Box 5, amber: bottom-up 13.06 billion yen a year, range 7.11 to 21.55.">
+        <defs>
+          <filter id="a2aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a2aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a2aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a2aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a2aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a2aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a2aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a2aV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a2aW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a2aX { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .a2aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a2aH" x="30" y="28">THE BOTTOM-UP CHAIN FOR KETTLE &amp; CO, LINK BY LINK</text>
+        <text class="a2aS" x="30" y="46">solid box = a real statistic · dashed box = a constructed pilot input</text>
+
+        <g filter="url(#a2aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="72" width="140" height="104" rx="10" transform="rotate(-0.8 100 124)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M176 124 L204 124" marker-end="url(#a2aAr)"/>
+          <rect x="212" y="72" width="140" height="104" rx="10" transform="rotate(0.6 282 124)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M358 124 L386 124" marker-end="url(#a2aAr)"/>
+          <rect x="394" y="72" width="140" height="104" rx="10" transform="rotate(-0.6 464 124)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M540 124 L568 124" marker-end="url(#a2aAr)"/>
+          <rect x="576" y="72" width="140" height="104" rx="10" transform="rotate(0.8 646 124)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M722 124 L746 124" marker-end="url(#a2aAr)"/>
+          <rect x="752" y="72" width="110" height="104" rx="10" transform="rotate(-1 807 124)" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M36 190 Q36 200 46 200 L154 200 Q164 200 164 190" stroke="#005F6B"/>
+          <!-- doodle: a receipt -->
+          <path d="M560 222 L596 222 L596 262 L590 256 L584 262 L578 256 L572 262 L566 256 L560 262 Z M567 234 L589 234 M567 244 L583 244" stroke="#005F6B"/>
+        </g>
+
+        <text class="a2aH" x="44" y="98">HOUSEHOLDS</text>
+        <text class="a2aV" x="44" y="126">34,553,907</text>
+        <text class="a2aS" x="44" y="148">2020 Census, two-or-</text>
+        <text class="a2aS" x="44" y="164">more-person · real</text>
+
+        <text class="a2aH" x="226" y="98">x BUYERS</text>
+        <text class="a2aV" x="226" y="126">4.5%</text>
+        <text class="a2aS" x="226" y="148">buy the category online</text>
+        <text class="a2aB" x="226" y="164">constructed</text>
+
+        <text class="a2aH" x="408" y="98">x SPEND / ORDER</text>
+        <text class="a2aV" x="408" y="126">2,400 yen</text>
+        <text class="a2aS" x="408" y="148">per order</text>
+        <text class="a2aB" x="408" y="164">constructed</text>
+
+        <text class="a2aH" x="590" y="98">x ORDERS / YEAR</text>
+        <text class="a2aV" x="590" y="126">3.5</text>
+        <text class="a2aS" x="590" y="148">per buyer</text>
+        <text class="a2aB" x="590" y="164">constructed</text>
+
+        <text class="a2aW" x="764" y="98">BOTTOM-UP</text>
+        <text class="a2aX" x="764" y="126">13.06</text>
+        <text class="a2aW" x="764" y="148">bn yen</text>
+        <text class="a2aW" x="764" y="164">a year</text>
+
+        <text class="a2aL" x="36" y="222">shared with the top-down</text>
+        <text class="a2aS" x="36" y="240">the same Census count, the same population</text>
+        <text class="a2aS" x="752" y="206">range</text>
+        <text class="a2aS" x="752" y="222">7.11 to 21.55</text>
+
+        <text class="a2aN" x="30" y="292">One real link, three constructed ones. Each constructed link is an aggregate of your own orders.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the three dashed links are the ones your own data can measure, and the ones a pilot most easily flatters</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The four links, and what each one means<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Households: 34,553,907.</strong> The two-or-more-person households of the 2020 Population Census, the same count the top-down chain starts from. It is real, and it is shared: both methods lean on it.</p>
+        <p><strong>Buyers: 4.5 percent.</strong> The share of those households that buy the category online in a year. Constructed from Kettle &amp; Co's pilot, with a low of 3.5 and a high of 5.5 percent.</p>
+        <p><strong>Spend per order: 2,400 yen.</strong> The average order value. Constructed, low 2,100, high 2,700.</p>
+        <p><strong>Orders per buyer a year: 3.5.</strong> Repeat behaviour. Constructed, low 2.8, high 4.2.</p>
+        <p>Multiplied through, the middle is 13.06 billion yen a year. Carry all three inputs to their lows together and to their highs together and the range is 7.11 to 21.55. The widget below prints both, and so does the bench in Analyst session 6, where it meets the top-down's 19.63.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why bottom-up scales with your actual go-to-market<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A top-down size describes the market. A bottom-up size describes the customers your channels reach, at the price you charge, at the rate they come back. That makes it the number a plan can be built on: every link is a lever someone owns. Conversion belongs to growth, the basket to merchandising and pricing, repeat to retention.</p>
+        <p>It also means a bottom-up grows only when a link moves. Doubling the size on a slide requires saying which link doubles and who will move it. If nobody can name the lever, the doubled number is a hope. Price is one of those levers, and how buyers respond to it is its own discipline: <a href="https://phoebefu6.github.io/learn-economics-with-phoebe/">Learn Economics with Phoebe</a> owns elasticity and pricing from data.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Bottom-up is not automatically more honest<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Bottom-up feels grounded because the inputs come from your own customers. That is also its weakness: your own customers are the ones who already found you. The chain is only as good as the claim that pilot behaviour describes the households you have not met yet. Part 2 is about exactly that claim, one input at a time.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The number the growth team could argue with.</strong> Kettle &amp; Co's head of data showed the marketing lead two sizes for Japan: 19.63 from the top and 13.06 from the bottom. The marketing lead ignored the first and spent twenty minutes on the second, because every link in it was a number her team moved every week. Constructed Kettle &amp; Co example; the household count is real.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers where each input comes from</span>
+      <h2>Three inputs, three sources, three traps</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Each behaviour input has a natural home: buyers from a pilot or a purchase panel, spend per order from the orders table, orders a year from repeat behaviour by cohort. Each home also has a well-known way of misleading you. Name the source and its trap together, in the same line of the brief.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 324" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three hand-drawn columns. Column 1: a pilot conversion or panel source feeds the buyer share link of 4.5 percent, filled amber; its trap is early adopters, who found you first and are rarely typical. Column 2: the orders table feeds spend per order, 2,400 yen; its trap is a launch-month average inflated by promotions. Column 3: a repeat cohort feeds orders per buyer a year, 3.5; its trap is a full year of repeat extrapolated from a three-month pilot.">
+        <defs>
+          <filter id="a2bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a2bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a2bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a2bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a2bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a2bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a2bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a2bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a2bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a2bH" x="30" y="28">WHERE EACH BOTTOM-UP INPUT COMES FROM</text>
+        <text class="a2bS" x="30" y="46">dashed = constructed Kettle &amp; Co data · amber = the link most at risk</text>
+
+        <g filter="url(#a2bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="66" width="250" height="74" rx="8" transform="rotate(-0.6 155 103)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="315" y="66" width="250" height="74" rx="8" transform="rotate(0.5 440 103)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <rect x="600" y="66" width="250" height="74" rx="8" transform="rotate(-0.5 725 103)" fill="#EAF4F5" stroke-dasharray="6 5"/>
+          <path d="M155 146 L155 170" marker-end="url(#a2bAr)"/>
+          <path d="M440 146 L440 170" marker-end="url(#a2bAr)"/>
+          <path d="M725 146 L725 170" marker-end="url(#a2bAr)"/>
+          <rect x="30" y="176" width="250" height="40" rx="8" transform="rotate(0.5 155 196)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="315" y="176" width="250" height="40" rx="8" transform="rotate(-0.4 440 196)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="600" y="176" width="250" height="40" rx="8" transform="rotate(0.4 725 196)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <!-- doodle: a magnifier -->
+          <path d="M828 30 m-10 0 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M836 38 L846 48" stroke="#005F6B"/>
+        </g>
+
+        <text class="a2bH" x="44" y="90">PILOT CONVERSION</text>
+        <text class="a2bS" x="44" y="108">or a purchase panel</text>
+        <text class="a2bS" x="44" y="124">who bought, out of who was reached</text>
+
+        <text class="a2bH" x="329" y="90">ORDERS TABLE</text>
+        <text class="a2bS" x="329" y="108">amount per order, over a period</text>
+        <text class="a2bS" x="329" y="124">mean vs median: say which</text>
+
+        <text class="a2bH" x="614" y="90">REPEAT COHORT</text>
+        <text class="a2bS" x="614" y="108">orders per buyer, by first-order month</text>
+        <text class="a2bS" x="614" y="124">follow a cohort, not the first month</text>
+
+        <text class="a2bW" x="44" y="201">buyer share 4.5%</text>
+        <text class="a2bL" x="329" y="201">spend per order 2,400 yen</text>
+        <text class="a2bL" x="614" y="201">orders per buyer a year 3.5</text>
+
+        <text class="a2bB" x="30" y="244">TRAP · early adopters</text>
+        <text class="a2bS" x="30" y="262">pilot buyers found you first and</text>
+        <text class="a2bS" x="30" y="278">are rarely typical households</text>
+
+        <text class="a2bB" x="315" y="244">TRAP · launch-month promotions</text>
+        <text class="a2bS" x="315" y="262">a launch-month average order value</text>
+        <text class="a2bS" x="315" y="278">is inflated by promotion bundles</text>
+
+        <text class="a2bB" x="600" y="244">TRAP · an extrapolated year</text>
+        <text class="a2bS" x="600" y="262">first-year repeat from a 3-month</text>
+        <text class="a2bS" x="600" y="278">pilot is a projection, not a reading</text>
+
+        <text class="a2bN" x="30" y="308">Each input has one home in your data and one way that home misleads you. Name both in the brief.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber link is the one the pilot's own audience distorts most, because the people who buy first are not the market</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Buyers: pilot conversion or a panel<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The buyer share is buyers divided by the households you reached. A pilot gives you both halves for a small, self-selected slice of the market. A purchase panel gives you a broader slice, measured by someone else, with its own definition of "buys the category".</p>
+        <p><strong>The trap: early adopters are rarely typical.</strong> The households that convert in a pilot are the ones who were looking for you: tea enthusiasts, people who follow the brand, people your launch ads were targeted at. Their conversion rate describes them. Multiplying it by every household in Japan assumes everyone else will behave like the keenest buyers, the same mix of a local rate and a national population that Analyst session 1 caught with Shizuoka.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Spend per order: the orders table, mean vs median<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Spend per order is an average order value: the sum of order amounts divided by the number of orders, over a stated period. The mean is what multiplies correctly through the chain, because buyers times orders times the mean order gives back total spend. The median tells you what a typical order looks like. Report both, multiply by the mean, and say so.</p>
+        <p><strong>The trap: a launch-month average is inflated by promotions.</strong> Launch bundles, gift sets and free-shipping thresholds push the basket up in the first weeks. Take the average from a period after the launch offers end, and write the period next to the number.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Orders a year: repeat by cohort, not first month<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Orders per buyer a year comes from repeat behaviour: group buyers by the month of their first order, then count how many orders each cohort places over the following months. A cohort view stops new buyers, who have had no time to repeat, from dragging the average down, and stops a burst of first orders from looking like loyalty.</p>
+        <p><strong>The trap: first-year repeat from a 3-month pilot is extrapolated.</strong> Three months of a cohort's orders tell you about three months. Turning that into a year assumes the repeat curve keeps its shape, and that assumption belongs in the brief as a constructed link with a wide range, not as a measured one.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The pilot that converted its own fans.</strong> Kettle &amp; Co's first pilot ran on the brand's newsletter list. Conversion looked superb, and the analyst nearly multiplied it by every household in Japan. The fix was to report the newsletter conversion as the high end of the buyer range and to source the middle from the paid-social cohort, who had never heard of Kettle before the ad. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers a range per input</span>
+      <h2>Every input gets a low, a middle and a high</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A single number per input pretends the pilot measured the market. A range per input says what the evidence actually supports. Carry the ranges through the chain together and the size becomes a range too, which is the honest form to put in front of a decision.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 326" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three hand-drawn dashed intervals on the left, one per constructed input: buyer share 3.5, 4.5 and 5.5 percent; spend per order 2,100, 2,400 and 2,700 yen; orders per buyer a year 2.8, 3.5 and 4.2. Arrows from all three feed one amber output interval on the right, drawn to scale: bottom-up 7.11 to 21.55 billion yen a year with the middle at 13.06. Notes say the low corner is all three lows at once and the high corner all three highs at once.">
+        <defs>
+          <filter id="a2cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a2cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a2cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a2cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a2cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a2cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a2cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a2cV { font: 800 18px Inter, sans-serif; fill: #003D45; }
+          .a2cA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a2cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a2cH" x="30" y="28">THREE INPUT RANGES, ONE OUTPUT RANGE</text>
+        <text class="a2cS" x="30" y="46">dashed interval = a constructed input · low, middle, high</text>
+
+        <g filter="url(#a2cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 96 L380 96" stroke-dasharray="6 5"/>
+          <path d="M60 88 L60 104 M220 86 L220 106 M380 88 L380 104"/>
+          <path d="M60 166 L380 166" stroke-dasharray="6 5"/>
+          <path d="M60 158 L60 174 M220 156 L220 176 M380 158 L380 174"/>
+          <path d="M60 236 L380 236" stroke-dasharray="6 5"/>
+          <path d="M60 228 L60 244 M220 226 L220 246 M380 228 L380 244"/>
+          <path d="M404 96 L478 150" marker-end="url(#a2cAr)"/>
+          <path d="M404 166 L478 162" marker-end="url(#a2cAr)"/>
+          <path d="M404 236 L478 174" marker-end="url(#a2cAr)"/>
+          <rect x="490" y="148" width="360" height="24" rx="6" transform="rotate(-0.4 670 160)" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M638 142 L638 178" stroke="#003D45" stroke-width="3"/>
+          <!-- doodle: a ruler -->
+          <path d="M790 64 L850 64 L850 80 L790 80 Z M800 64 L800 72 M810 64 L810 70 M820 64 L820 72 M830 64 L830 70 M840 64 L840 72" stroke="#005F6B"/>
+        </g>
+
+        <text class="a2cH" x="60" y="74">BUYER SHARE</text>
+        <text class="a2cS" x="60" y="122" text-anchor="middle">3.5%</text>
+        <text class="a2cL" x="220" y="124" text-anchor="middle">4.5%</text>
+        <text class="a2cS" x="380" y="122" text-anchor="middle">5.5%</text>
+
+        <text class="a2cH" x="60" y="144">SPEND PER ORDER, YEN</text>
+        <text class="a2cS" x="60" y="192" text-anchor="middle">2,100</text>
+        <text class="a2cL" x="220" y="194" text-anchor="middle">2,400</text>
+        <text class="a2cS" x="380" y="192" text-anchor="middle">2,700</text>
+
+        <text class="a2cH" x="60" y="214">ORDERS PER BUYER A YEAR</text>
+        <text class="a2cS" x="60" y="262" text-anchor="middle">2.8</text>
+        <text class="a2cL" x="220" y="264" text-anchor="middle">3.5</text>
+        <text class="a2cS" x="380" y="262" text-anchor="middle">4.2</text>
+
+        <text class="a2cH" x="490" y="126">BOTTOM-UP, BN YEN A YEAR</text>
+        <text class="a2cA" x="490" y="196">7.11</text>
+        <text class="a2cV" x="638" y="202" text-anchor="middle">13.06</text>
+        <text class="a2cA" x="850" y="196" text-anchor="end">21.55</text>
+        <text class="a2cS" x="490" y="228">low corner = all three lows at once</text>
+        <text class="a2cS" x="490" y="244">high corner = all three highs at once</text>
+        <text class="a2cB" x="490" y="270">each corner needs every input wrong the same way</text>
+
+        <text class="a2cN" x="30" y="310">Three modest input ranges multiply into an output that runs from about half the middle to well above it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the output interval is drawn to scale, and its width is the product of three uncertainties, not their sum</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Carry the ranges together, as corners<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The simplest way to carry ranges through a chain is by corners: every input at its low gives the low size, every input at its high gives the high size. For Kettle &amp; Co: buyers 3.5 / 4.5 / 5.5 percent, spend per order 2,100 / 2,400 / 2,700 yen, orders 2.8 / 3.5 / 4.2 a year. The corners print 7.11 and 21.55 around a middle of 13.06.</p>
+        <p>Corners are wide on purpose. The low corner needs the pilot to have overstated conversion, the basket and the repeat rate all at once. That is unlikely, so the corners are the edges of the plausible, not the expected range. Say that out loud when you show them, or a reader will treat 7.11 as a forecast.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The alternative: sampling the inputs<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Some teams prefer to sample instead: draw each input many times from a distribution across its range, multiply each draw through the chain, and report the spread of the results (a Monte Carlo). The result is usually narrower than the corners, because all-lows-at-once is rare in the draws.</p>
+        <p>It is a choice, and teams disagree. Sampling needs a shape for each input and a view on whether the inputs move together; a pilot that overstated conversion probably overstated repeat too, and assuming independence quietly narrows the range. Corners need no such assumptions and anyone can check them by hand. Pick one, write down why, and keep it the same across both halves of the bench. Which input moves the size most, one at a time, is the tornado in Analyst session 4.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>"Just give me one number."</strong> Kettle &amp; Co's BD lead asked for a single figure for the board slide. The analyst gave her 13.06 with 7.11 to 21.55 underneath, and one sentence: the low needs the pilot to be wrong three ways at once. The board spent its time on which of the three inputs to test first, which was the right conversation. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Build the chain from your own orders table</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">The widget below holds the Census household count and Kettle &amp; Co's three constructed pilot inputs, each with its range. It recomputes the chain the moment you move a slider. Work the five steps in order and write down what it prints; the inputs are constructed, so once you move a slider your numbers will differ from the ones quoted here.</p>
+
+    <div class="msz-widget" data-mode="bottomup"></div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 342" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn orders table with three columns, customer, order date and amount, and four constructed rows. Under each column an arrow points to the aggregate it becomes: the customer column becomes the buyer share, distinct customers over households reached; the order date column becomes orders per buyer a year, counted by cohort; the amount column becomes spend per order, the mean with the median beside it.">
+        <defs>
+          <filter id="a2dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="67" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a2dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a2dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a2dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a2dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a2dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a2dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a2dW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a2dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a2dH" x="30" y="28">ONE ORDERS TABLE, THREE LINKS</text>
+        <text class="a2dS" x="290" y="28">constructed rows, Kettle &amp; Co pilot · each column becomes one aggregate</text>
+
+        <g filter="url(#a2dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="60" y="56" width="760" height="140" rx="8" transform="rotate(-0.3 440 126)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="60" y="56" width="760" height="32" rx="8" transform="rotate(-0.3 440 72)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M300 56 L300 196 M560 56 L560 196"/>
+          <path d="M180 202 L180 234" marker-end="url(#a2dAr)"/>
+          <path d="M430 202 L430 234" marker-end="url(#a2dAr)"/>
+          <path d="M690 202 L690 234" marker-end="url(#a2dAr)"/>
+          <rect x="70" y="240" width="220" height="56" rx="8" transform="rotate(0.6 180 268)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="320" y="240" width="220" height="56" rx="8" transform="rotate(-0.5 430 268)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="580" y="240" width="220" height="56" rx="8" transform="rotate(0.5 690 268)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <!-- doodle: a pencil -->
+          <path d="M842 110 L858 94 L866 102 L850 118 Z M842 110 L838 122 L850 118" stroke="#005F6B"/>
+        </g>
+
+        <text class="a2dL" x="76" y="77">customer</text>
+        <text class="a2dL" x="316" y="77">order date</text>
+        <text class="a2dL" x="576" y="77">amount, yen</text>
+
+        <text class="a2dS" x="76" y="110">c-0101</text>
+        <text class="a2dS" x="316" y="110">2026-04-03</text>
+        <text class="a2dS" x="576" y="110">2,350</text>
+        <text class="a2dS" x="76" y="136">c-0102</text>
+        <text class="a2dS" x="316" y="136">2026-04-03</text>
+        <text class="a2dS" x="576" y="136">1,980</text>
+        <text class="a2dS" x="76" y="162">c-0101</text>
+        <text class="a2dS" x="316" y="162">2026-06-11</text>
+        <text class="a2dS" x="576" y="162">2,600</text>
+        <text class="a2dS" x="76" y="186">c-0117</text>
+        <text class="a2dS" x="316" y="186">2026-06-19</text>
+        <text class="a2dS" x="576" y="186">2,450</text>
+
+        <text class="a2dW" x="84" y="264">= buyer share</text>
+        <text class="a2dW" x="84" y="284">distinct buyers / reached</text>
+        <text class="a2dL" x="334" y="264">= orders a year</text>
+        <text class="a2dS" x="334" y="284">orders per buyer, by cohort</text>
+        <text class="a2dL" x="594" y="264">= spend per order</text>
+        <text class="a2dS" x="594" y="284">the mean, median beside it</text>
+
+        <text class="a2dN" x="30" y="326">Three aggregates of one table. The household count is the only link that comes from outside it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber aggregate needs a denominator the orders table does not hold: the households you reached</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Read the default chain.</strong> All three sliders at their middles. Copy each link and its tag, real or constructed, into your notes.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · what the widget prints</span>Bottom-up: 13.06 billion yen a year (range 7.11 to 21.55)
+households                                34,553,907   real
+x share that buys the category online     4.5%         constructed
+x spend per order                         2,400 yen    constructed
+x orders per buyer a year                 3.5          constructed</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Move the buyer slider, and only that one.</strong> Drag it up, then down. Watch the size: it moves in exact proportion to the buyer share, because the chain is a pure product. Raise buyers by a fifth and the size rises by a fifth. Then set it back to the middle.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · a product moves in proportion</span>buyer share moved from 4.5% to ____%   (ratio ____)
+size moved from 13.06 to ____         (ratio ____)
+the two ratios should match. Your numbers will differ.</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Move spend per order, then orders a year.</strong> One at a time, back to the middle in between. Note that each moves the size the same proportional way, and that the range under the size moves with it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · the other two links</span>spend per order at ____ yen  -&gt;  size ____ (range ____ to ____)
+orders a year at ____        -&gt;  size ____ (range ____ to ____)
+Your numbers will differ from 13.06 once a slider moves.</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Write where each input would come from in your own data.</strong> One line per input, in the same four slots every time, plus the trap that source carries. If an input has no home in your data, write "no source yet" rather than leaving it blank.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · one line per input</span>buyer share       table: ______  column: ______  filter: ______  period: ______
+                  trap: early adopters (who was reached, and how?)
+spend per order   table: ______  column: ______  filter: ______  period: ______
+                  trap: launch promotions (mean and median, after launch)
+orders a year     table: ______  column: ______  filter: ______  period: ______
+                  trap: extrapolated year (cohort age in months: ____)</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Write the chain as a sentence.</strong> The way it will go in the sizing brief: one clause per link, each with its source or the word "assumed", and the range at the end.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the chain in one sentence</span>"34,553,907 two-or-more-person households (2020 Census)
+ x ____ that buy the category online (source: __________, range ____ to ____)
+ x ____ yen spend per order (source: __________, range ____ to ____)
+ x ____ orders per buyer a year (source: __________, range ____ to ____)
+ = ____ billion yen a year, range ____ to ____."
+Your numbers will differ from 13.06 as soon as you move a slider.</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the sentence next to last week's.</strong> The top-down printed 19.63, the bottom-up 13.06: a gap of 1.50x. Analyst session 6 asks which assumption explains it. Note that both sentences start from the same 34,553,907 households; if that count were wrong, both halves would be wrong together and the gap would not show it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before Analyst session 3</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Find your orders table</strong> and write the query that returns three numbers: distinct buyers, mean and median order value, and orders per buyer, each over a stated period.</li>
+      <li><strong>Split one input by acquisition source</strong>: your earliest or most loyal buyers against buyers who came from a cold channel. Write down how far apart they are, and which one your pilot mostly contains.</li>
+      <li><strong>Re-run spend per order excluding the launch period</strong> and any promotion window. Note how much the average moves, and which period you will quote.</li>
+      <li><strong>Give each input a low, middle and high</strong> with one sentence of evidence for each end, then carry them through as corners and say in one line why all-lows-at-once is unlikely in your data.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 2 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Which input in a bottom-up chain is most at risk from early-adopter bias?</p>
+      <button class="qopt" type="button">A · The household count, because the Census is five years old</button>
+      <button class="qopt" type="button">B · Spend per order, because enthusiasts always buy the biggest bundle</button>
+      <button class="qopt" type="button">C · The buyer share, because pilot converters were the households looking for you and rarely represent the rest</button>
+      <button class="qopt" type="button">D · None of them; a pilot measures the market directly</button>
+      <p class="qwhy">The buyer share is a rate measured on a self-selected slice and multiplied by every household. That is the same local-rate, national-population mix as applying one city's spend to a country.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Why is the household count called a shared link with the top-down?</p>
+      <button class="qopt" type="button">A · Both chains start from the same 34,553,907 households, so an error in it moves both sizes together and cancels in the gap between them</button>
+      <button class="qopt" type="button">B · The top-down borrows its households from the bottom-up pilot</button>
+      <button class="qopt" type="button">C · Shared links are always correct, so they need no source</button>
+      <button class="qopt" type="button">D · It is only shared when one-person households are excluded</button>
+      <p class="qwhy">Include one-person households in both and the top-down prints 31.64 and the bottom-up 21.06, yet the gap stays 1.50x. Triangulation only checks what the two methods do not share; Analyst session 6 shows it on the bench.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Why does a range per input beat a single point?</p>
+      <button class="qopt" type="button">A · Ranges make the market look bigger at the high end</button>
+      <button class="qopt" type="button">B · A range removes the need to name a source</button>
+      <button class="qopt" type="button">C · Reviewers prefer longer slides</button>
+      <button class="qopt" type="button">D · It states what the evidence actually supports, and carried through the chain it shows how far the size could move: 7.11 to 21.55 around 13.06</button>
+      <p class="qwhy">A point pretends the pilot measured the market. A range per input, carried as corners or by sampling, tells the decision-maker how much rides on the assumptions and which ones to test first.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">34,553,907 two-or-more-person households</span><span class="note">Statistics Bureau of Japan, 2020 Population Census, Basic Complete Tabulation on Population and Households, Table I-4-2; read at source; general households minus one-person households</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Bottom-up 13.06 billion yen a year (7.11 to 21.55)</span><span class="note">Computed by the widget engine; buyer share, spend per order and orders a year are constructed Kettle &amp; Co inputs</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">With all households included, the bench prints 21.06</span><span class="note">Computed by the bench engine; one-person households at the same behaviour is an assumption, labelled as one</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Monte Carlo sampling as an alternative to corners</span><span class="note">Taught as a principle and a choice teams disagree on; no figures</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Households x buyers x basket x baskets</b><span>Four links, one real, three from your own data, each tagged.</span></div>
+      <div class="cheat-item"><b>Buyers: watch who converted</b><span>Pilot converters found you first. Source the middle from a cold channel.</span></div>
+      <div class="cheat-item"><b>Basket: mean, after launch</b><span>Multiply by the mean, show the median, skip the promotion weeks.</span></div>
+      <div class="cheat-item"><b>Repeat: by cohort</b><span>Count orders per buyer by first-order month. A short pilot's year is extrapolated.</span></div>
+      <div class="cheat-item"><b>A range on every input</b><span>Corners print 7.11 to 21.55 around 13.06. Corners are edges, not forecasts.</span></div>
+      <div class="cheat-item"><b>Shared links cancel</b><span>The household count is in both halves, so the gap cannot test it.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You can build a bottom-up chain from your own data and say where each input comes from. Analyst session 3 covers the market neither chain can reach: when no table measures it and you have no pilot yet, you size it by analogy and proxy.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 2 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a1-top-down.html">← Prev: Top-down</a> &nbsp;·&nbsp; <a href="a3-analogy-and-proxy.html">Next: Analogy and proxy →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/msz-sample.js?v=1"></script>
+<script src="../assets/msz-live.js?v=1"></script>
+<script src="../assets/msz-bench.js?v=2"></script>
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>

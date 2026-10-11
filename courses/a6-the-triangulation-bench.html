@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 6 of 6. The triangulation bench: a top-down size from Japan's real household survey and a bottom-up size from Kettle &amp; Co's constructed pilot, side by side in the browser. The gap, the overlap, the assumption that explains most of it, a category toggle, a hero-assumption anti-lever and an analyst-report break button.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The triangulation bench - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 6 of 6. Two methods, one market: the gap between them is the finding. Then the hero assumption and the analyst number with no method.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a6-the-triangulation-bench.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The triangulation bench - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 6 of 6. Top-down meets bottom-up on real rows.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 6 · The triangulation bench - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 6 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 6 of 6</div>
+    <h1>The triangulation <span class="accent">bench</span></h1>
+    <p class="sub">One method gives a number. Two independent methods give a number and a check on it. Tonight the top-down chain from Analyst session 1 and the bottom-up chain from Analyst session 2 meet on one bench, computed in your browser: Japan's real household counts and tea spend on one side, Kettle &amp; Co's constructed pilot on the other. The bench prints the gap between them, where their ranges overlap, and which single assumption explains most of the gap. Then it lets you break it twice: once with the hero assumption that turns every tea drinker into a customer, and once with an analyst-report number that arrives without a method.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Bench</span>
+      <span class="chip audience">Data analysts and data scientists who build the size, and the leads who sign it off</span>
+      <span class="chip audience">Hands-on in the browser</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:2">3-10 · Why two methods</span>
+      <span class="a3" style="flex:6">10-35 · The bench, rung by rung, then break it</span>
+      <span class="a4" style="flex:2">35-45 · Category toggle, Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">You arrive with a top-down chain (Analyst session 1), a bottom-up chain (Analyst session 2), ranges on every assumption and a tornado (Analyst session 4), and a healthy suspicion of anyone's planned share (Analyst session 5). The bench puts them together. Real rows: 34,553,907 two-or-more-person households from the 2020 Census and their tea spend from the Family Income and Expenditure Survey, 2023-2025 average. Constructed: every Kettle &amp; Co share, price and frequency, and the analyst figure. Every number on this page is one the bench prints at its default settings; move a slider and your numbers will differ.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A triangulated size for Kettle &amp; Co with its gap, its overlap and the one assumption to measure next, written as three lines for the sizing brief; and two things you can now refuse on sight: a size whose two methods disagree tenfold because one of them counts every tea drinker, and a size nobody can triangulate because nobody knows how it was made.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers why two methods, and what they check</span>
+      <h2>Two chains, one market, and the link they share</h2>
+      <span class="tag concept">7 min live</span>
+    </div>
+    <p class="lede">Top-down starts from the whole and narrows; bottom-up starts from your own customers and multiplies out. If they land near each other, each is evidence for the other. If they do not, the gap is the most useful number on the page, because it tells you which assumption to go and measure. But triangulation only checks what the two methods do not share.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn diagram of two chains that start from one shared box. The shared box: 34,553,907 households, real. The top chain: times 5,737 yen of leaf spend, real; times a 33 percent premium share, constructed; times 30 percent bought online, constructed; equals a top-down of 19.63 billion yen. The bottom chain: times 4.5 percent of households buying online, constructed; times 2,400 yen per order, constructed; times 3.5 orders a year, constructed; equals a bottom-up of 13.06 billion yen. Between the two results: a gap of 1.50 times. A note says that including one-person households moves both results, to 31.64 and 21.06, and the gap stays 1.50 times.">
+        <defs>
+          <filter id="a6aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a6aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a6aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a6aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a6aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a6aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a6aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a6aV { font: 800 18px Inter, sans-serif; fill: #003D45; }
+          .a6aW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a6aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a6aH" x="30" y="26">TWO CHAINS FROM ONE SHARED LINK</text>
+        <text class="a6aS" x="290" y="26">solid = real statistic · dashed = constructed Kettle &amp; Co input · billion yen a year</text>
+
+        <g filter="url(#a6aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="24" y="134" width="140" height="76" rx="10" transform="rotate(-1 94 172)" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M168 158 L190 92" marker-end="url(#a6aAr)"/>
+          <path d="M168 188 L190 252" marker-end="url(#a6aAr)"/>
+          <rect x="196" y="50" width="150" height="66" rx="8" transform="rotate(0.5 271 83)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M350 83 L360 83" marker-end="url(#a6aAr)"/>
+          <rect x="366" y="50" width="150" height="66" rx="8" transform="rotate(-0.5 441 83)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M520 83 L530 83" marker-end="url(#a6aAr)"/>
+          <rect x="536" y="50" width="150" height="66" rx="8" transform="rotate(0.5 611 83)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M690 83 L702 83" marker-end="url(#a6aAr)"/>
+          <rect x="708" y="50" width="150" height="66" rx="8" transform="rotate(-0.6 783 83)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="196" y="220" width="150" height="66" rx="8" transform="rotate(-0.5 271 253)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M350 253 L360 253" marker-end="url(#a6aAr)"/>
+          <rect x="366" y="220" width="150" height="66" rx="8" transform="rotate(0.5 441 253)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M520 253 L530 253" marker-end="url(#a6aAr)"/>
+          <rect x="536" y="220" width="150" height="66" rx="8" transform="rotate(-0.5 611 253)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M690 253 L702 253" marker-end="url(#a6aAr)"/>
+          <rect x="708" y="220" width="150" height="66" rx="8" transform="rotate(0.6 783 253)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M783 124 L783 150 M783 186 L783 212" stroke="#005F6B" stroke-dasharray="4 4"/>
+          <!-- doodle: a surveyor's tripod for triangulation -->
+          <path d="M600 170 L584 204 M600 170 L600 206 M600 170 L616 204 M592 164 L608 164" stroke="#005F6B"/>
+        </g>
+
+        <text class="a6aW" x="38" y="160">HOUSEHOLDS</text>
+        <text class="a6aW" x="38" y="180">34,553,907</text>
+        <text class="a6aW" x="38" y="198">shared, real</text>
+
+        <text class="a6aH" x="208" y="72">x LEAF SPEND</text>
+        <text class="a6aL" x="208" y="90">5,737 yen a year</text>
+        <text class="a6aS" x="208" y="106">real</text>
+        <text class="a6aH" x="378" y="72">x PREMIUM</text>
+        <text class="a6aL" x="378" y="90">33%</text>
+        <text class="a6aB" x="378" y="106">constructed</text>
+        <text class="a6aH" x="548" y="72">x ONLINE</text>
+        <text class="a6aL" x="548" y="90">30%</text>
+        <text class="a6aB" x="548" y="106">constructed</text>
+        <text class="a6aH" x="720" y="72">TOP-DOWN</text>
+        <text class="a6aV" x="720" y="96">19.63</text>
+
+        <text class="a6aH" x="208" y="242">x BUY ONLINE</text>
+        <text class="a6aL" x="208" y="260">4.5% of households</text>
+        <text class="a6aB" x="208" y="276">constructed</text>
+        <text class="a6aH" x="378" y="242">x PER ORDER</text>
+        <text class="a6aL" x="378" y="260">2,400 yen</text>
+        <text class="a6aB" x="378" y="276">constructed</text>
+        <text class="a6aH" x="548" y="242">x ORDERS</text>
+        <text class="a6aL" x="548" y="260">3.5 a year</text>
+        <text class="a6aB" x="548" y="276">constructed</text>
+        <text class="a6aH" x="720" y="242">BOTTOM-UP</text>
+        <text class="a6aV" x="720" y="266">13.06</text>
+
+        <text class="a6aV" x="796" y="176">1.50x</text>
+        <text class="a6aS" x="690" y="176">the gap</text>
+
+        <text class="a6aN" x="30" y="318">Count one-person households too and both move, to 31.64 and 21.06. The gap stays 1.50x.</text>
+        <text class="a6aN" x="30" y="338">A wrong input both methods share cancels in the ratio. Triangulation cannot see it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber box feeds both chains, so the gap is blind to it; check shared links some other way</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>What "independent" has to mean<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Top-down here is households times survey spend times two shares. Bottom-up is households times the share that buys online times spend per order times orders a year. They share one link, the household count, and nothing else. Every other link comes from a different source: a government survey on top, Kettle &amp; Co's own pilot underneath.</p>
+        <p>That is what makes the gap informative. If the survey spend were wrong, only the top-down would move. If the pilot's repeat rate were wrong, only the bottom-up would move. But if the household count were wrong, both would move together and the gap would not notice. Try it on the bench: switch the population to "all households" and both sizes rise, to 31.64 and 21.06, while the gap stays at 1.50x.</p>
+        <p>So the honest claim is narrow: "the two methods agree within 1.50x on everything they do not share". The shared link needs its own check, which for a Census count is reading the table carefully, as Analyst session 1 did.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Is one method "the right one"? A disagreement worth teaching<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Practitioners disagree, and both sides have a point. One camp prefers bottom-up for any plan: it is built from things you can observe, customers, prices and repeat orders, and it scales with your actual go-to-market. Its critics answer that a bottom-up built from a pilot inherits the pilot's early adopters, who are rarely typical. Another camp trusts top-down because it rests on large official samples; its critics answer that the shares that narrow a top-down to your segment are usually guesses, as they are here.</p>
+        <p>The position taken on this bench is a working one, not a verdict: neither method is the answer alone, and the useful output is the gap plus the assumption that explains it. A team that only ever builds one method has no gap to learn from.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="bench">
+    <div class="section-kicker">
+      <span class="klabel">Build-along · the bench</span>
+      <h2>The triangulation bench</h2>
+      <span class="tag demo">★ 22 min · the main event</span>
+    </div>
+    <p class="lede">Work the four rungs in order and say out loud what changed. Then toggle the category. Then press the break button. Every tile is labelled: the top-down and the gap are modelled from real rows and constructed shares, the bottom-up is constructed end to end, and the analyst figure is constructed and has no method at all.</p>
+
+    <div class="msz-widget" data-mode="bench"></div>
+
+    <div class="callout tip">
+      <p><strong>Read it in this order.</strong> The two ranges first, then the gap, then whether the ranges overlap, then the assumption that explains most of the gap. "Explains most" means: move that one input to the edge of its own range, in the direction that closes the gap, and see how much of the gap disappears, measured on a log scale. An input that closes 100 percent or more could, on its own, make the two methods agree.</p>
+    </div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The ladder as the bench prints it, on a hand-drawn log scale from 5 to 200 billion yen a year. Rung 1, top-down only: 19.63, range 10.90 to 31.72. Rung 2, bottom-up only: 13.06, range 7.11 to 21.55. Rung 3, triangulated: gap 1.50 times, ranges overlap from 10.90 to 21.55, share bought online closes 76 percent of the gap. Rung 4, hero assumption: top-down is a single point at 198.24 against the same bottom-up range, gap 15.18 times, ranges do not overlap, the best single input closes 7 percent. Break, analyst number: a point at 50.00 with no range, gap 3.83 times, cannot close because there is no method.">
+        <defs>
+          <filter id="a6bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a6bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a6bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a6bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a6bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a6bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a6bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a6bR { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .a6bA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a6bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a6bH" x="30" y="26">THE LADDER, AS THE BENCH PRINTS IT</text>
+        <text class="a6bS" x="300" y="26">billion yen a year, log scale · teal = top-down range · white = bottom-up range</text>
+
+        <g filter="url(#a6bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="318" y="72" width="162" height="22" rx="5" transform="rotate(-0.3 399 83)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M407 66 L407 100" stroke="#005F6B"/>
+          <rect x="253" y="128" width="168" height="22" rx="5" transform="rotate(0.3 337 139)" fill="#FFFFFF"/>
+          <path d="M345 122 L345 156"/>
+          <rect x="318" y="174" width="162" height="12" rx="4" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="253" y="190" width="168" height="12" rx="4" fill="#FFFFFF"/>
+          <rect x="318" y="206" width="103" height="8" rx="3" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="253" y="240" width="168" height="16" rx="4" transform="rotate(-0.3 337 248)" fill="#FFFFFF"/>
+          <path d="M425 248 L748 248" stroke="#991B1B" stroke-dasharray="6 5"/>
+          <path d="M757 248 m-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0" stroke="#005F6B" fill="#005F6B"/>
+          <rect x="253" y="290" width="168" height="16" rx="4" transform="rotate(0.3 337 298)" fill="#FFFFFF"/>
+          <path d="M425 298 L541 298" stroke="#991B1B" stroke-dasharray="6 5"/>
+          <path d="M549 298 m-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0" stroke="#991B1B"/>
+          <path d="M200 336 L820 336 M200 336 L200 344 M305 336 L305 344 M410 336 L410 344 M549 336 L549 344 M654 336 L654 344 M759 336 L759 344" stroke="#4F6366"/>
+          <!-- doodle: a set square, top right -->
+          <path d="M826 70 L826 112 L852 112 Z" stroke="#005F6B"/>
+        </g>
+
+        <text class="a6bL" x="30" y="88">1 · top-down only</text>
+        <text class="a6bS" x="492" y="88">19.63 · range 10.90 to 31.72</text>
+        <text class="a6bL" x="30" y="144">2 · bottom-up only</text>
+        <text class="a6bS" x="433" y="144">13.06 · range 7.11 to 21.55</text>
+        <text class="a6bL" x="30" y="194">3 · triangulated</text>
+        <text class="a6bB" x="492" y="186">gap 1.50x · overlap 10.90 to 21.55</text>
+        <text class="a6bS" x="492" y="204">share bought online closes 76%</text>
+        <text class="a6bL" x="30" y="252">4 · hero, anti-lever</text>
+        <text class="a6bH" x="770" y="253">198.24</text>
+        <text class="a6bR" x="440" y="274">no overlap · gap 15.18x · best input closes 7%</text>
+        <text class="a6bL" x="30" y="302">break · analyst number</text>
+        <text class="a6bR" x="562" y="303">50.00 · gap 3.83x · cannot close</text>
+
+        <text class="a6bA" x="200" y="358" text-anchor="middle">5</text>
+        <text class="a6bA" x="305" y="358" text-anchor="middle">10</text>
+        <text class="a6bA" x="410" y="358" text-anchor="middle">20</text>
+        <text class="a6bA" x="549" y="358" text-anchor="middle">50</text>
+        <text class="a6bA" x="654" y="358" text-anchor="middle">100</text>
+        <text class="a6bA" x="759" y="358" text-anchor="middle">200</text>
+
+        <text class="a6bN" x="30" y="388">The hero and analyst rows print a point, not a range: there is no assumption left to vary.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - only rung 3 has an amber overlap; both ways of breaking it push the top-down away from anything Kettle's own customers could confirm</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Rung 1, top-down only.</strong> Press it. One method, one range: the chain from Analyst session 1. Nothing yet checks it.</p>
+        <div class="prompt-box good"><span class="label">★ Rung 1 · what the bench prints</span>top-down range   10.90 to 31.72 billion yen a year (middle 19.63)
+verdict          One method: 10.90 to 31.72 billion yen a year. Nothing yet checks it.</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Rung 2, bottom-up only.</strong> Kettle &amp; Co's pilot numbers from Analyst session 2: 4.5 percent of households buying the category online, 2,400 yen an order, 3.5 orders a year, each with its own low and high.</p>
+        <div class="prompt-box good"><span class="label">★ Rung 2 · what the bench prints</span>bottom-up range  7.11 to 21.55 billion yen a year (middle 13.06)
+verdict          One method: 7.11 to 21.55 billion yen a year, from Kettle &amp; Co's own pilot.
+                 Nothing yet checks it.</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Rung 3, triangulated.</strong> Both at once. Read the gap, the overlap, and which assumption explains most of the gap. Then open the tornado under the tiles: it is the same ranking drawn as bars.</p>
+        <div class="prompt-box good"><span class="label">★ Rung 3 · what the bench prints</span>gap              1.50x  (top-down middle / bottom-up middle)
+overlap          10.90 to 21.55 billion yen a year
+explains most    share bought online: at the edge of its range it closes 76% of the gap
+then             premium share 68% · households that buy online 49%
+                 orders a year 45% · spend per order 29%</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Rung 4, the hero assumption.</strong> "Every tea drinker is our customer." The premium and online filters come off the top-down. Watch the top-down jump and the gap widen, and note that no single input inside its range can now close it.</p>
+        <div class="prompt-box bad"><span class="label">Rung 4 · the anti-lever</span>top-down         198.24 billion yen a year, a point (10.1 times rung 3)
+gap              15.18x · ranges do not overlap
+best single input closes 7% of the gap
+verdict          the two methods are not sizing the same thing</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Go back to rung 3, then press "Break it: use the analyst report number".</strong> The top-down is replaced by a constructed round figure from a report with no published method. Read what the bench can and cannot tell you now.</p>
+        <div class="prompt-box bad"><span class="label">Break · the analyst number</span>top-down         replaced by 50.00 billion yen (constructed, no method)
+gap              3.83x
+explains most    unknown: no method, so no assumption to compare
+verdict          triangulation cannot close; there is no way to know which number is wrong</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 6 · Your turn.</strong> Press "Go back to the method". Move the share bought online to where your own evidence puts it, then the premium share, and read the new gap and overlap. Write the three lines for the sizing brief. Your numbers will differ from the ones above as soon as you move a slider.</p>
+        <div class="prompt-box good"><span class="label">★ Step 6 · three lines for the brief</span>size:        ____ to ____ billion yen a year (overlap of two methods)
+agreement:   top-down and bottom-up within ____x on everything they do not share
+measure next: ____________________ (the input that explains most of the gap)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the gap and the hero assumption</span>
+      <h2>Which assumption explains the gap, and what a hero does to it</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">A gap is not a failure of either method. It is a pointer: somewhere in the five constructed inputs is the reason the two chains disagree. The bench ranks them by how much of the gap each one could close on its own, inside its own range. The hero assumption shows what happens when the reason is not an input at all, but a definition.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hand-drawn bars of how much of the gap each input closes when moved to the edge of its own range. At the default settings, gap 1.50 times: share bought online 76 percent, filled amber; premium share 68 percent; households that buy online 49 percent; orders a year 45 percent; spend per order 29 percent. A dashed line at 100 percent marks closing the whole gap. On the right, under the hero assumption, gap 15.18 times: the best input, households that buy online, closes 7 percent.">
+        <defs>
+          <filter id="a6cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a6cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a6cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a6cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a6cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a6cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a6cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a6cR { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .a6cV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a6cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a6cH" x="30" y="26">HOW MUCH OF THE GAP EACH INPUT CLOSES, AT THE EDGE OF ITS RANGE</text>
+        <text class="a6cS" x="30" y="44">default settings, gap 1.50x · bar length to scale, 100% closes the whole gap</text>
+
+        <g filter="url(#a6cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="220" y="64" width="243" height="24" rx="5" transform="rotate(-0.4 341 76)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="220" y="102" width="218" height="24" rx="5" transform="rotate(0.4 329 114)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="220" y="140" width="157" height="24" rx="5" transform="rotate(-0.4 298 152)" fill="#FFFFFF"/>
+          <rect x="220" y="178" width="144" height="24" rx="5" transform="rotate(0.4 292 190)" fill="#FFFFFF"/>
+          <rect x="220" y="216" width="93" height="24" rx="5" transform="rotate(-0.4 266 228)" fill="#FFFFFF"/>
+          <path d="M540 56 L540 250" stroke="#005F6B" stroke-dasharray="6 5"/>
+          <rect x="640" y="96" width="210" height="140" rx="10" transform="rotate(0.6 745 166)" fill="#FEF2F2" stroke="#991B1B"/>
+          <rect x="660" y="176" width="22" height="20" rx="4" fill="#FFFFFF" stroke="#991B1B"/>
+          <!-- doodle: a pointer finger at the top bar -->
+          <path d="M500 76 L476 76 M484 70 L476 76 L484 82" stroke="#005F6B"/>
+        </g>
+
+        <text class="a6cL" x="206" y="81" text-anchor="end">share bought online</text>
+        <text class="a6cL" x="206" y="119" text-anchor="end">premium share</text>
+        <text class="a6cL" x="206" y="157" text-anchor="end">households buying online</text>
+        <text class="a6cL" x="206" y="195" text-anchor="end">orders a year</text>
+        <text class="a6cL" x="206" y="233" text-anchor="end">spend per order</text>
+        <text class="a6cB" x="510" y="81">76%</text>
+        <text class="a6cS" x="448" y="119">68%</text>
+        <text class="a6cS" x="388" y="157">49%</text>
+        <text class="a6cS" x="374" y="195">45%</text>
+        <text class="a6cS" x="324" y="233">29%</text>
+        <text class="a6cS" x="548" y="268">100% = closes it all</text>
+
+        <text class="a6cH" x="656" y="122">HERO ASSUMPTION ON</text>
+        <text class="a6cR" x="656" y="144">gap 15.18x</text>
+        <text class="a6cS" x="656" y="164">best: households buying</text>
+        <text class="a6cR" x="692" y="191">7%</text>
+        <text class="a6cS" x="656" y="218">nothing else comes close</text>
+
+        <text class="a6cN" x="30" y="304">No single input closes the default gap alone; online share and premium share together are where to measure.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - at the default the top two bars are top-down shares; under the hero assumption those shares no longer exist, and what is left cannot close a 15x gap</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Reading the ranking at the default<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The top two inputs are both top-down shares: share bought online closes 76 percent of the gap, premium share 68 percent. That is a finding, not a coincidence. Those two shares are the links nobody measured; the survey spend under them is real. The tornado in Analyst session 4 showed the same order: share bought online swings the gap from 1.10 to 2.00, the widest bar.</p>
+        <p>No input closes 100 percent on its own, but the ranges already overlap from 10.90 to 21.55, so the methods are consistent. The sizing brief should say so, and should name the share bought online as the input to measure before anyone commits a budget.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The hero assumption, in the engine's numbers<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>"Every tea drinker is our customer" removes the premium and online filters. The top-down becomes households times all leaf spend: 198.24 billion yen a year, 10.1 times the triangulated top-down. The bottom-up does not move, because Kettle's pilot customers did not change. The gap becomes 15.18x, the ranges no longer overlap, and the best single input closes 7 percent.</p>
+        <p>That pattern, a gap no input can close, is the signature of two methods sizing two different things. It is what a TAM looks like when somebody puts it next to a bottom-up built from real customers. Business session 2 reads the same hero assumption on a pitch deck.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The board slide that said 198 billion.</strong> Kettle &amp; Co's investor update led with "a 198 billion yen market". The analyst who built the bottom-up asked to put 13.06 on the same slide; the gap made the hero assumption visible in one glance, and the slide now leads with the triangulated range and names the share bought online as the open question. Constructed Kettle &amp; Co example; the household and spend figures are real.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the category toggle and the number with no method</span>
+      <h2>When the gap is a definition, and when it cannot be read at all</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">Two more ways a gap stops being useful. The first is a category choice: change what market you are sizing and the top-down moves while your customers stay where they were. The second is a top-down nobody can open: a figure from a report that does not publish its method, which leaves nothing to triangulate against.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two hand-drawn panels. Left, the category toggle against the same bottom-up of 13.06 billion yen: premium loose-leaf, top-down 19.63, gap 1.50 times, ranges overlap, filled amber; tea, all of it, 148.96, gap 11.40 times, best input closes 13 percent; wellness drinks, 271.00, gap 20.75 times, best input closes 10 percent. Right, the break button: a method chain of four linked boxes beside a single box with no links, the analyst figure of 50.00 billion yen, constructed, with a question mark; gap 3.83 times, no assumption to compare.">
+        <defs>
+          <filter id="a6dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="67" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a6dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a6dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a6dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a6dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a6dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a6dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a6dR { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .a6dW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a6dQ { font: 800 22px Inter, sans-serif; fill: #991B1B; }
+          .a6dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a6dH" x="30" y="26">THE CATEGORY TOGGLE</text>
+        <text class="a6dS" x="30" y="44">top-down middle vs the same bottom-up, 13.06</text>
+        <text class="a6dH" x="500" y="26">THE BREAK BUTTON</text>
+        <text class="a6dS" x="500" y="44">a method you can open vs a number you cannot</text>
+
+        <g filter="url(#a6dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="64" width="410" height="56" rx="8" transform="rotate(-0.4 235 92)" fill="#8A5300" stroke="#8A5300"/>
+          <rect x="30" y="132" width="410" height="56" rx="8" transform="rotate(0.4 235 160)" fill="#FFFFFF"/>
+          <rect x="30" y="200" width="410" height="56" rx="8" transform="rotate(-0.4 235 228)" fill="#FFFFFF"/>
+          <rect x="500" y="70" width="70" height="40" rx="6" transform="rotate(-1 535 90)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M574 90 L586 90" marker-end="url(#a6dAr)"/>
+          <rect x="592" y="70" width="70" height="40" rx="6" transform="rotate(1 627 90)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M666 90 L678 90" marker-end="url(#a6dAr)"/>
+          <rect x="684" y="70" width="70" height="40" rx="6" transform="rotate(-1 719 90)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M758 90 L770 90" marker-end="url(#a6dAr)"/>
+          <rect x="776" y="70" width="70" height="40" rx="6" transform="rotate(1 811 90)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="560" y="150" width="200" height="84" rx="10" transform="rotate(1.5 660 192)" fill="#FEF2F2" stroke="#991B1B"/>
+          <!-- doodle: a sealed envelope for the report -->
+          <path d="M790 176 L846 176 L846 214 L790 214 Z M790 176 L818 198 L846 176" stroke="#005F6B"/>
+        </g>
+
+        <text class="a6dW" x="46" y="88">Premium loose-leaf · 19.63</text>
+        <text class="a6dW" x="46" y="108">gap 1.50x · ranges overlap</text>
+        <text class="a6dL" x="46" y="156">Tea, all of it · 148.96</text>
+        <text class="a6dR" x="46" y="176">gap 11.40x · best input closes 13%</text>
+        <text class="a6dL" x="46" y="224">Wellness drinks · 271.00</text>
+        <text class="a6dR" x="46" y="244">gap 20.75x · best input closes 10%</text>
+
+        <text class="a6dS" x="510" y="94">homes</text>
+        <text class="a6dS" x="602" y="94">spend</text>
+        <text class="a6dS" x="694" y="94">prem.</text>
+        <text class="a6dS" x="786" y="94">online</text>
+        <text class="a6dS" x="500" y="134">every link can be argued with</text>
+
+        <text class="a6dQ" x="578" y="186">?</text>
+        <text class="a6dH" x="604" y="180">ANALYST FIGURE</text>
+        <text class="a6dR" x="604" y="200">50.00 · constructed</text>
+        <text class="a6dS" x="604" y="218">no method published</text>
+        <text class="a6dR" x="500" y="262">gap 3.83x · nothing to compare</text>
+
+        <text class="a6dN" x="30" y="296">Left: the customers did not move, the definition did. Right: the gap exists, and nobody can say why.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - a gap you can explain is evidence; a gap you cannot open is only a disagreement between two people</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The category toggle, against the same customers<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Switch the category on the bench. "Tea, all of it" adds bottled and canned tea drinks: top-down 148.96, gap 11.40x, and the best single input, share bought online, closes 13 percent. "Wellness drinks" adds mineral water, sports drinks and lactic acid drinks: 271.00, gap 20.75x, best input 10 percent. Premium loose-leaf: 19.63, gap 1.50x, ranges overlap.</p>
+        <p>The bottom-up never moved, because it is built from the customers Kettle actually has. So the category toggle is a test of the category: a frame whose top-down cannot be reconciled with your own customers by any input in range is a frame your customers are not in. That is evidence for marketing's positioning call in Business session 1, not a replacement for it.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The analyst number: why triangulation cannot close<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Press the break button and the top-down is replaced by a constructed 50.00 billion yen from a report that does not publish its method. The gap against the bottom-up is 3.83x. The bench cannot say which input explains it, because one side has no inputs: no population, no rate, no shares. Nobody can tell whether the report sized a wider category, a different year, a different channel, or made a mistake.</p>
+        <p>Analyst-firm market sizes are contested, and the disagreement is worth teaching straight. Some teams use them as an outside anchor: a figure from people who looked at the market for longer than you did. Others treat any figure without a published method as unusable, because category definitions vary between firms and the firm that sells the report has its own reasons to make the market look large. On the bench the practical rule is narrower and both camps accept it: a number without a method can sit beside a triangulated range as context, but it cannot be one side of the triangulation.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The population toggle: the check triangulation cannot make<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Set the population to "all households, one-person included" and read the bench: top-down 31.64 (range 17.58 to 51.13), bottom-up 21.06 (range 11.46 to 34.74), gap 1.50x, share bought online still explaining 76 percent. Everything bigger, nothing different. If the one-person assumption is wrong, the bench will never tell you, because both chains multiply by the same households. The defence is upstream: read the population of every table you use, as Analyst session 1 did.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before you hand the size over</h2>
+      <span class="tag exercise">40 min</span>
+    </div>
+    <ol>
+      <li><strong>Build both chains for your own market</strong>, top-down from an official table and bottom-up from your own customers, with a low and a high on every assumption.</li>
+      <li><strong>Compute the gap and the overlap.</strong> If the ranges do not overlap, find the single input that would close the most of the gap inside its range, and write how you would measure it.</li>
+      <li><strong>List every link the two chains share.</strong> For each one, write the check you made that does not depend on the other method.</li>
+      <li><strong>Find one market size from a report in your sector</strong> and write whether its method is published. If it is not, put it beside your range as context and write one sentence on why it is not one side of the triangulation.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 6 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Switching to "all households" moves the top-down to 31.64 and the bottom-up to 21.06, and the gap stays 1.50x. What does that tell you?</p>
+      <button class="qopt" type="button">A · The one-person assumption is confirmed by both methods</button>
+      <button class="qopt" type="button">B · The household count is shared by both chains, so an error in it cancels in the ratio; triangulation cannot check it</button>
+      <button class="qopt" type="button">C · The bench has a bug</button>
+      <button class="qopt" type="button">D · Bigger markets always triangulate better</button>
+      <p class="qwhy">Triangulation only checks what the two methods do not share. A shared link needs its own check, such as reading the survey's population.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">2 · The hero assumption gives a top-down of 198.24, a gap of 15.18x, and the best single input closes 7 percent. What is the right reading?</p>
+      <button class="qopt" type="button">A · Kettle's pilot is too pessimistic; raise the bottom-up inputs</button>
+      <button class="qopt" type="button">B · Average the two sizes</button>
+      <button class="qopt" type="button">C · Measure the share that buys online more carefully, and the gap will close</button>
+      <button class="qopt" type="button">D · No input in range can close it, so the two methods are sizing different things: the top-down counts every tea drinker, the bottom-up counts Kettle's kind of customer</button>
+      <p class="qwhy">A gap no input can close is a definition problem, not a measurement problem. The hero assumption inflated the top-down 10.1 times without any customer changing.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · A report says the market is 50.00 billion yen and publishes no method. The bench prints a gap of 3.83x and "cannot close". Why?</p>
+      <button class="qopt" type="button">A · With no population, rate or shares on one side, there is no assumption to compare, so nobody can say which number is wrong or why</button>
+      <button class="qopt" type="button">B · Reports are always wrong</button>
+      <button class="qopt" type="button">C · The gap is too small to matter</button>
+      <button class="qopt" type="button">D · The bottom-up should be replaced by the report figure</button>
+      <p class="qwhy">Triangulation compares methods, not numbers. A figure without a method can sit beside the range as context; it cannot be one side of the check.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">34,553,907 two-or-more-person households; 55,704,949 general households</span><span class="note">Statistics Bureau of Japan, 2020 Population Census, Basic Complete Tabulation on Population and Households, Table I-4-2; read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Leaf tea 5,737 yen, tea total 14,370 yen, wellness drinks items, per household a year</span><span class="note">Statistics Bureau of Japan, Family Income and Expenditure Survey, two-or-more-person households, item ranking by prefectural capital and designated city, 2023-2025 average (drinks); read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The ladder: 19.63 (10.90 to 31.72); 13.06 (7.11 to 21.55); gap 1.50x, overlap 10.90 to 21.55, online 76%; hero 198.24, 10.1x, gap 15.18x, 7%; analyst 50.00, gap 3.83x</span><span class="note">Computed by the bench engine in your browser; a Python reference prints the same numbers to 2 decimal places; every Kettle &amp; Co input and the analyst figure are constructed</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Category toggle: 148.96 (11.40x, 13%), 19.63 (1.50x), 271.00 (20.75x, 10%); population toggle 31.64 and 21.06, gap 1.50x</span><span class="note">Computed by the bench engine on the same rows</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Analyst-firm market sizes as an anchor or as unusable</span><span class="note">Contested; taught as a disagreement, no firm named and no figure quoted</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Two methods, one market</b><span>The gap is the finding. 1.50x here, overlapping 10.90 to 21.55.</span></div>
+      <div class="cheat-item"><b>Explains most</b><span>The one input that, at the edge of its range, closes most of the gap. Measure it next.</span></div>
+      <div class="cheat-item"><b>Shared links cancel</b><span>A wrong household count moves both chains; the gap stays 1.50x.</span></div>
+      <div class="cheat-item"><b>No input closes it?</b><span>Then the two methods size different things. Hero: 15.18x, best 7%.</span></div>
+      <div class="cheat-item"><b>Category is testable</b><span>Tea 11.40x, wellness 20.75x, premium loose-leaf 1.50x against the same customers.</span></div>
+      <div class="cheat-item"><b>No method, no triangle</b><span>A report figure can be context, never one side of the check.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>That completes the Analyst track. The Business track turns the triangulated range into a decision: Business session 3 puts it on a one-page sizing brief, and Business session 4 builds the evidence gate before anyone believes the share figure.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 6 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a5-share-realism.html">← Prev: Share realism</a> &nbsp;·&nbsp; <a href="../index.html">Course home</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/msz-sample.js?v=1"></script>
+<script src="../assets/msz-live.js?v=1"></script>
+<script src="../assets/msz-bench.js?v=2"></script>
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Market sizing for data teams and the people who ask them for a size. Four Business sessions on what a size is for, reading a sizing deck, who owns which half and getting from a size to a plan; six Analyst sessions on top-down, bottom-up, analogy and proxy, ranges, share realism and a triangulation bench on Japan's real household survey. Free, by Phoebe Fu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Learn Market Sizing with Phoebe">
+<meta property="og:description" content="A market size is evidence for a decision. Build it two ways on real rows, read the gap, and refuse the hero assumption and the number with no method.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn Market Sizing with Phoebe">
+<meta name="twitter:description" content="Two tracks: Business, the decision and the bet; Analyst, the evidence and the bench.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Learn Market Sizing with Phoebe</title>
+<link rel="stylesheet" href="assets/style.css?v=20">
+<style>
+
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: 1; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(var(--shadow-rgb),.16); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo-deep); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--muted); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,var(--indigo-50)); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+
+  .not-this { border: 1px solid var(--hairline); border-left: 4px solid var(--clay); border-radius: var(--radius); background: #fff; padding: 1.1rem 1.3rem; margin-top: 1.2rem; }
+  .not-this h3 { font-size: .95rem; font-weight: 800; margin-bottom: .5rem; }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn with Phoebe · Data &amp; Analytics</div>
+    <h1>Learn <span class="accent">Market Sizing</span> with Phoebe</h1>
+    <p class="sub">"How big is the market?" is usually asked as if it had one answer. It has as many answers as there are categories, populations and assumptions, and the useful one is the answer to a decision somebody has to make. These ten sessions split the work the way it splits in real teams. Four Business sessions are for the people who ask for a size and place the bet: what a size is for, how to read a sizing deck, who owns which half, and how to get from a size to a plan you can defend. Six Analyst sessions are for the people who build the evidence: top-down from public statistics, bottom-up from your own data, analogy and proxy, ranges, share realism, and a triangulation bench that runs on Japan's real household survey in your browser. The running company, Kettle &amp; Co, is constructed.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="10">10</b><span>sessions, two tracks</span></div>
+      <div class="stat"><b data-count="53">53</b><span>real survey rows on the bench</span></div>
+      <div class="stat"><b data-count="2">2</b><span>methods, one gap</span></div>
+      <div class="stat"><b data-count="3">3</b><span>categories, one survey</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Business track 🧭 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· four sessions, no code</span></h2>
+      <p class="plede">For marketing, BD and leaders who ask for a market size and are judged on the bet it supports. The decision before the number, the category before the size, the questions to ask of any sizing slide, the one-page brief that splits the evidence from the bet, and an evidence gate before anyone believes a share figure.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/b1-what-a-market-size-is-for.html" style="--diff:#34D399"><span class="cicon">🎯</span><span class="cnum">Business session 1 · start here</span><h3>What a market size is for</h3><p>The decision a size informs, TAM, SAM and SOM and why TAM is the least useful of the three, and why the category is chosen before the size.</p><span class="meta"><span class="pill amber">▶ Start here</span></span></a>
+      <a class="course-card" href="courses/b2-reading-a-sizing-deck.html" style="--diff:#34D399"><span class="cicon">🔍</span><span class="cnum">Business session 2</span><h3>Reading a sizing deck</h3><p>The hero assumption that inflates a size tenfold, vanity TAMs, "1% of a huge market", analyst-report numbers with no method, and five questions for any sizing slide.</p><span class="meta"><span class="pill">five questions per slide</span></span></a>
+      <a class="course-card" href="courses/b3-who-owns-which-half.html" style="--diff:#FBBF24"><span class="cicon">🤝</span><span class="cnum">Business session 3</span><h3>Who owns which half</h3><p>Data owns the evidence, marketing and BD own the bet. The one-page sizing brief: question, decision, owner, category, method, range, and the assumption that would change the call.</p><span class="meta"><span class="pill">the one-page brief</span></span></a>
+      <a class="course-card" href="courses/b4-from-size-to-plan.html" style="--diff:#FB923C"><span class="cicon">🪜</span><span class="cnum">Business session 4</span><h3>From size to plan</h3><p>Realistic penetration and ramp, base rates as a discipline, and an evidence gate in your own numbers before anyone believes the share figure.</p><span class="meta"><span class="pill">the evidence gate</span></span></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Analyst track 🧮 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· six sessions, hands-on in the browser</span></h2>
+      <p class="plede">For the data analysts and data scientists who build the size. Every widget computes in your browser on real rows from the Statistics Bureau of Japan: 2020 Census households and the Family Income and Expenditure Survey's tea spend. The bench puts top-down and bottom-up side by side and lets you break it twice.</p>
+    </div>
+    <div class="course-grid">
+      <a class="course-card" href="courses/a1-top-down.html" style="--diff:#34D399"><span class="cicon">🏛️</span><span class="cnum">Analyst session 1 · start here</span><h3>Top-down: from public statistics to your segment</h3><p>Households times spend per household times your shares, on Japan's own rows. Who the survey asked, what its items mean, and one city's rate applied to a country.</p><span class="meta"><span class="pill amber">▶ Start here</span></span></a>
+      <a class="course-card" href="courses/a2-bottom-up.html" style="--diff:#34D399"><span class="cicon">🧾</span><span class="cnum">Analyst session 2</span><h3>Bottom-up: customers, price and frequency</h3><p>Buyers times spend per order times orders a year, from your own data. Where each input comes from, and the range each one deserves.</p><span class="meta"><span class="pill">your own data</span></span></a>
+      <a class="course-card" href="courses/a3-analogy-and-proxy.html" style="--diff:#FBBF24"><span class="cicon">🧭</span><span class="cnum">Analyst session 3</span><h3>Sizing by analogy and proxy</h3><p>Comparable markets, adjacent categories, search volume, job postings and import statistics, each with its failure mode; the office tea question no table measures.</p><span class="meta"><span class="pill">when no table exists</span></span></a>
+      <a class="course-card" href="courses/a4-ranges-not-points.html" style="--diff:#FBBF24"><span class="cicon">🌪️</span><span class="cnum">Analyst session 4</span><h3>Ranges, not points</h3><p>Every assumption gets a low and a high, ranges as corners, and a tornado that shows which assumption moves the answer most.</p><span class="meta"><span class="pill">the tornado</span></span></a>
+      <a class="course-card" href="courses/a5-share-realism.html" style="--diff:#FB923C"><span class="cicon">📈</span><span class="cnum">Analyst session 5</span><h3>Share realism and the collision test</h3><p>Adoption curves as a shape, base rates for new entrants, distribution ceilings, and the test that adds up every entrant's planned share of the same market.</p><span class="meta"><span class="pill">plans that add to 120%</span></span></a>
+      <a class="course-card" href="courses/a6-the-triangulation-bench.html" style="--diff:#F87171"><span class="cicon">📐</span><span class="cnum">Analyst session 6 · bench night</span><h3>The triangulation bench</h3><p>Top-down meets bottom-up: the gap, the overlap, the assumption that explains most of it, a category toggle, the hero assumption and the analyst number with no method.</p><span class="meta"><span class="pill amber">★ the bench</span></span></a>
+    </div>
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>foundations</span>
+      <span><i style="background:#FBBF24"></i>core</span>
+      <span><i style="background:#FB923C"></i>stretch</span>
+      <span><i style="background:#F87171"></i>bench night</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Your passport 🎫</h2>
+      <p class="plede">Clear all three quiz questions in a session and it gets stamped. Ten stamps means you can tie a size to a decision, read a sizing deck for its hero assumption, build a size two ways on real rows and say what the gap between them means. Stamps live in this browser only.</p>
+    </div>
+    <div class="pp-strip"></div>
+  </section>
+
+  <section class="section">
+    <div class="not-this">
+      <h3>What this is not, so you land in the right place 🧭</h3>
+      <table class="clean">
+        <tr><th>If your question is</th><th>Go here instead</th></tr>
+        <tr><td>Whose job is market research, and how does data take asks from marketing and BD?</td><td><a href="https://phoebefu6.github.io/learn-marketing-analytics-with-phoebe/">Marketing Analytics ↗</a></td></tr>
+        <tr><td>I am a marketer: how do I position, plan and budget?</td><td><a href="https://phoebefu6.github.io/learn-marketing-with-phoebe/">Marketing ↗</a></td></tr>
+        <tr><td>Which strategy framework fits this choice?</td><td><a href="https://phoebefu6.github.io/learn-strategic-thinking-with-phoebe/">Strategic Thinking ↗</a></td></tr>
+        <tr><td>How do price and elasticity change demand?</td><td><a href="https://phoebefu6.github.io/learn-economics-with-phoebe/">Economics ↗</a></td></tr>
+        <tr><td>How do I forecast a market's growth over time?</td><td><a href="https://phoebefu6.github.io/learn-timeseries-forecasting-with-phoebe/">Timeseries Forecasting ↗</a></td></tr>
+        <tr><td><strong>Someone needs a market size for a decision, and I either ask for it or build it.</strong></td><td><strong>you are in the right place</strong></td></tr>
+      </table>
+      <p style="margin-top:.7rem;font-size:.86rem;color:var(--muted)"><strong>Market sizing as evidence for a decision.</strong> Kettle &amp; Co is constructed; the households and tea spend are read from the Statistics Bureau of Japan at source; contested claims, such as analyst-firm market sizes and "the right method", are taught as contested.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Three doors into the same conviction: a market size is evidence for a decision, built two ways and stated as a range.</p>
+      <div class="path"><b>🧭 I ask for the size and place the bet</b>
+        <a class="pstep" href="courses/b1-what-a-market-size-is-for.html">B1</a><span class="parr">→</span><a class="pstep" href="courses/b2-reading-a-sizing-deck.html">B2</a><span class="parr">→</span><a class="pstep" href="courses/b3-who-owns-which-half.html">B3</a><span class="parr">→</span><a class="pstep" href="courses/b4-from-size-to-plan.html">B4</a>
+        <span style="font-size:.82rem;color:var(--muted)">the decision, the deck, the brief, the plan</span>
+      </div>
+      <div class="path"><b>🧮 I build the size</b>
+        <a class="pstep" href="courses/a1-top-down.html">A1</a><span class="parr">→</span><a class="pstep" href="courses/a2-bottom-up.html">A2</a><span class="parr">→</span><a class="pstep" href="courses/a3-analogy-and-proxy.html">A3</a><span class="parr">→</span><a class="pstep" href="courses/a4-ranges-not-points.html">A4</a><span class="parr">→</span><a class="pstep" href="courses/a5-share-realism.html">A5</a><span class="parr">→</span><a class="pstep" href="courses/a6-the-triangulation-bench.html">A6</a>
+        <span style="font-size:.82rem;color:var(--muted)">two methods, ranges, realism, the bench</span>
+      </div>
+      <div class="path"><b>🎛️ I lead the data team</b>
+        <a class="pstep" href="courses/b1-what-a-market-size-is-for.html">B1</a><span class="parr">→</span><a class="pstep" href="courses/b3-who-owns-which-half.html">B3</a><span class="parr">→</span><a class="pstep" href="courses/a4-ranges-not-points.html">A4</a><span class="parr">→</span><a class="pstep" href="courses/a6-the-triangulation-bench.html">A6</a><span class="parr">→</span><a class="pstep" href="courses/b4-from-size-to-plan.html">B4</a>
+        <span style="font-size:.82rem;color:var(--muted)">the contract, the range, the bench, the gate</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>What is honest here 🧾</h2>
+      <p class="plede">The running company is constructed and says so on every page. The households and the tea spend are real and named with their table and year. Where a claim is contested, the page teaches both sides.</p>
+    </div>
+    <table class="clean">
+      <tr><th>Claim</th><th>Status</th></tr>
+      <tr><td>Kettle &amp; Co, its people, shares, pilot numbers, plans and the analyst figure</td><td><strong>Constructed,</strong> and labelled each time</td></tr>
+      <tr><td>Japan's households (2020 Census) and tea spend per household (Family Income and Expenditure Survey, 2023-2025 average)</td><td><strong>Read at source</strong> from the Statistics Bureau of Japan</td></tr>
+      <tr><td>Every number on the widgets and the bench</td><td><strong>Computed in your browser</strong> from those rows and the constructed inputs; a Python reference prints the same numbers</td></tr>
+      <tr><td>The big market delusion</td><td><strong>Read at source</strong> in Aswath Damodaran's own blog posts, and cited in that form</td></tr>
+      <tr><td>Positioning order, scaling readiness, diffusion curves</td><td><strong>Reported</strong> from the authors' books and papers, paraphrased, never quoted</td></tr>
+      <tr><td>Analyst-firm market sizes; top-down against bottom-up as "the right" method</td><td><strong>Contested,</strong> and taught as contested</td></tr>
+    </table>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">Both tracks at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span>Neighbours on the shelf: <a href="https://phoebefu6.github.io/learn-marketing-analytics-with-phoebe/">Marketing Analytics ↗</a> &nbsp;·&nbsp; <a href="https://phoebefu6.github.io/learn-marketing-with-phoebe/">Marketing ↗</a> &nbsp;·&nbsp; <a href="https://phoebefu6.github.io/learn-economics-with-phoebe/">Economics ↗</a></span>
+  </footer>
+
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  "title": "Market\nsizing",
+  "centerColor": "#003D45",
+  "sessions": [
+    {
+      "label": "What a market\nsize is for",
+      "href": "courses/b1-what-a-market-size-is-for.html",
+      "color": "#34D399",
+      "concepts": [
+        {
+          "label": "Decision first",
+          "href": "courses/b1-what-a-market-size-is-for.html"
+        },
+        {
+          "label": "TAM, SAM, SOM",
+          "href": "courses/b1-what-a-market-size-is-for.html"
+        },
+        {
+          "label": "Category before size",
+          "href": "courses/b1-what-a-market-size-is-for.html"
+        }
+      ]
+    },
+    {
+      "label": "Reading a\nsizing deck",
+      "href": "courses/b2-reading-a-sizing-deck.html",
+      "color": "#34D399",
+      "concepts": [
+        {
+          "label": "The hero assumption",
+          "href": "courses/b2-reading-a-sizing-deck.html"
+        },
+        {
+          "label": "Vanity TAM",
+          "href": "courses/b2-reading-a-sizing-deck.html"
+        },
+        {
+          "label": "No method, no trust",
+          "href": "courses/b2-reading-a-sizing-deck.html"
+        }
+      ]
+    },
+    {
+      "label": "Who owns\nwhich half",
+      "href": "courses/b3-who-owns-which-half.html",
+      "color": "#FBBF24",
+      "concepts": [
+        {
+          "label": "Evidence vs the bet",
+          "href": "courses/b3-who-owns-which-half.html"
+        },
+        {
+          "label": "The sizing brief",
+          "href": "courses/b3-who-owns-which-half.html"
+        },
+        {
+          "label": "The call-changer",
+          "href": "courses/b3-who-owns-which-half.html"
+        }
+      ]
+    },
+    {
+      "label": "From size\nto plan",
+      "href": "courses/b4-from-size-to-plan.html",
+      "color": "#FB923C",
+      "concepts": [
+        {
+          "label": "Penetration and ramp",
+          "href": "courses/b4-from-size-to-plan.html"
+        },
+        {
+          "label": "Base rates",
+          "href": "courses/b4-from-size-to-plan.html"
+        },
+        {
+          "label": "The evidence gate",
+          "href": "courses/b4-from-size-to-plan.html"
+        }
+      ]
+    },
+    {
+      "label": "Top-down",
+      "href": "courses/a1-top-down.html",
+      "color": "#34D399",
+      "concepts": [
+        {
+          "label": "Population x rate",
+          "href": "courses/a1-top-down.html"
+        },
+        {
+          "label": "Read the items",
+          "href": "courses/a1-top-down.html"
+        },
+        {
+          "label": "National row",
+          "href": "courses/a1-top-down.html"
+        }
+      ]
+    },
+    {
+      "label": "Bottom-up",
+      "href": "courses/a2-bottom-up.html",
+      "color": "#34D399",
+      "concepts": [
+        {
+          "label": "Buyers x price x orders",
+          "href": "courses/a2-bottom-up.html"
+        },
+        {
+          "label": "Inputs from your data",
+          "href": "courses/a2-bottom-up.html"
+        },
+        {
+          "label": "A range per input",
+          "href": "courses/a2-bottom-up.html"
+        }
+      ]
+    },
+    {
+      "label": "Analogy and\nproxy",
+      "href": "courses/a3-analogy-and-proxy.html",
+      "color": "#FBBF24",
+      "concepts": [
+        {
+          "label": "Comparable markets",
+          "href": "courses/a3-analogy-and-proxy.html"
+        },
+        {
+          "label": "Proxy signals",
+          "href": "courses/a3-analogy-and-proxy.html"
+        },
+        {
+          "label": "Failure modes",
+          "href": "courses/a3-analogy-and-proxy.html"
+        }
+      ]
+    },
+    {
+      "label": "Ranges, not\npoints",
+      "href": "courses/a4-ranges-not-points.html",
+      "color": "#FBBF24",
+      "concepts": [
+        {
+          "label": "Low, mid, high",
+          "href": "courses/a4-ranges-not-points.html"
+        },
+        {
+          "label": "Corners of the box",
+          "href": "courses/a4-ranges-not-points.html"
+        },
+        {
+          "label": "The tornado",
+          "href": "courses/a4-ranges-not-points.html"
+        }
+      ]
+    },
+    {
+      "label": "Share\nrealism",
+      "href": "courses/a5-share-realism.html",
+      "color": "#FB923C",
+      "concepts": [
+        {
+          "label": "Adoption shape",
+          "href": "courses/a5-share-realism.html"
+        },
+        {
+          "label": "Distribution ceilings",
+          "href": "courses/a5-share-realism.html"
+        },
+        {
+          "label": "The collision test",
+          "href": "courses/a5-share-realism.html"
+        }
+      ]
+    },
+    {
+      "label": "The triangulation\nbench",
+      "href": "courses/a6-the-triangulation-bench.html",
+      "color": "#F87171",
+      "concepts": [
+        {
+          "label": "The gap",
+          "href": "courses/a6-the-triangulation-bench.html"
+        },
+        {
+          "label": "Shared links cancel",
+          "href": "courses/a6-the-triangulation-bench.html"
+        },
+        {
+          "label": "No method, no triangle",
+          "href": "courses/a6-the-triangulation-bench.html"
+        }
+      ]
+    }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=3"></script>
+<script src="assets/app.js?v=20"></script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Analyst session 3 of 6. Sizing a market no table measures: by analogy from a comparable market and the adjustments it needs, from an adjacent category, and from proxy signals such as search volume, job postings and import statistics, each with its failure mode. Worked on Kettle &amp; Co's office tea question with constructed inputs.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Sizing by analogy and proxy - learn market sizing with phoebe">
+<meta property="og:description" content="Analyst session 3 of 6. Comparable markets, adjacent categories and proxy signals, each with the conversion you must assume and the way it leaks.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/courses/a3-analogy-and-proxy.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sizing by analogy and proxy - learn market sizing with phoebe">
+<meta name="twitter:description" content="Analyst session 3 of 6. Sizing a market when no table measures it, with two independent proxies.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-market-sizing-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Analyst session 3 · Sizing by analogy and proxy - learn market sizing with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=20">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-market-sizing-with-phoebe</a> / Analyst session 3 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Market Sizing with Phoebe · Analyst session 3 of 6</div>
+    <h1>Sizing by <span class="accent">analogy and proxy</span></h1>
+    <p class="sub">Top-down needs a table that measures your market. Bottom-up needs customers you already have. Some questions get neither: a new segment, a new channel, a buyer no survey asks. Then you borrow. You borrow a size from a comparable market and adjust it, you borrow a neighbour's size and argue the overlap, or you borrow a signal that moves with the market and assume a conversion. Every borrowed number comes with a specific way of being wrong, and tonight is about naming that way before anyone else does.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst</span>
+      <span class="chip audience">Data analysts and data scientists who build the size</span>
+      <span class="chip audience">Hands-on, no widget</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Analogy, neighbours, proxies</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: office tea by proxy</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">Analyst sessions 1 and 2 built Kettle &amp; Co's Japan household market twice, from a government table and from its own pilot. Kettle's BD lead now asks the question from Business session 1 that neither chain can reach: how big is the B2B office tea market? No government table measures what offices spend on tea at item level, and Kettle has no office customers yet. Tonight is paper and pencil, no widget: three ways to borrow a size, the failure mode of each, and an office tea estimate built from two independent proxies. Kettle &amp; Co and every office number on this page are constructed; the household tea figures are real rows from the Statistics Bureau of Japan.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = everyone works it through</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A one-page office tea estimate for Kettle &amp; Co built from two proxy chains that do not share a signal, the gap between them written down as a range, every input tagged constructed, and a list of the real data that would replace each one. Plus a sentence per method naming the one thing that would make it wrong.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers sizing by analogy</span>
+      <h2>A comparable market, and the dials between it and yours</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Sizing by analogy takes a market you can measure, another country, an earlier year, an adjacent product, and carries its size across to the one you cannot. The comparable is never the same market, so the carry needs adjustments: for how many buyers there are, for how much each spends, for how mature the channel is. The analogy is only as good as the adjustment on the dial that drives the size.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two hand-drawn boxes with three dials between them. Left, market A, the comparable: Shizuoka households spend 9,694 yen a year on leaf tea, real. Right, market B, the one being sized: Japan's national row, 5,737 yen, real. Between them, joined by arrows, three dials: population, spend level filled amber and labelled 1.69x real, and channel maturity labelled assumed. A note says carrying Shizuoka's rate across without the spend dial overstates Japan 1.69-fold.">
+        <defs>
+          <filter id="a3aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a3aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a3aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a3aH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a3aL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a3aS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a3aB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a3aV { font: 800 18px Inter, sans-serif; fill: #003D45; }
+          .a3aW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a3aN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a3aH" x="30" y="28">CARRYING A SIZE ACROSS: THE COMPARABLE, THE DIALS, YOUR MARKET</text>
+        <text class="a3aS" x="30" y="46">leaf tea yen per household a year, FIES 2023-2025 · here both ends are known, so the dials can be checked</text>
+
+        <g filter="url(#a3aSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="70" width="230" height="150" rx="10" transform="rotate(-0.7 145 145)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="620" y="70" width="230" height="150" rx="10" transform="rotate(0.7 735 145)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M266 120 L292 120" marker-end="url(#a3aAr)"/>
+          <circle cx="330" cy="120" r="30" fill="#FFFFFF"/>
+          <path d="M330 120 L346 104"/>
+          <path d="M364 120 L404 120" marker-end="url(#a3aAr)"/>
+          <circle cx="440" cy="120" r="30" fill="#8A5300" stroke="#8A5300"/>
+          <path d="M474 120 L514 120" marker-end="url(#a3aAr)"/>
+          <circle cx="550" cy="120" r="30" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M550 120 L534 106"/>
+          <path d="M584 120 L612 120" marker-end="url(#a3aAr)"/>
+          <!-- doodle: a ruler for the adjustment -->
+          <path d="M770 246 L850 246 L850 262 L770 262 Z M786 246 L786 254 M802 246 L802 254 M818 246 L818 254 M834 246 L834 254" stroke="#005F6B"/>
+        </g>
+
+        <text class="a3aH" x="46" y="96">MARKET A · COMPARABLE</text>
+        <text class="a3aS" x="46" y="114">what you can measure</text>
+        <text class="a3aV" x="46" y="152">9,694 yen</text>
+        <text class="a3aS" x="46" y="176">Shizuoka leaf spend</text>
+        <text class="a3aS" x="46" y="194">per household · FIES, real</text>
+
+        <text class="a3aH" x="636" y="96">MARKET B · YOURS</text>
+        <text class="a3aS" x="636" y="114">what you want to size</text>
+        <text class="a3aV" x="636" y="152">5,737 yen</text>
+        <text class="a3aS" x="636" y="176">Japan, national row</text>
+        <text class="a3aS" x="636" y="194">per household · FIES, real</text>
+
+        <text class="a3aW" x="440" y="124" text-anchor="middle">1.69x</text>
+
+        <text class="a3aL" x="330" y="176" text-anchor="middle">population</text>
+        <text class="a3aS" x="330" y="192" text-anchor="middle">households</text>
+        <text class="a3aL" x="440" y="176" text-anchor="middle">spend level</text>
+        <text class="a3aB" x="440" y="192" text-anchor="middle">real here</text>
+        <text class="a3aL" x="550" y="176" text-anchor="middle">channel</text>
+        <text class="a3aB" x="550" y="192" text-anchor="middle">assumed</text>
+
+        <text class="a3aB" x="30" y="252">Wrong way · carry Shizuoka's rate across with the spend dial left at 1: Japan comes out 1.69 times too big.</text>
+        <text class="a3aN" x="30" y="280">The comparable differed in the one thing that drives the size. The other two dials could not have saved it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - an analogy is the comparable plus its adjustments; the amber dial is the one that decides whether it holds</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Pick the comparable, then list what differs<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Three kinds of comparable.</strong> Another country where the category is already measured. An earlier year of your own market, before a channel or a regulation changed. An adjacent product sold to the same buyers in the same way. Each gives you a size you can read; none gives you yours.</p>
+        <p><strong>Then write the adjustments as separate dials.</strong> Population: scale by the number of buyers, households or offices, in each market. Spend level: scale by what each buyer spends, which differs by income, habit and price. Channel maturity: scale by how much of the category is bought the way you sell it, online, by subscription, through a distributor. Each dial is either measured or assumed, and the page says which.</p>
+        <p><strong>The illustration from Analyst session 1 is real.</strong> Shizuoka households spend 9,694 yen a year on leaf tea against 5,737 nationally, 1.69 times as much. If Shizuoka were your comparable and Japan your target, the population dial would be the easy part and the spend dial would decide the answer. Here both ends are in the same survey, so you can check the dial. Usually you cannot, which is why it has to be argued out loud.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The failure mode: the comparable differs in the one thing that drives the size<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Most analogies are adjusted for population, because population is easy to look up. The adjustment that breaks them is the one nobody looked up: a tea culture that is centuries deep in one market and a novelty in the other, a channel that is mature in the comparable and barely open in yours, a price level that buys a different product. Before you trust an analogy, write one sentence naming the factor that most drives the comparable's size, and check whether your target shares it. If it does not, the analogy is a story about the comparable.</p>
+        <p>A useful habit: put a range on each dial, not a point, and carry the ranges through. Analyst session 4 does exactly that with the tornado; an analogy with three ranged dials usually turns out wider than anyone expected.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When an earlier year is the comparable<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Your own market a few years ago is often the closest comparable you have, because the buyers and the culture are the same. The dial that moves is channel maturity: online buying, delivery speed and payment habits shift faster than tastes. If the comparable year predates a change in how the category is bought, adjust for the change explicitly, and say what you assumed it did.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The home market as a template.</strong> Kettle &amp; Co's founder proposes sizing Japan as "our home market, scaled up by population". The population dial is the only one turned. The analyst adds the other two and finds that the spend dial alone could move the answer by more than the population ratio, in either direction, because tea habits differ so much between countries. The slide now shows three dials, two of them marked assumed, and the BD lead asks for evidence on spend before anything else. Constructed Kettle &amp; Co example.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers adjacent categories</span>
+      <h2>Sizing from the neighbour, and whose buyers they are</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">When your category is not measured but the one next door is, it is tempting to start from the neighbour and take a fraction. That works only when you can say how the neighbour's buyers relate to yours. A substitute shares your buyers and competes for their spend; a complement sits beside your product in the same basket; a category that merely shares a shelf may have no buyers in common at all.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hand-drawn nested boxes of drink categories from the Family Income and Expenditure Survey, yen per household a year. The outer box, wellness drinks, is the over-wide frame from Business session 1 and adds mineral water 4,421 yen, lactic acid drinks 5,757 and sports drinks 1,595 to tea. Inside it, tea all of it, 14,370 yen. Inside that, two adjacent boxes: bottled and canned tea drinks 8,633 yen, 60 percent of tea, the neighbour, and leaf tea 5,737 yen, filled amber, Kettle's category. A side note says the neighbour's buyers are not Kettle's buyers by default.">
+        <defs>
+          <filter id="a3bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a3bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a3bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a3bH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a3bL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a3bS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a3bB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a3bV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a3bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a3bX { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .a3bN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a3bH" x="30" y="28">YOUR CATEGORY AND ITS NEIGHBOURS, IN ONE SURVEY</text>
+        <text class="a3bS" x="30" y="46">FIES 2023-2025, two-or-more-person households, yen per household a year · all figures real</text>
+
+        <g filter="url(#a3bSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="62" width="820" height="236" rx="12" transform="rotate(-0.3 440 180)" fill="#FFFFFF"/>
+          <rect x="54" y="118" width="566" height="160" rx="10" transform="rotate(0.4 337 198)" fill="#EAF4F5" stroke="#005F6B"/>
+          <rect x="76" y="166" width="300" height="96" rx="8" transform="rotate(-0.8 226 214)" fill="#FFFFFF"/>
+          <rect x="396" y="166" width="204" height="96" rx="8" transform="rotate(0.9 498 214)" fill="#8A5300" stroke="#8A5300"/>
+          <!-- doodle: a bottle on the side -->
+          <path d="M780 288 L780 252 Q780 244 788 240 L788 228 L800 228 L800 240 Q808 244 808 252 L808 288 Z" stroke="#005F6B"/>
+        </g>
+
+        <text class="a3bH" x="48" y="86">WELLNESS DRINKS · the over-wide frame from Business session 1</text>
+        <text class="a3bS" x="48" y="104">tea + mineral water 4,421 + lactic acid drinks 5,757 + sports drinks 1,595</text>
+
+        <text class="a3bH" x="72" y="142">TEA, ALL OF IT · 14,370 yen</text>
+        <text class="a3bS" x="300" y="142">the survey's tea group</text>
+
+        <text class="a3bL" x="92" y="190">bottled and canned tea drinks</text>
+        <text class="a3bV" x="92" y="216">8,633 yen</text>
+        <text class="a3bS" x="92" y="236">60% of tea · the neighbour</text>
+        <text class="a3bB" x="92" y="252">a substitute, or a different buyer?</text>
+
+        <text class="a3bW" x="412" y="190">LEAF TEA · KETTLE'S</text>
+        <text class="a3bX" x="412" y="216">5,737 yen</text>
+        <text class="a3bW" x="412" y="238">green + black + other</text>
+
+        <text class="a3bH" x="640" y="142">THE NEIGHBOUR'S BUYERS</text>
+        <text class="a3bS" x="640" y="160">a bottle on a commute is not</text>
+        <text class="a3bS" x="640" y="176">a tin of leaf at home</text>
+        <text class="a3bS" x="640" y="192">same survey, same households,</text>
+        <text class="a3bS" x="640" y="208">different purchase</text>
+
+        <text class="a3bN" x="30" y="324">Starting from the neighbour means arguing what fraction of its buyers are yours. The table cannot say.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the neighbours are measured and Kettle's box is too; the overlap between their buyers is not</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Bottled tea drinks next to leaf tea<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In the same survey that gives leaf tea 5,737 yen per household a year, bottled and canned tea drinks take 8,633 yen, 60 percent of the tea group. If leaf tea were unmeasured, the obvious move would be "leaf is some fraction of bottled". The fraction is the whole argument, and it depends on whether the bottle buyer is the leaf buyer. A bottle bought from a vending machine on the way to work and a tin of leaf brewed at home may be the same person in two moods, or two different people. The survey reports spend per household; it does not report who buys both.</p>
+        <p>The test to apply: would a Kettle customer buy fewer bottles if they bought more leaf (substitute), more bottles (complement), or would nothing change (different buyers)? Only the first two make the neighbour a sizing base, and each needs its own conversion.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Wellness drinks: the neighbour that is too wide<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Business session 1 showed the wellness drinks frame: tea plus mineral water, lactic acid drinks and sports drinks. Every item is real and in the same table. As a neighbour to size from, it fails twice: most of its spend is categories Kettle does not sell, and the buyers of sports drinks have no stated reason to be buyers of leaf tea. A size taken as "a share of wellness" carries a share nobody can source. The wider the neighbour, the more of the answer sits in that one assumed fraction.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Substitutes, complements, and the buyers who are not yours<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A substitute neighbour is the safest base: the buyers already spend on the need you serve, and the argument is how much of that spend could switch. A complement is weaker: it says how many baskets your product could sit in, not how often it will. A shelf neighbour, same aisle, same supplier, different need, is the weakest, and it is the one most decks use because its number is biggest. Write the relationship next to the neighbour on the page, so a reviewer can disagree with it rather than with the whole size.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>"Bottled tea is huge, we only need a slice."</strong> A Kettle &amp; Co marketing draft sizes premium leaf as 10 percent of bottled tea drinks, because the bottled number is bigger and feels safer. The analyst asks one question: what do we know about bottle buyers that makes a tenth of them leaf buyers? The answer is nothing, so the line is rewritten to start from the leaf items the survey already publishes. Constructed Kettle &amp; Co example; the survey figures are real.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers proxy signals</span>
+      <h2>Signals that move with the market, and the conversion you must assume</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A proxy is a number somebody measured for another reason that rises and falls with your market: how often people search for it, how often firms hire for it, how much of it crosses a border. A proxy is never a size. Turning it into yen needs a conversion step you assume, and each proxy leaks in its own direction before it even reaches that step.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three hand-drawn pipes, each running from a measured signal through a dashed, constructed conversion step into one amber box labelled a size, only as good as the dashed step and the leak. Pipe 1: search volume counts queries; convert queries to buyers to yen; leak, counts curiosity not purchase, and tools disagree. Pipe 2: job postings count hiring intent; convert postings to offices to spend; leak, they lag and cluster in big firms. Pipe 3: import statistics count trade flows by product code; convert tonnes to retail yen; leak, they miss domestic production and re-exports, and codes are wider than the product.">
+        <defs>
+          <filter id="a3cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a3cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a3cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a3cH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a3cL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a3cS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a3cB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a3cW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .a3cN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a3cH" x="30" y="28">THREE PROXY PIPES INTO ONE SIZE</text>
+        <text class="a3cS" x="30" y="46">solid box = a signal someone measured · dashed box = the conversion you assume · amber text = the leak</text>
+
+        <g filter="url(#a3cSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="64" width="200" height="56" rx="8" transform="rotate(-0.6 130 92)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M236 92 L262 92" marker-end="url(#a3cAr)"/>
+          <rect x="270" y="64" width="230" height="56" rx="8" transform="rotate(0.5 385 92)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M506 82 L694 82" marker-end="url(#a3cAr)"/>
+
+          <rect x="30" y="164" width="200" height="56" rx="8" transform="rotate(0.6 130 192)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M236 192 L262 192" marker-end="url(#a3cAr)"/>
+          <rect x="270" y="164" width="230" height="56" rx="8" transform="rotate(-0.5 385 192)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M506 182 L694 182" marker-end="url(#a3cAr)"/>
+
+          <rect x="30" y="264" width="200" height="56" rx="8" transform="rotate(-0.5 130 292)" fill="#EAF4F5" stroke="#005F6B"/>
+          <path d="M236 292 L262 292" marker-end="url(#a3cAr)"/>
+          <rect x="270" y="264" width="230" height="56" rx="8" transform="rotate(0.6 385 292)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M506 282 L694 282" marker-end="url(#a3cAr)"/>
+
+          <rect x="700" y="64" width="150" height="256" rx="12" transform="rotate(0.4 775 192)" fill="#8A5300" stroke="#8A5300"/>
+          <!-- doodle: a funnel above the size box -->
+          <path d="M800 18 L840 18 L826 34 L826 48 L814 48 L814 34 Z" stroke="#005F6B"/>
+        </g>
+
+        <text class="a3cH" x="44" y="88">SEARCH VOLUME</text>
+        <text class="a3cS" x="44" y="106">counts queries typed</text>
+        <text class="a3cL" x="284" y="88">queries to buyers to yen</text>
+        <text class="a3cB" x="284" y="106">constructed conversion</text>
+        <text class="a3cB" x="520" y="104">leak: counts curiosity,</text>
+        <text class="a3cB" x="520" y="118">not purchase; tools disagree</text>
+
+        <text class="a3cH" x="44" y="188">JOB POSTINGS</text>
+        <text class="a3cS" x="44" y="206">counts hiring intent</text>
+        <text class="a3cL" x="284" y="188">postings to offices to spend</text>
+        <text class="a3cB" x="284" y="206">constructed conversion</text>
+        <text class="a3cB" x="520" y="204">leak: lags the market,</text>
+        <text class="a3cB" x="520" y="218">clusters in big firms</text>
+
+        <text class="a3cH" x="44" y="288">IMPORT STATISTICS</text>
+        <text class="a3cS" x="44" y="306">trade flows by product code</text>
+        <text class="a3cL" x="284" y="288">tonnes to retail yen</text>
+        <text class="a3cB" x="284" y="306">constructed conversion</text>
+        <text class="a3cB" x="520" y="304">leak: no domestic output,</text>
+        <text class="a3cB" x="520" y="318">re-exports; codes too wide</text>
+
+        <text class="a3cW" x="714" y="170">A SIZE,</text>
+        <text class="a3cW" x="714" y="188">only as good as</text>
+        <text class="a3cW" x="714" y="206">the dashed step</text>
+        <text class="a3cW" x="714" y="224">and the leak</text>
+
+        <text class="a3cN" x="30" y="348">No pipe is clean. Two pipes that leak in different directions can at least bracket the answer.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the signal is measured, the conversion is assumed, and the leak happens before the conversion ever starts</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Search volume<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>What it measures.</strong> How often a phrase is typed into a search engine, usually as an estimate from a keyword tool, per month.</p>
+        <p><strong>How it maps to a size.</strong> Searches to searchers, searchers to buyers, buyers to spend a year. Every one of those three steps is assumed, so write them as separate dashed links.</p>
+        <p><strong>How it fails.</strong> Search counts curiosity, not purchase: a recipe, a news story or a gift idea all show up as demand. Keyword tools model the volume rather than report it, and two tools can disagree on the same phrase by a wide margin. Treat it as a relative signal, this phrase against that one, this month against last, far more than as a count of buyers.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Job postings<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>What it measures.</strong> How many firms advertise a role, which shows hiring intent for a function, such as office managers, facilities staff or pantry suppliers' sales reps.</p>
+        <p><strong>How it maps to a size.</strong> Postings to firms with that function, firms to buying offices, offices to spend a year. The first link alone hides an assumption about how many postings one firm makes.</p>
+        <p><strong>How it fails.</strong> Postings count intent to hire, not spend; they lag the market, because firms hire after demand has grown; and they cluster in big firms that post often and publicly, while small offices hire through word of mouth and never appear. A postings-based size leans towards big offices.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Import statistics<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>What it measures.</strong> Goods crossing the border, by weight and declared value, classified by product code.</p>
+        <p><strong>How it maps to a size.</strong> Imported tonnes or customs value, times a markup to retail or wholesale yen, times the share that reaches your buyer. The markup and the share are assumed.</p>
+        <p><strong>How it fails.</strong> Import figures count trade flows, so they miss everything grown and packed at home, which for tea in Japan is a serious gap. They include goods that are re-exported. And a product code is usually wider than your product: one code may hold several kinds of tea in several pack sizes, premium and bulk alike.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why one proxy is never enough<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A single proxy gives a single number with a hidden conversion, and nothing to argue it against. Two proxies built from independent signals give two numbers, and the gap between them is information: it says how much the conversions disagree. This is the same lesson Analyst session 6 teaches about top-down and bottom-up. A check only tests what the two methods do not share. Two proxies that both start from the same count of offices will agree with each other and still both be wrong about the offices.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The office tea question, from Business session 1.</strong> Kettle &amp; Co's BD lead wants the B2B office tea market. The analyst looks for a government table and finds none that measures office purchases of tea at item level: the household survey asks households, and nothing read for this work breaks out what offices buy. So the size has to be built from proxies. A search-volume chain on office tea delivery phrases would count curiosity; an import chain would count every tea crossing the border, households and offices alike. The analyst picks two signals that share as little as possible, a count of offices and a count of office workers, builds each into yen with constructed conversions, and shows BD both numbers and the gap. Constructed Kettle &amp; Co example; no real counts are used.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Size Kettle's office tea market by proxy, on paper</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">No widget tonight: a pencil, a calculator and the five steps below. Each step gives a template with blanks and a Kettle &amp; Co example. Every input in the example is a constructed round number chosen to make the arithmetic easy to follow, not a count of anything real; the method is what carries over. Fill the template for your own market as you go, and write "constructed" next to every input you have not sourced.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two hand-drawn proxy chains converging on a range. Proxy one, counting offices: 100,000 offices times 40 percent that provide tea times 50,000 yen a year each, all constructed, gives 2.0 billion yen. Proxy two, counting cups: 3,000,000 office workers times 1 cup a day times 240 working days times 5 yen a cup, all constructed, gives 3.6 billion yen. Both arrows meet an amber bar from 2.0 to 3.6 billion yen, marked gap 1.8x.">
+        <defs>
+          <filter id="a3dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="67" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="a3dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#005F6B" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="a3dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#102A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .a3dH { font: 800 12px Inter, sans-serif; fill: #102A2E; }
+          .a3dL { font: 600 12px Inter, sans-serif; fill: #102A2E; }
+          .a3dS { font: 400 11px Inter, sans-serif; fill: #4F6366; }
+          .a3dB { font: 800 11px Inter, sans-serif; fill: #5A3600; }
+          .a3dV { font: 800 16px Inter, sans-serif; fill: #003D45; }
+          .a3dA { font: 700 11px Inter, sans-serif; fill: #005F6B; }
+          .a3dN { font: 400 12px Inter, sans-serif; fill: #4F6366; }
+        </style>
+
+        <text class="a3dH" x="30" y="28">TWO PROXY CHAINS, ONE RANGE · KETTLE &amp; CO OFFICE TEA</text>
+        <text class="a3dS" x="30" y="46">every box is dashed: every input is constructed · billion yen a year</text>
+
+        <text class="a3dL" x="30" y="64">Proxy one · count offices</text>
+        <text class="a3dL" x="30" y="204">Proxy two · count cups</text>
+
+        <g filter="url(#a3dSk)" fill="none" stroke="#102A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="72" width="150" height="64" rx="8" transform="rotate(-0.8 105 104)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="200" y="72" width="150" height="64" rx="8" transform="rotate(0.6 275 104)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="370" y="72" width="150" height="64" rx="8" transform="rotate(-0.6 445 104)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M528 104 L724 158" marker-end="url(#a3dAr)"/>
+
+          <rect x="30" y="212" width="110" height="64" rx="8" transform="rotate(0.7 85 244)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="156" y="212" width="110" height="64" rx="8" transform="rotate(-0.6 211 244)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="282" y="212" width="110" height="64" rx="8" transform="rotate(0.6 337 244)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <rect x="408" y="212" width="110" height="64" rx="8" transform="rotate(-0.7 463 244)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <path d="M528 242 L812 194" marker-end="url(#a3dAr)"/>
+
+          <rect x="730" y="166" width="88" height="20" rx="4" fill="#8A5300" stroke="#8A5300"/>
+          <!-- doodle: a pencil in the top right -->
+          <path d="M790 54 L846 34 L852 42 L796 62 Z M790 54 L784 66 L796 62" stroke="#005F6B"/>
+        </g>
+
+        <text class="a3dH" x="42" y="94">OFFICES</text>
+        <text class="a3dV" x="42" y="114">100,000</text>
+        <text class="a3dB" x="42" y="128">constructed</text>
+        <text class="a3dH" x="212" y="94">x PROVIDE TEA</text>
+        <text class="a3dV" x="212" y="114">40%</text>
+        <text class="a3dB" x="212" y="128">constructed</text>
+        <text class="a3dH" x="382" y="94">x YEN / OFFICE</text>
+        <text class="a3dV" x="382" y="114">50,000</text>
+        <text class="a3dB" x="382" y="128">constructed</text>
+
+        <text class="a3dH" x="42" y="234">WORKERS</text>
+        <text class="a3dV" x="42" y="254">3,000,000</text>
+        <text class="a3dB" x="42" y="268">constructed</text>
+        <text class="a3dH" x="168" y="234">x CUPS / DAY</text>
+        <text class="a3dV" x="168" y="254">1</text>
+        <text class="a3dB" x="168" y="268">constructed</text>
+        <text class="a3dH" x="294" y="234">x DAYS</text>
+        <text class="a3dV" x="294" y="254">240</text>
+        <text class="a3dB" x="294" y="268">constructed</text>
+        <text class="a3dH" x="420" y="234">x YEN / CUP</text>
+        <text class="a3dV" x="420" y="254">5</text>
+        <text class="a3dB" x="420" y="268">constructed</text>
+
+        <text class="a3dB" x="774" y="152" text-anchor="middle">gap 1.8x</text>
+        <text class="a3dL" x="722" y="181" text-anchor="end">2.0 bn</text>
+        <text class="a3dL" x="826" y="181">3.6</text>
+        <text class="a3dA" x="640" y="252">constructed range, bn yen a year</text>
+
+        <text class="a3dN" x="30" y="304">The chains share only the category definition. Where they disagree is what to source first.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - two independent chains make a range; one chain makes a guess with a decimal point</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Step 1 · Define the category and the buyer, and say whose call it is.</strong> What exactly would Kettle sell to an office, to whom, instead of what? That is a category choice, and Business session 3 assigns it to BD, not the analyst. Write BD's answer at the top of the page before any number, because both proxies inherit it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · template and Kettle example</span>Category:  ______________________   (BD's call, signed by: ________)
+Buyer:     ______________________   (who signs the purchase order)
+Instead of: _____________________   (what the office buys today)
+
+Kettle example (constructed):
+Category:   premium loose-leaf tea supplied to office pantries
+Buyer:      the office or facilities manager
+Instead of: the coffee supplier's bundled tea bags</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 2 · Proxy one: count offices.</strong> Offices in the segment, times the share that provide tea in the pantry, times what one such office would spend on leaf tea a year. All three are constructed in the example. Do the arithmetic in full, units and all.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · proxy one</span>offices in segment        ________     (constructed / source: ________)
+x share that provide tea  ________     (constructed / source: ________)
+x yen per office a year   ________     (constructed / source: ________)
+= ________ yen a year
+
+Kettle example, every input constructed:
+100,000 offices x 0.40 x 50,000 yen
+= 40,000 offices x 50,000 yen
+= 2,000,000,000 yen = 2.0 billion yen a year   (constructed)</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 3 · Proxy two: a different signal.</strong> Start from something proxy one did not use. The example counts people and cups instead of offices and budgets. A search-volume or import chain would also do, as long as it does not quietly reuse the office count from step 2.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · proxy two</span>office workers in segment  ________   (constructed / source: ________)
+x cups of leaf tea a day   ________   (constructed / source: ________)
+x working days a year      ________   (constructed / source: ________)
+x yen per cup              ________   (constructed / source: ________)
+= ________ yen a year
+
+Kettle example, every input constructed:
+3,000,000 workers x 1 cup x 240 days x 5 yen
+= 720,000,000 cups x 5 yen
+= 3,600,000,000 yen = 3.6 billion yen a year   (constructed)</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 4 · Compare the two and write the gap.</strong> Divide the larger by the smaller. Then name the input most likely to explain the gap: the one you trust least, or the one where the two chains imply different things about the same office.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the gap</span>proxy one ______   proxy two ______   gap ______x
+range: ______ to ______ yen a year
+input most likely to explain the gap: ____________
+
+Kettle example (constructed):
+proxy one 2.0 bn   proxy two 3.6 bn   gap 3.6 / 2.0 = 1.8x
+range: 2.0 to 3.6 billion yen a year   (constructed)
+check: proxy two implies 3.6 bn / 40,000 tea-providing offices
+       = 90,000 yen per office, against 50,000 in proxy one.
+       Spend per office is the input to source first.</div>
+      </div>
+      <div class="step">
+        <p><strong>Step 5 · Write which real data would replace each constructed input.</strong> One line per input. This list, not the range, is the most useful thing you hand BD: it turns "the market is 2 to 3.6 billion" into "here is what we need to find out, and roughly what it costs to find".</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the replacement list</span>input                  replace with                          how
+offices in segment     ____________________________          ________
+share providing tea    ____________________________          ________
+yen per office         ____________________________          ________
+office workers         ____________________________          ________
+cups a day             ____________________________          ________
+yen per cup            ____________________________          ________
+
+Kettle example (all still to source; none read for this page):
+offices in segment   a business establishment census    look up by size band
+share providing tea  20 calls to facilities managers    BD, one week
+yen per office       quotes from pantry suppliers       BD, one week
+cups a day           a short survey in 5 pilot offices  pilot</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep both chains, not just the range.</strong> Analyst session 4 turns each input into a range and asks which one moves the answer most. With two proxy chains you can do that for both and see whether the same input dominates in each, which tells you whether the gap is about the market or about your conversions.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before Analyst session 4</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Pick a comparable for your own market</strong>, another country, an earlier year or an adjacent product, and write its three dials: population, spend level, channel maturity. Mark each measured or assumed, and name the one that most drives the comparable's size.</li>
+      <li><strong>Name your nearest measured neighbour category</strong> and write, in one sentence, whether it is a substitute, a complement or only a shelf neighbour, with your reason.</li>
+      <li><strong>Build two proxy chains</strong> for a market no table measures, from two signals that share as little as possible. Tag every input constructed or sourced, and write the gap between the two results.</li>
+      <li><strong>Write the replacement list</strong> from step 5 for your chains, and put the cheapest replacement first.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and Analyst session 3 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · A team sizes Japan's leaf tea market from Shizuoka's household spend, adjusting carefully for the number of households. What is the failure?</p>
+      <button class="qopt" type="button">A · Nothing; adjusting for population is the whole job of an analogy</button>
+      <button class="qopt" type="button">B · The comparable differs in the factor that drives the size: Shizuoka spends 1.69 times the national rate, and no dial adjusted for it</button>
+      <button class="qopt" type="button">C · Shizuoka is too small to be a comparable for anything</button>
+      <button class="qopt" type="button">D · Analogies should only use other countries, never cities</button>
+      <p class="qwhy">An analogy needs every dial that drives the size. Here the spend level dial is 9,694 against 5,737 yen; population was the easy dial and the wrong one to stop at.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">2 · A deck sizes premium leaf tea as "10 percent of bottled tea drinks, a much bigger category". What should the reviewer ask first?</p>
+      <button class="qopt" type="button">A · Whether 10 percent should be 15 percent</button>
+      <button class="qopt" type="button">B · Whether bottled tea drinks are bigger than leaf tea in the survey</button>
+      <button class="qopt" type="button">C · Whether to use wellness drinks instead, since it is bigger still</button>
+      <button class="qopt" type="button">D · What makes bottle buyers leaf buyers: is bottled tea a substitute, a complement, or a different buyer altogether?</button>
+      <p class="qwhy">A neighbour is a base only if its buyers relate to yours. The survey reports spend per household, not who buys both, so the fraction is pure assumption until that relationship is argued.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · An office tea size rests on one proxy: search volume for "office tea delivery" times assumed conversion rates. What is the best next move?</p>
+      <button class="qopt" type="button">A · Build a second proxy from an independent signal, compare the two, and report the gap as a range, because search counts curiosity rather than purchase</button>
+      <button class="qopt" type="button">B · Run a second keyword tool and average the two volumes</button>
+      <button class="qopt" type="button">C · Present the search-based number, since search volume is measured data</button>
+      <button class="qopt" type="button">D · Replace the search chain with import statistics alone, since trade data is official</button>
+      <p class="qwhy">Every proxy leaks. A second keyword tool shares the same leak; import data has its own and misses domestic production. Two independent chains give a range and show which conversion to source.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Leaf tea 5,737 yen (green 3,187, black 878, other leaf 1,672); bottled and canned tea drinks 8,633 (60% of the 14,370 tea total); mineral water 4,421, lactic acid drinks 5,757, sports drinks 1,595</span><span class="note">Statistics Bureau of Japan, Family Income and Expenditure Survey, two-or-more-person households, item ranking by prefectural capital and designated city, 2023-2025 average (drinks); read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shizuoka leaf spend 9,694 yen against national 5,737 (1.69x)</span><span class="note">Same survey and table; read at source</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Office purchases of tea at item level</span><span class="note">No government table found that measures them; not read; treated here as a proxy problem with constructed inputs only</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Proxy signals: search volume, job postings, import statistics</span><span class="note">Taught as principle; no real search, posting or import figure is quoted; every proxy number on this page is constructed</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Analogy = comparable + dials</b><span>Population, spend level, channel maturity. Mark each measured or assumed.</span></div>
+      <div class="cheat-item"><b>Find the driving dial</b><span>Shizuoka spends 1.69x the national rate. Population alone would miss it.</span></div>
+      <div class="cheat-item"><b>Neighbours need a relationship</b><span>Substitute, complement or shelf neighbour. Bottled 8,633 is not leaf's base by default.</span></div>
+      <div class="cheat-item"><b>A proxy is not a size</b><span>Signal, then an assumed conversion. Write the conversion as dashed links.</span></div>
+      <div class="cheat-item"><b>Know each leak</b><span>Search: curiosity. Postings: lag, big firms. Imports: no home output, wide codes.</span></div>
+      <div class="cheat-item"><b>Two independent proxies</b><span>Report the gap as a range, and list the real data that replaces each input.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You can size a market no table measures and say how each borrowed number could be wrong. Analyst session 4 makes that precise: every input becomes a range, the corners give the size a low and a high, and the tornado shows which input moves the answer most.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Analyst session 3 of 6 · learn-market-sizing-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a2-bottom-up.html">← Prev: Bottom-up</a> &nbsp;·&nbsp; <a href="a4-ranges-not-points.html">Next: Ranges, not points →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=20"></script>
+</body>
+</html>
